@@ -3,54 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>麻哥头像设计稿 - 眼镜麻哥系列</title>
+    <title>麻哥头像 - 眼镜麻哥（清新蓝）</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%);
             min-height: 100vh;
             padding: 40px 20px;
         }
-        .container { max-width: 1400px; margin: 0 auto; }
+        .container { max-width: 800px; margin: 0 auto; }
         h1 {
             text-align: center;
-            color: white;
+            color: #1e40af;
             font-size: 2.5rem;
             margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .subtitle {
             text-align: center;
-            color: rgba(255,255,255,0.95);
+            color: #1e40af;
             margin-bottom: 40px;
             font-size: 1.2rem;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
+            opacity: 0.9;
         }
         .card {
             background: white;
             border-radius: 24px;
-            padding: 35px;
+            padding: 40px;
             text-align: center;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-            transition: transform 0.3s;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
         }
-        .card:hover { transform: translateY(-10px); }
         .avatar-preview {
-            width: 260px;
-            height: 260px;
-            margin: 0 auto 25px;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
             background: #ffffff;
             overflow: hidden;
-            border: 5px solid #f59e0b;
+            border: 6px solid #1e40af;
         }
         .avatar-preview img {
             width: 100%;
@@ -58,127 +53,95 @@
             object-fit: cover;
         }
         .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
             color: #1f2937;
         }
         .card p {
             color: #6b7280;
-            font-size: 1rem;
-            margin-bottom: 18px;
-            line-height: 1.6;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
         }
         .tags {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
         }
         .tag {
             display: inline-block;
-            padding: 6px 16px;
+            padding: 7px 18px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
         }
         .tag-glasses { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
         .tag-bg-blue { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
-        .tag-bg-green { background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #065f46; }
-        .tag-bg-purple { background: linear-gradient(135deg, #e9d5ff, #c084fc); color: #6b21a8; }
-        .tag-bg-white { background: linear-gradient(135deg, #ffffff, #f3f4f6); color: #374151; }
+        .tag-tech { background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #065f46; }
         
         .cta {
             text-align: center;
-            margin-top: 50px;
             padding: 35px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.6);
             backdrop-filter: blur(10px);
             border-radius: 24px;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
+            color: #1e40af;
+            border: 2px solid rgba(30, 64, 175, 0.3);
         }
         .cta h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
         }
         .cta p {
-            font-size: 1.1rem;
-            opacity: 0.95;
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+        .features {
+            text-align: left;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .features p {
+            margin: 10px 0;
+            font-size: 1.05rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>👓 眼镜麻哥头像系列</h1>
-        <p class="subtitle">眼镜人物 × 头顶大龙虾 × 手持电脑 × 多背景色</p>
+        <h1>👓 麻哥头像</h1>
+        <p class="subtitle">清新蓝背景 × 眼镜 × 头顶大龙虾 × 手持电脑</p>
         
-        <div class="grid">
-            <!-- White Background -->
-            <div class="card">
-                <div class="avatar-preview">
-                    <img src="avatar-11-glasses-king-white.svg" alt="眼镜麻哥 - 白色">
-                </div>
-                <h3>🤍 纯净白</h3>
-                <p>经典白色背景，简洁百搭，适合各种场景</p>
-                <div class="tags">
-                    <span class="tag tag-glasses">👓 眼镜</span>
-                    <span class="tag tag-bg-white">🤍 白色</span>
-                </div>
+        <div class="card">
+            <div class="avatar-preview">
+                <img src="avatar-15-glasses-blue-fixed.svg" alt="眼镜麻哥">
             </div>
-            
-            <!-- Blue Background -->
-            <div class="card">
-                <div class="avatar-preview">
-                    <img src="avatar-12-glasses-king-blue.svg" alt="眼镜麻哥 - 蓝色">
-                </div>
-                <h3>💙 清新蓝</h3>
-                <p>淡蓝色渐变，清新专业，科技感强</p>
-                <div class="tags">
-                    <span class="tag tag-glasses">👓 眼镜</span>
-                    <span class="tag tag-bg-blue">💙 蓝色</span>
-                </div>
-            </div>
-            
-            <!-- Green Background -->
-            <div class="card">
-                <div class="avatar-preview">
-                    <img src="avatar-13-glasses-king-green.svg" alt="眼镜麻哥 - 绿色">
-                </div>
-                <h3>💚 薄荷绿</h3>
-                <p>薄荷绿渐变，活力清新，独特醒目</p>
-                <div class="tags">
-                    <span class="tag tag-glasses">👓 眼镜</span>
-                    <span class="tag tag-bg-green">💚 绿色</span>
-                </div>
-            </div>
-            
-            <!-- Purple Background -->
-            <div class="card">
-                <div class="avatar-preview">
-                    <img src="avatar-14-glasses-king-purple.svg" alt="眼镜麻哥 - 紫色">
-                </div>
-                <h3>💜 优雅紫</h3>
-                <p>紫色渐变，优雅神秘，高端大气</p>
-                <div class="tags">
-                    <span class="tag tag-glasses">👓 眼镜</span>
-                    <span class="tag tag-bg-purple">💜 紫色</span>
-                </div>
+            <h3>💙 清新蓝 · 最终版</h3>
+            <p>淡蓝色渐变背景，眼镜已修复（不挡脸），头顶大龙虾，手持电脑</p>
+            <div class="tags">
+                <span class="tag tag-glasses">👓 眼镜</span>
+                <span class="tag tag-bg-blue">💙 清新蓝</span>
+                <span class="tag tag-tech">💻 科技</span>
             </div>
         </div>
         
         <div class="cta">
             <h2>🎨 设计元素</h2>
-            <p><strong>👓 眼镜</strong> — 知识分子气质，专业感</p>
-            <p><strong>🦞 头顶大龙虾</strong> — 个人特色，龙虾元素</p>
-            <p><strong>💻 手持电脑</strong> — 科技感，专业性</p>
-            <p><strong>🎨 4 种背景色</strong> — 白/蓝/绿/紫，任选</p>
-            <p style="margin-top: 20px; opacity: 0.9; font-size: 1rem;">
-                📁 所有 SVG 文件已保存在 <code>assets/</code> 目录<br>
-                🎨 可以直接用于博客、社交媒体、文档等
+            <div class="features">
+                <p><strong>👓 眼镜</strong> — 知识分子气质，专业感（已修复不挡脸）</p>
+                <p><strong>🦞 头顶大龙虾</strong> — 个人特色，龙虾元素</p>
+                <p><strong>💻 手持电脑</strong> — 科技感，专业性</p>
+                <p><strong>💙 清新蓝背景</strong> — 淡蓝色渐变，清新专业</p>
+                <p><strong>😊 腼腆微笑</strong> — 亲切感，温和</p>
+            </div>
+            <p style="margin-top: 25px; opacity: 0.85; font-size: 0.95rem;">
+                📁 SVG 文件：<code>avatar-15-glasses-blue-fixed.svg</code><br>
+                🎨 可直接用于博客、社交媒体、文档等
             </p>
         </div>
         
-        <div style="text-align: center; margin-top: 40px; color: rgba(255,255,255,0.85);">
+        <div style="text-align: center; margin-top: 40px; color: #1e40af; opacity: 0.8;">
             <p>🦞 Designed by 大总管 for 麻哥</p>
         </div>
     </div>
