@@ -1,0 +1,103 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dbeafe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#93c5fd;stop-opacity:1" />
+    </linearGradient>
+    <filter id="softShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle - Light Blue -->
+  <circle cx="200" cy="200" r="180" fill="url(#blueGrad)"/>
+  
+  <!-- Person (Glasses/Shy) -->
+  <g transform="translate(200, 230)">
+    <!-- Body -->
+    <ellipse cx="0" cy="70" rx="60" ry="65" fill="#fef3c7" filter="url(#softShadow)"/>
+    
+    <!-- Head -->
+    <circle cx="0" cy="-15" r="52" fill="#fef3c7"/>
+    
+    <!-- Hair (visible on sides) -->
+    <path d="M-45 -20 Q-50 -40 -35 -52 Q-15 -58 0 -54 Q15 -58 35 -52 Q50 -40 45 -20" fill="#1f2937"/>
+    
+    <!-- Glasses -->
+    <g stroke="#1f2937" stroke-width="2.5" fill="none" opacity="0.9">
+      <circle cx="-20" cy="-15" r="16"/>
+      <circle cx="20" cy="-15" r="16"/>
+      <path d="M-4 -12 Q0 -10 4 -12" stroke="#1f2937" stroke-width="2.5" fill="none"/>
+      <line x1="-36" y1="-15" x2="-48" y2="-18" stroke="#1f2937" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="36" y1="-15" x2="48" y2="-18" stroke="#1f2937" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Eyes (Behind glasses) -->
+    <circle cx="-20" cy="-15" r="9" fill="#1f2937"/>
+    <circle cx="20" cy="-15" r="9" fill="#1f2937"/>
+    <circle cx="-17" cy="-18" r="4" fill="#ffffff"/>
+    <circle cx="23" cy="-18" r="4" fill="#ffffff"/>
+    
+    <!-- Blush (Shy) -->
+    <ellipse cx="-32" cy="5" rx="11" ry="7" fill="#fca5a5" opacity="0.5"/>
+    <ellipse cx="32" cy="5" rx="11" ry="7" fill="#fca5a5" opacity="0.5"/>
+    
+    <!-- Mouth (Small smile) -->
+    <path d="M-10 20 Q0 25 10 20" stroke="#1f2937" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    
+    <!-- Hands Holding Laptop -->
+    <ellipse cx="-48" cy="65" rx="20" ry="25" fill="#fef3c7"/>
+    <ellipse cx="48" cy="65" rx="20" ry="25" fill="#fef3c7"/>
+  </g>
+  
+  <!-- Laptop -->
+  <g transform="translate(200, 310)">
+    <rect x="-45" y="-30" width="90" height="50" rx="4" fill="#1f2937" filter="url(#softShadow)"/>
+    <rect x="-40" y="-25" width="80" height="40" rx="2" fill="#374151"/>
+    <g fill="#60a5fa" opacity="0.7">
+      <rect x="-32" y="-18" width="45" height="3" rx="1"/>
+      <rect x="-32" y="-10" width="55" height="3" rx="1"/>
+      <rect x="-32" y="-2" width="40" height="3" rx="1"/>
+      <rect x="-32" y="6" width="50" height="3" rx="1"/>
+    </g>
+    <path d="M-50 20 L50 20 L55 28 L-55 28 Z" fill="#374151"/>
+  </g>
+  
+  <!-- Lobster Hat/Costume on Head -->
+  <g transform="translate(200, 150)">
+    <!-- Hat Base (sits on head) -->
+    <ellipse cx="0" cy="35" rx="60" ry="15" fill="#f59e0b"/>
+    
+    <!-- Lobster Body (main hat part) -->
+    <ellipse cx="0" cy="0" rx="55" ry="38" fill="#f59e0b" filter="url(#softShadow)"/>
+    
+    <!-- Lobster Segments (decoration) -->
+    <ellipse cx="-25" cy="5" rx="18" ry="25" fill="#fbbf24"/>
+    <ellipse cx="25" cy="5" rx="18" ry="25" fill="#fbbf24"/>
+    
+    <!-- Lobster Eyes (on hat) -->
+    <circle cx="-16" cy="-18" r="9" fill="#1f2937"/>
+    <circle cx="16" cy="-18" r="9" fill="#1f2937"/>
+    <circle cx="-14" cy="-21" r="4" fill="#ffffff"/>
+    <circle cx="18" cy="-21" r="4" fill="#ffffff"/>
+    
+    <!-- Lobster Antenna (from hat) -->
+    <path d="M-16 -28 Q-22 -48 -18 -60" stroke="#f59e0b" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M16 -28 Q22 -48 18 -60" stroke="#f59e0b" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <circle cx="-18" cy="-60" r="6" fill="#f59e0b"/>
+    <circle cx="18" cy="-60" r="6" fill="#f59e0b"/>
+    
+    <!-- Lobster Claws (hanging from hat sides) -->
+    <ellipse cx="-65" cy="20" rx="28" ry="38" fill="#ef4444" stroke="#f59e0b" stroke-width="3" transform="rotate(-15 -65 20)"/>
+    <ellipse cx="65" cy="20" rx="28" ry="38" fill="#ef4444" stroke="#f59e0b" stroke-width="3" transform="rotate(15 65 20)"/>
+    
+    <!-- Lobster Tail (back of hat) -->
+    <path d="M0 35 Q-12 50 -18 60 Q0 55 0 68 Q0 55 18 60 Q12 50 0 35" fill="#ef4444"/>
+  </g>
+  
+  <!-- Blue Ring -->
+  <circle cx="200" cy="200" r="180" fill="none" stroke="#1e40af" stroke-width="8"/>
+  
+  <!-- Text -->
+  <text x="200" y="370" font-family="Arial" font-size="26" font-weight="bold" fill="#1e40af" text-anchor="middle">🦞 麻哥</text>
+</svg>
