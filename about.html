@@ -3,93 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于 - 老板的博客</title>
+    <title>关于 - 麻哥的博客</title>
     <style>
         :root {
-            --primary: #2563eb;
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #06b6d4;
             --text: #1f2937;
             --text-light: #6b7280;
-            --bg: #ffffff;
-            --bg-alt: #f9fafb;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
             line-height: 1.6;
             color: var(--text);
             background: var(--bg);
         }
-        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         
-        header {
+        /* Hero */
+        .hero {
+            background: var(--gradient);
             padding: 60px 0 40px;
-            border-bottom: 1px solid #e5e7eb;
+            text-align: center;
+            color: white;
         }
-        .site-title {
+        .hero h1 {
             font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text);
+            font-weight: 800;
             margin-bottom: 10px;
         }
-        .site-desc {
-            color: var(--text-light);
-            font-size: 1.1rem;
+        
+        /* Nav */
+        .nav {
+            background: var(--card-bg);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .nav { margin-top: 20px; }
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
         .nav a {
-            color: var(--primary);
+            color: var(--text);
             text-decoration: none;
-            margin-right: 20px;
-            font-weight: 500;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s;
         }
-        .nav a:hover { text-decoration: underline; }
+        .nav a:hover {
+            background: var(--primary);
+            color: white;
+        }
         
-        main { padding: 40px 0; }
-        .content { line-height: 1.8; }
-        .content h2 { margin: 30px 0 15px; font-size: 1.5rem; }
-        .content p { margin-bottom: 20px; }
+        /* Main */
+        main { padding: 50px 0; }
         
-        footer {
-            padding: 40px 0;
-            border-top: 1px solid #e5e7eb;
+        /* Profile Card */
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media (max-width: 700px) {
+            .profile-card { grid-template-columns: 1fr; text-align: center; }
+        }
+        
+        .profile-avatar {
+            width: 180px;
+            height: 180px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .profile-info h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .profile-info .tagline {
+            font-size: 1.1rem;
             color: var(--text-light);
-            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        .profile-info p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        .info-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .info-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+        .info-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        /* Timeline */
+        .timeline {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin: 40px 0;
+        }
+        .timeline h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .timeline-item:last-child { border-bottom: none; }
+        .timeline-item .date {
+            min-width: 120px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .timeline-item .content {
+            flex: 1;
+        }
+        .timeline-item .content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .timeline-item .content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        @media (max-width: 500px) {
+            .timeline-item { flex-direction: column; gap: 10px; }
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            border-top: 1px solid #e5e7eb;
         }
     </style>
 </head>
 <body>
-    <header>
+    <div class="hero">
         <div class="container">
-            <h1 class="site-title">📊 老板的博客</h1>
-            <p class="site-desc">业务思考 · 市场分析 · 产品规划</p>
-            <nav class="nav">
-                <a href="index.html">首页</a>
-                <a href="about.html">关于</a>
-                <a href="articles/">文章</a>
-            </nav>
+            <h1>关于麻哥</h1>
         </div>
-    </header>
+    </div>
+    
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">🏠 首页</a></li>
+                <li><a href="articles/">📝 文章</a></li>
+                <li><a href="about.html">👤 关于</a></li>
+            </ul>
+        </div>
+    </nav>
     
     <main class="container">
-        <div class="content">
-            <h2>关于我</h2>
-            <p>你好！我是老板，从事通信运营商业务领域的工作。</p>
-            
-            <h2>工作领域</h2>
-            <p>📈 市场分析</p>
-            <p>🎯 OSS 域产品规划</p>
-            
-            <h2>这个博客</h2>
-            <p>这里记录我的业务思考、市场洞察和产品规划心得。由我的 AI 助手「大总管」🦞 协助运营。</p>
-            
-            <h2>联系我</h2>
-            <p>欢迎交流合作！</p>
+        <!-- Profile -->
+        <div class="profile-card">
+            <div class="profile-avatar">🤖</div>
+            <div class="profile-info">
+                <h2>👋 我是麻哥</h2>
+                <p class="tagline">通信运营商业务专家 · AI 协作实践者 · 终身学习者</p>
+                <p>你好！我是麻哥，在通信运营商业务领域摸爬滚打多年。</p>
+                <p>这个博客是我记录思考、分享经验的地方。主要写三个方向：<strong>市场分析</strong>、<strong>OSS 域产品规划</strong>、<strong>AI 协作实战</strong>。</p>
+                <p>我的 AI 助手「大总管」🦞 帮我打理这个博客——从内容建议到技术实现，它都是我的得力伙伴。</p>
+            </div>
+        </div>
+        
+        <!-- Info Cards -->
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="icon">📈</div>
+                <h3>市场分析</h3>
+                <p>通信行业趋势、竞争格局、商业模式分析。用数据说话，用洞察决策。</p>
+            </div>
+            <div class="info-card">
+                <div class="icon">🎯</div>
+                <h3>产品规划</h3>
+                <p>OSS 域产品设计、功能规划、用户体验。从 0 到 1，从 1 到 N。</p>
+            </div>
+            <div class="info-card">
+                <div class="icon">🤖</div>
+                <h3>AI 协作</h3>
+                <p>人机协作实战经验、效率提升方法、工具使用心得。让 AI 成为你的超能力。</p>
+            </div>
+        </div>
+        
+        <!-- Timeline -->
+        <div class="timeline">
+            <h2>📅 博客里程碑</h2>
+            <div class="timeline-item">
+                <div class="date">2026-03-03</div>
+                <div class="content">
+                    <h4>🚀 博客上线</h4>
+                    <p>麻哥的博客正式开张！5 篇文章同时发布，日更计划启动。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">2026-03-03</div>
+                <div class="content">
+                    <h4>🦞 AI 助手加入</h4>
+                    <p>「大总管」成为博客联合运营官，负责内容建议、技术实现、自动部署。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">Future</div>
+                <div class="content">
+                    <h4>📝 持续更新中</h4>
+                    <p>每天一篇新文章，记录成长、分享洞察、探索 AI 协作的无限可能。</p>
+                </div>
+            </div>
         </div>
     </main>
     
     <footer>
         <div class="container">
-            <p>© 2026 老板的博客 · Powered by 🦞</p>
+            <p>© 2026 麻哥的博客 · Powered by AI 助手「大总管」🦞</p>
         </div>
     </footer>
 </body>

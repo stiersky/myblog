@@ -3,159 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>老板的博客</title>
+    <title>麻哥的博客</title>
     <style>
         :root {
-            --primary: #2563eb;
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #06b6d4;
             --text: #1f2937;
             --text-light: #6b7280;
-            --bg: #ffffff;
-            --bg-alt: #f9fafb;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
             line-height: 1.6;
             color: var(--text);
             background: var(--bg);
         }
-        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         
-        /* Header */
-        header {
-            padding: 60px 0 40px;
-            border-bottom: 1px solid #e5e7eb;
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            padding: 80px 0 60px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .hero-content { position: relative; z-index: 1; }
+        
+        /* Avatar */
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            position: relative;
+        }
+        .avatar {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .avatar-badge {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 30px;
+            height: 30px;
+            background: #10b981;
+            border: 3px solid white;
+            border-radius: 50%;
+        }
+        
         .site-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 10px;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         .site-desc {
-            color: var(--text-light);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 500px;
+            margin: 0 auto;
         }
-        .nav {
+        .tagline {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 30px;
             margin-top: 20px;
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Nav */
+        .nav {
+            background: var(--card-bg);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
         }
         .nav a {
-            color: var(--primary);
+            color: var(--text);
             text-decoration: none;
-            margin-right: 20px;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s;
         }
-        .nav a:hover { text-decoration: underline; }
+        .nav a:hover {
+            background: var(--primary);
+            color: white;
+        }
         
-        /* Articles */
-        main { padding: 40px 0; }
-        .article-list { list-style: none; }
-        .article-item {
-            padding: 25px 0;
-            border-bottom: 1px solid #e5e7eb;
+        /* Main Content */
+        main { padding: 50px 0; }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
         }
-        .article-item:last-child { border-bottom: none; }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* Article Cards */
+        .article-grid {
+            display: grid;
+            gap: 25px;
+        }
+        .article-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            border-left-color: var(--primary);
+        }
+        .article-card.featured {
+            background: var(--gradient);
+            color: white;
+        }
+        .article-card.featured .article-date,
+        .article-card.featured .article-excerpt {
+            opacity: 0.9;
+        }
+        .article-card.featured .article-title a {
+            color: white;
+        }
+        .article-card.featured:hover {
+            border-left-color: rgba(255,255,255,0.5);
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
         .article-date {
             color: var(--text-light);
             font-size: 0.9rem;
-            margin-bottom: 8px;
+            font-weight: 500;
         }
+        .article-tag {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .article-card.featured .article-tag {
+            background: rgba(255,255,255,0.2);
+        }
+        
         .article-title {
             font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
         }
         .article-title a {
             color: var(--text);
             text-decoration: none;
+            transition: color 0.3s;
         }
-        .article-title a:hover { color: var(--primary); }
+        .article-title a:hover {
+            color: var(--primary);
+        }
+        
         .article-excerpt {
             color: var(--text-light);
             line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 20px;
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+        .read-more:hover {
+            gap: 12px;
+        }
+        .article-card.featured .read-more {
+            color: white;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+        .stat-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
         }
         
         /* Footer */
         footer {
+            background: var(--card-bg);
             padding: 40px 0;
-            border-top: 1px solid #e5e7eb;
+            text-align: center;
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        .footer-emoji {
+            font-size: 2rem;
+            margin-bottom: 15px;
         }
         
         /* Responsive */
         @media (max-width: 600px) {
             .site-title { font-size: 2rem; }
-            header { padding: 40px 0 30px; }
+            .hero { padding: 60px 0 40px; }
+            .nav ul { gap: 15px; }
+            .article-card { padding: 20px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1 class="site-title">📊 老板的博客</h1>
-            <p class="site-desc">业务思考 · 市场分析 · 产品规划</p>
-            <nav class="nav">
-                <a href="index.html">首页</a>
-                <a href="about.html">关于</a>
-                <a href="articles/">文章</a>
-            </nav>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="avatar-container">
+                <div class="avatar">🤖</div>
+                <div class="avatar-badge"></div>
+            </div>
+            <h1 class="site-title">麻哥的博客</h1>
+            <p class="site-desc">业务思考 · 市场分析 · AI 协作实战</p>
+            <div class="tagline">🦞 由 AI 助手「大总管」协助运营 · 日更中</div>
         </div>
-    </header>
+    </section>
     
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">🏠 首页</a></li>
+                <li><a href="articles/">📝 文章</a></li>
+                <li><a href="about.html">👤 关于</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
     <main class="container">
-        <ul class="article-list">
-            <li class="article-item">
-                <div class="article-date">2026 年 3 月 3 日</div>
-                <h2 class="article-title">
+        <h2 class="section-title">📰 最新文章</h2>
+        
+        <div class="article-grid">
+            <!-- Featured Article -->
+            <article class="article-card featured">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 3 日</span>
+                    <span class="article-tag">🔥 精选</span>
+                </div>
+                <h3 class="article-title">
                     <a href="articles/2026-03-03-ai-collaboration-tips.html">如何高效协作 AI 助手：7 条实战经验</a>
-                </h2>
+                </h3>
                 <p class="article-excerpt">
-                    AI 不是工具，是伙伴。用对方法，效率提升 10 倍；用错方法，还不如自己做。来自真实场景的 7 条协作心得...
+                    AI 不是工具，是伙伴。用对方法，效率提升 10 倍；用错方法，还不如自己做。来自真实场景的 7 条协作心得，每一条都是踩坑总结...
                 </p>
-            </li>
-            <li class="article-item">
-                <div class="article-date">2026 年 3 月 3 日</div>
-                <h2 class="article-title">
+                <a href="articles/2026-03-03-ai-collaboration-tips.html" class="read-more">阅读全文 →</a>
+            </article>
+            
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 3 日</span>
+                    <span class="article-tag">💭 成长</span>
+                </div>
+                <h3 class="article-title">
                     <a href="articles/2026-03-03-partner-growth.html">我和我的 AI 助手：一段成长记录</a>
-                </h2>
+                </h3>
                 <p class="article-excerpt">
                     这不是一个关于 AI 替代人类的故事，而是一个关于人类和 AI 如何协作、共同成长的故事。从"工具思维"到"员工思维"，我们一起走过的路...
                 </p>
-            </li>
-            <li class="article-item">
-                <div class="article-date">2026 年 3 月 3 日</div>
-                <h2 class="article-title">
+                <a href="articles/2026-03-03-partner-growth.html" class="read-more">阅读全文 →</a>
+            </article>
+            
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 3 日</span>
+                    <span class="article-tag">📊 行业</span>
+                </div>
+                <h3 class="article-title">
                     <a href="articles/2026-03-03-oss-trends.html">2026 年 OSS 域产品规划趋势分析</a>
-                </h2>
+                </h3>
                 <p class="article-excerpt">
                     AI 原生、云网融合、自动化运维三大趋势正在重塑 OSS 产品规划的方向。谁能率先完成 AI 原生转型，谁就能在 2026 年的市场竞争中占据主动...
                 </p>
-            </li>
-            <li class="article-item">
-                <div class="article-date">2026 年 3 月 2 日</div>
-                <h2 class="article-title">
+                <a href="articles/2026-03-03-oss-trends.html" class="read-more">阅读全文 →</a>
+            </article>
+            
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 2 日</span>
+                    <span class="article-tag">📈 市场</span>
+                </div>
+                <h3 class="article-title">
                     <a href="articles/2026-03-02-5g-market.html">5G toB 市场分析：2026 年的机会在哪里</a>
-                </h2>
+                </h3>
                 <p class="article-excerpt">
                     2026 年，5G toB 市场进入成熟期。智慧工厂、智慧矿山、智慧港口三大场景已经跑通商业模式。新兴机会在哪里？运营商如何差异化竞争？...
                 </p>
-            </li>
-            <li class="article-item">
-                <div class="article-date">2026 年 3 月 3 日</div>
-                <h2 class="article-title">
+                <a href="articles/2026-03-02-5g-market.html" class="read-more">阅读全文 →</a>
+            </article>
+            
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 3 日</span>
+                    <span class="article-tag">🎉 开博</span>
+                </div>
+                <h3 class="article-title">
                     <a href="articles/hello-world.html">你好，世界！</a>
-                </h2>
+                </h3>
                 <p class="article-excerpt">
                     这是我的第一篇博客文章。从今天开始，我会在这里分享业务思考、市场分析和产品规划的心得...
                 </p>
-            </li>
-        </ul>
+                <a href="articles/hello-world.html" class="read-more">阅读全文 →</a>
+            </article>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="stats">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>5</h3>
+                    <p>📝 已发布文章</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1</h3>
+                    <p>🦞 AI 助手</p>
+                </div>
+                <div class="stat-item">
+                    <h3>∞</h3>
+                    <p>🚀 持续更新中</p>
+                </div>
+                <div class="stat-item">
+                    <h3>🤖</h3>
+                    <p>💡 麻哥出品</p>
+                </div>
+            </div>
+        </div>
     </main>
     
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2026 老板的博客 · Powered by 🦞</p>
+            <div class="footer-emoji">🦞 🤖 💙</div>
+            <p>© 2026 麻哥的博客 · Powered by AI 助手「大总管」</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">Built with ❤️ and lots of ☕</p>
         </div>
     </footer>
 </body>
