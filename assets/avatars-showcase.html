@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>麻哥头像设计稿 - 极简人物版</title>
+    <title>麻哥头像设计稿 - 领袖版</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -27,30 +27,30 @@
         }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
         }
         .card {
             background: white;
             border-radius: 24px;
-            padding: 35px;
+            padding: 40px;
             text-align: center;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
             transition: transform 0.3s;
         }
         .card:hover { transform: translateY(-10px); }
         .avatar-preview {
-            width: 240px;
-            height: 240px;
-            margin: 0 auto 25px;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
             background: #ffffff;
             overflow: hidden;
-            border: 4px solid #f59e0b;
+            border: 6px solid #f59e0b;
         }
         .avatar-preview img {
             width: 100%;
@@ -58,38 +58,37 @@
             object-fit: cover;
         }
         .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
             color: #1f2937;
         }
         .card p {
             color: #6b7280;
-            font-size: 1rem;
-            margin-bottom: 18px;
-            line-height: 1.6;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
         }
         .tags {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
         }
         .tag {
             display: inline-block;
-            padding: 6px 16px;
+            padding: 7px 18px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
         }
-        .tag-shy { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
-        .tag-minimal { background: linear-gradient(135deg, #f3f4f6, #e5e7eb); color: #374151; }
-        .tag-cute { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+        .tag-king { background: linear-gradient(135deg, #fcd34d, #f59e0b); color: #78350f; }
         .tag-pro { background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #065f46; }
+        .tag-tech { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
         
         .cta {
             text-align: center;
             margin-top: 50px;
-            padding: 35px;
+            padding: 40px;
             background: rgba(255,255,255,0.2);
             backdrop-filter: blur(10px);
             border-radius: 24px;
@@ -97,70 +96,63 @@
             border: 2px solid rgba(255,255,255,0.3);
         }
         .cta h2 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             margin-bottom: 15px;
         }
         .cta p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             opacity: 0.95;
+        }
+        
+        .featured {
+            border: 4px solid #f59e0b;
+            position: relative;
+        }
+        .featured::before {
+            content: '👑 推荐';
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🦞 麻哥头像设计稿</h1>
-        <p class="subtitle">腼腆人物形象 × 极简色调 × 龙虾小伙伴</p>
+        <h1>👑 麻哥头像设计稿</h1>
+        <p class="subtitle">金橙色系 × 皇冠 × 头顶龙虾 × 手持电脑</p>
         
         <div class="grid">
-            <!-- Design 7 -->
-            <div class="card">
+            <!-- Design 10 - Featured -->
+            <div class="card featured">
                 <div class="avatar-preview">
-                    <img src="avatar-07-shy-person.svg" alt="腼腆麻哥">
+                    <img src="avatar-10-king-lobster.svg" alt="领袖麻哥">
                 </div>
-                <h3>😊 腼腆麻哥</h3>
-                <p>纯白背景 + 腼腆人物，肩上有小龙虾，温和亲切</p>
+                <h3>👑 领袖麻哥</h3>
+                <p>金橙色渐变背景 + 皇冠 + 头顶龙虾 + 手持电脑，高端大气领袖气质</p>
                 <div class="tags">
-                    <span class="tag tag-shy">😊 腼腆</span>
-                    <span class="tag tag-minimal">✨ 极简</span>
-                    <span class="tag tag-cute">亲切</span>
-                </div>
-            </div>
-            
-            <!-- Design 8 -->
-            <div class="card">
-                <div class="avatar-preview">
-                    <img src="avatar-08-shy-casual.svg" alt="休闲麻哥">
-                </div>
-                <h3>👕 休闲麻哥</h3>
-                <p>连帽衫休闲风，手捧小龙虾，轻松随性</p>
-                <div class="tags">
-                    <span class="tag tag-shy">😊 腼腆</span>
-                    <span class="tag tag-minimal">👕 休闲</span>
-                    <span class="tag tag-cute">可爱</span>
-                </div>
-            </div>
-            
-            <!-- Design 9 -->
-            <div class="card">
-                <div class="avatar-preview">
-                    <img src="avatar-09-shy-glasses.svg" alt="眼镜麻哥">
-                </div>
-                <h3>👓 眼镜麻哥</h3>
-                <p>戴眼镜的知识分子形象，龙虾从身后探头</p>
-                <div class="tags">
-                    <span class="tag tag-shy">😊 腼腆</span>
-                    <span class="tag tag-pro">📚 专业</span>
-                    <span class="tag tag-minimal">极简</span>
+                    <span class="tag tag-king">👑 领袖</span>
+                    <span class="tag tag-pro">💼 高端</span>
+                    <span class="tag tag-tech">💻 科技</span>
                 </div>
             </div>
         </div>
         
         <div class="cta">
-            <h2>💡 设计理念</h2>
-            <p>极简白色背景 + 暖橙色调，腼腆人物形象 + 龙虾小伙伴</p>
-            <p style="margin-top: 15px; opacity: 0.9; font-size: 1rem;">
-                📁 所有 SVG 文件已保存在 <code>assets/</code> 目录<br>
-                🎨 可以直接用于博客、社交媒体、文档等
+            <h2>🎨 设计元素</h2>
+            <p><strong>金橙色系</strong> — 温暖、高端、活力</p>
+            <p><strong>皇冠</strong> — 领袖气质、权威感</p>
+            <p><strong>头顶龙虾</strong> — 个人特色、龙虾元素</p>
+            <p><strong>手持电脑</strong> — 科技感、专业性</p>
+            <p style="margin-top: 20px; opacity: 0.9; font-size: 1.05rem;">
+                📁 SVG 文件已保存在 <code>assets/avatar-10-king-lobster.svg</code><br>
+                🎨 可直接用于博客、社交媒体、文档等
             </p>
         </div>
         

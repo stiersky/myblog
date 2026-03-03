@@ -1,0 +1,138 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gold Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fcd34d;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#d97706;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b45309;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Orange Gradient -->
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow Effect -->
+    <filter id="goldGlow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Shadow -->
+    <filter id="kingShadow">
+      <feDropShadow dx="0" dy="6" stdDeviation="15" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle - Gold Gradient -->
+  <circle cx="200" cy="200" r="180" fill="url(#goldGrad)"/>
+  
+  <!-- Sparkles -->
+  <g fill="#ffffff" opacity="0.6">
+    <polygon points="50,80 53,90 63,90 55,97 58,107 50,100 42,107 45,97 37,90 47,90" transform="scale(0.6)"/>
+    <polygon points="50,80 53,90 63,90 55,97 58,107 50,100 42,107 45,97 37,90 47,90" transform="translate(280 60) scale(0.5)"/>
+    <polygon points="50,80 53,90 63,90 55,97 58,107 50,100 42,107 45,97 37,90 47,90" transform="translate(60 280) scale(0.45)"/>
+    <polygon points="50,80 53,90 63,90 55,97 58,107 50,100 42,107 45,97 37,90 47,90" transform="translate(280 280) scale(0.5)"/>
+  </g>
+  
+  <!-- Person (Leader/CEO Style) -->
+  <g transform="translate(200, 220)">
+    <!-- Body (Suit) -->
+    <path d="M-65 -10 Q-75 40 -70 100 L70 100 Q75 40 65 -10 Q50 -35 0 -35 Q-50 -35 -65 -10" fill="#1f2937" filter="url(#kingShadow)"/>
+    
+    <!-- Suit Details -->
+    <path d="M-50 -15 L-30 80 L-20 80 L0 -15" fill="#374151"/>
+    <path d="M50 -15 L30 80 L20 80 L0 -15" fill="#374151"/>
+    
+    <!-- Shirt Collar -->
+    <path d="M-25 -25 L0 10 L25 -25" fill="#ffffff"/>
+    
+    <!-- Head -->
+    <circle cx="0" cy="-55" r="55" fill="#fcd34d" filter="url(#kingShadow)"/>
+    
+    <!-- Hair (Professional) -->
+    <path d="M-50 -65 Q-55 -85 -40 -95 Q-20 -100 0 -95 Q20 -100 40 -95 Q55 -85 50 -65 Q45 -75 30 -80 Q0 -85 -30 -80 Q-45 -75 -50 -65" fill="#1f2937"/>
+    
+    <!-- Eyes (Confident) -->
+    <ellipse cx="-20" cy="-50" rx="10" ry="8" fill="#1f2937"/>
+    <ellipse cx="20" cy="-50" rx="10" ry="8" fill="#1f2937"/>
+    <circle cx="-17" cy="-52" r="4" fill="#ffffff"/>
+    <circle cx="23" cy="-52" r="4" fill="#ffffff"/>
+    
+    <!-- Eyebrows (Confident) -->
+    <path d="M-28 -62 Q-20 -58 -12 -62" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M28 -62 Q20 -58 12 -62" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round"/>
+    
+    <!-- Mouth (Confident Smile) -->
+    <path d="M-18 -30 Q0 -20 18 -30" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round"/>
+    
+    <!-- Hands Holding Laptop -->
+    <ellipse cx="-55" cy="60" rx="22" ry="28" fill="#fcd34d"/>
+    <ellipse cx="55" cy="60" rx="22" ry="28" fill="#fcd34d"/>
+  </g>
+  
+  <!-- Laptop -->
+  <g transform="translate(200, 290)">
+    <!-- Screen -->
+    <rect x="-50" y="-35" width="100" height="60" rx="3" fill="#1f2937" filter="url(#kingShadow)"/>
+    <rect x="-45" y="-30" width="90" height="50" rx="2" fill="#374151"/>
+    <!-- Screen Glow -->
+    <rect x="-40" y="-25" width="80" height="40" rx="1" fill="#6366f1" opacity="0.3"/>
+    <!-- Code Lines -->
+    <g fill="#ffffff" opacity="0.6">
+      <rect x="-35" y="-20" width="50" height="3" rx="1"/>
+      <rect x="-35" y="-12" width="60" height="3" rx="1"/>
+      <rect x="-35" y="-4" width="45" height="3" rx="1"/>
+      <rect x="-35" y="4" width="55" height="3" rx="1"/>
+    </g>
+    <!-- Base -->
+    <path d="M-55 25 L55 25 L60 35 L-60 35 Z" fill="#374151"/>
+  </g>
+  
+  <!-- Lobster on Head (Crown-like) -->
+  <g transform="translate(200, 100)">
+    <!-- Lobster Body -->
+    <ellipse cx="0" cy="0" rx="50" ry="35" fill="url(#orangeGrad)" filter="url(#kingShadow)"/>
+    
+    <!-- Lobster Segments -->
+    <ellipse cx="-25" cy="5" rx="20" ry="28" fill="#fbbf24"/>
+    <ellipse cx="25" cy="5" rx="20" ry="28" fill="#fbbf24"/>
+    
+    <!-- Lobster Eyes -->
+    <circle cx="-15" cy="-15" r="8" fill="#1f2937"/>
+    <circle cx="15" cy="-15" r="8" fill="#1f2937"/>
+    <circle cx="-13" cy="-18" r="4" fill="#ffffff"/>
+    <circle cx="17" cy="-18" r="4" fill="#ffffff"/>
+    
+    <!-- Lobster Antenna -->
+    <path d="M-15 -25 Q-20 -45 -15 -55" stroke="#f59e0b" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M15 -25 Q20 -45 15 -55" stroke="#f59e0b" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <circle cx="-15" cy="-55" r="6" fill="#f59e0b"/>
+    <circle cx="15" cy="-55" r="6" fill="#f59e0b"/>
+    
+    <!-- Lobster Claws (Royal Pose) -->
+    <ellipse cx="-60" cy="10" rx="25" ry="35" fill="#f59e0b" stroke="#fcd34d" stroke-width="3"/>
+    <ellipse cx="60" cy="10" rx="25" ry="35" fill="#f59e0b" stroke="#fcd34d" stroke-width="3"/>
+  </g>
+  
+  <!-- Crown (Behind Lobster) -->
+  <g transform="translate(200, 95)">
+    <path d="M-70 20 L-70 -10 L-50 5 L-30 -20 L-10 10 L10 -20 L30 5 L50 -10 L70 20 L70 35 L-70 35 Z" fill="url(#goldGrad)" filter="url(#kingShadow)"/>
+    <!-- Crown Details -->
+    <circle cx="-50" cy="-5" r="5" fill="#ffffff" opacity="0.8"/>
+    <circle cx="0" cy="-25" r="6" fill="#ffffff" opacity="0.8"/>
+    <circle cx="50" cy="-5" r="5" fill="#ffffff" opacity="0.8"/>
+  </g>
+  
+  <!-- Gold Ring -->
+  <circle cx="200" cy="200" r="180" fill="none" stroke="#ffffff" stroke-width="8" opacity="0.5"/>
+  <circle cx="200" cy="200" r="170" fill="none" stroke="#1f2937" stroke-width="3" opacity="0.3"/>
+  
+  <!-- Text -->
+  <text x="200" y="375" font-family="Arial" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">👑 麻哥</text>
+</svg>
