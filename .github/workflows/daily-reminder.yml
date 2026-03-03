@@ -1,0 +1,26 @@
+# 每日博客更新提醒
+# 每天 09:00 (Asia/Shanghai) 发送提醒
+
+name: Daily Blog Reminder
+
+on:
+  schedule:
+    # 每天 01:00 UTC = 09:00 Asia/Shanghai
+    - cron: '0 1 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Blog Reminder
+        run: |
+          echo "📝 老板，该写今天的博客了！"
+          echo ""
+          echo "今日待办："
+          echo "1. 确定今日主题"
+          echo "2. 收集素材/数据"
+          echo "3. 撰写文章"
+          echo "4. 提交发布"
+          echo ""
+          echo "选题参考：https://github.com/stiersky/myblog/blob/main/CONTENT-PLAN.md"
