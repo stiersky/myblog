@@ -3,54 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>麻哥头像设计稿 - 多款风格</title>
+    <title>麻哥头像 - 龙虾头套最终版</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%);
             min-height: 100vh;
             padding: 40px 20px;
         }
-        .container { max-width: 1400px; margin: 0 auto; }
+        .container { max-width: 800px; margin: 0 auto; }
         h1 {
             text-align: center;
-            color: white;
+            color: #1e40af;
             font-size: 2.5rem;
             margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .subtitle {
             text-align: center;
-            color: rgba(255,255,255,0.95);
-            margin-bottom: 50px;
-            font-size: 1.3rem;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
+            color: #1e40af;
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
         .card {
             background: white;
             border-radius: 24px;
-            padding: 35px;
+            padding: 40px;
             text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
         }
-        .card:hover { transform: translateY(-10px); }
         .avatar-preview {
-            width: 260px;
-            height: 260px;
-            margin: 0 auto 25px;
+            width: 320px;
+            height: 320px;
+            margin: 0 auto 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
             background: #ffffff;
             overflow: hidden;
-            border: 5px solid #e5e7eb;
+            border: 6px solid #1e40af;
         }
         .avatar-preview img {
             width: 100%;
@@ -58,140 +53,109 @@
             object-fit: cover;
         }
         .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
             color: #1f2937;
         }
         .card p {
             color: #6b7280;
-            font-size: 1rem;
-            margin-bottom: 18px;
-            line-height: 1.6;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
         }
         .tags {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
         }
         .tag {
             display: inline-block;
-            padding: 6px 16px;
+            padding: 7px 18px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
         }
-        .tag-cartoon { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
-        .tag-minimal { background: linear-gradient(135deg, #f3f4f6, #e5e7eb); color: #374151; }
-        .tag-flat { background: linear-gradient(135deg, #bae6fd, #7dd3fc); color: #075985; }
-        .tag-pop { background: linear-gradient(135deg, #e9d5ff, #c084fc); color: #6b21a8; }
-        .tag-pixel { background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #065f46; }
+        .tag-glasses { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+        .tag-bg-blue { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
+        .tag-hat { background: linear-gradient(135deg, #fed7aa, #fdba74); color: #9a3412; }
         
         .cta {
             text-align: center;
-            margin-top: 50px;
-            padding: 40px;
-            background: rgba(255,255,255,0.2);
+            padding: 35px;
+            background: rgba(255,255,255,0.6);
             backdrop-filter: blur(10px);
             border-radius: 24px;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
+            color: #1e40af;
+            border: 2px solid rgba(30, 64, 175, 0.3);
         }
         .cta h2 {
-            font-size: 1.9rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
         }
         .cta p {
-            font-size: 1.1rem;
-            opacity: 0.95;
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+        .features {
+            text-align: left;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .features p {
+            margin: 10px 0;
+            font-size: 1.05rem;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 15px 25px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .highlight strong {
+            color: #92400e;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎨 麻哥头像设计稿</h1>
-        <p class="subtitle">5 款不同风格 · 龙虾头套 × 眼镜 × 电脑 · 任选</p>
+        <h1>🦞 麻哥头像</h1>
+        <p class="subtitle">龙虾头套 × 眼镜 × 清新蓝背景 × 手持电脑</p>
         
-        <div class="grid">
-            <!-- Cartoon -->
-            <div class="card">
-                <div class="avatar-preview">
-                    <img src="avatar-17-cartoon.svg" alt="卡通风格">
-                </div>
-                <h3>🎭 卡通风格</h3>
-                <p>大眼睛、粗线条、活泼可爱，漫画感强</p>
-                <div class="tags">
-                    <span class="tag tag-cartoon">🎭 卡通</span>
-                    <span class="tag tag-cartoon">😊 可爱</span>
-                </div>
+        <div class="card">
+            <div class="avatar-preview">
+                <img src="avatar-22-lobster-hat-final.svg" alt="龙虾头套麻哥">
             </div>
-            
-            <!-- Minimal Line -->
-            <div class="card">
-                <div class="avatar-preview">
-                    <img src="avatar-18-minimal-line.svg" alt="极简线条">
-                </div>
-                <h3>〰️ 极简线条</h3>
-                <p>纯线条勾勒，简洁高雅，艺术感强</p>
-                <div class="tags">
-                    <span class="tag tag-minimal">〰️ 极简</span>
-                    <span class="tag tag-minimal">🎨 艺术</span>
-                </div>
+            <h3>🦞 龙虾头套 · 最终版</h3>
+            <p>龙虾造型头套（像帽子一样戴在头上），眼镜不挡脸，手持电脑，清新蓝背景</p>
+            <div class="highlight">
+                <strong>✨ 帽子更高 + 触须更长</strong>
             </div>
-            
-            <!-- Flat -->
-            <div class="card">
-                <div class="avatar-preview">
-                    <img src="avatar-19-flat.svg" alt="扁平风格">
-                </div>
-                <h3>🔲 扁平风格</h3>
-                <p>现代扁平化设计，简洁明快，适合数字媒体</p>
-                <div class="tags">
-                    <span class="tag tag-flat">🔲 扁平</span>
-                    <span class="tag tag-flat">💻 现代</span>
-                </div>
-            </div>
-            
-            <!-- Gradient Pop -->
-            <div class="card">
-                <div class="avatar-preview">
-                    <img src="avatar-20-gradient-pop.svg" alt="渐变潮流">
-                </div>
-                <h3>🌈 渐变潮流</h3>
-                <p>紫色渐变背景 + 阴影效果，潮流时尚</p>
-                <div class="tags">
-                    <span class="tag tag-pop">🌈 渐变</span>
-                    <span class="tag tag-pop">✨ 潮流</span>
-                </div>
-            </div>
-            
-            <!-- Pixel -->
-            <div class="card">
-                <div class="avatar-preview">
-                    <img src="avatar-21-pixel.svg" alt="像素风格">
-                </div>
-                <h3>👾 像素风格</h3>
-                <p>复古像素风，游戏感，独特个性</p>
-                <div class="tags">
-                    <span class="tag tag-pixel">👾 像素</span>
-                    <span class="tag tag-pixel">🎮 复古</span>
-                </div>
+            <div class="tags" style="margin-top: 20px;">
+                <span class="tag tag-hat">🦞 龙虾头套</span>
+                <span class="tag tag-glasses">👓 眼镜</span>
+                <span class="tag tag-bg-blue">💙 清新蓝</span>
             </div>
         </div>
         
         <div class="cta">
-            <h2>🦞 共同元素</h2>
-            <p><strong>👓 眼镜</strong> — 知识分子气质</p>
-            <p><strong>🦞 龙虾头套</strong> — 个人特色</p>
-            <p><strong>💻 手持电脑</strong> — 科技感</p>
-            <p><strong>💙 蓝色系背景</strong> — 清新专业</p>
-            <p style="margin-top: 20px; opacity: 0.9;">
-                📁 所有 SVG 文件已保存在 <code>assets/</code> 目录<br>
-                🎨 可直接用于博客、社交媒体等
+            <h2>🎨 设计元素</h2>
+            <div class="features">
+                <p><strong>🦞 龙虾头套</strong> — 像帽子一样戴在头上，<strong>帽子更高</strong>更显眼</p>
+                <p><strong>👓 眼镜</strong> — 知识分子气质，专业感（不挡脸）</p>
+                <p><strong>💻 手持电脑</strong> — 科技感，专业性</p>
+                <p><strong>💙 清新蓝背景</strong> — 淡蓝色渐变，清新专业</p>
+                <p><strong>😊 腼腆微笑</strong> — 亲切感，温和</p>
+                <p><strong>📏 超长触须</strong> — 龙虾触须更长，更有特色</p>
+            </div>
+            <p style="margin-top: 25px; opacity: 0.85; font-size: 0.95rem;">
+                📁 SVG 文件：<code>avatar-22-lobster-hat-final.svg</code><br>
+                🎨 可直接用于博客、社交媒体、文档等
             </p>
         </div>
         
-        <div style="text-align: center; margin-top: 40px; color: rgba(255,255,255,0.85);">
+        <div style="text-align: center; margin-top: 40px; color: #1e40af; opacity: 0.8;">
             <p>🦞 Designed by 大总管 for 麻哥</p>
         </div>
     </div>
