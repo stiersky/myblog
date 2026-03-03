@@ -6,31 +6,48 @@
     <title>麻哥的博客</title>
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #ec4899;
-            --accent: #06b6d4;
+            /* 主色调 - 温暖的橙色系 */
+            --primary: #f59e0b;
+            --primary-dark: #d97706;
+            --primary-light: #fbbf24;
+            
+            /* 辅助色 - 深蓝 */
+            --secondary: #1e3a5f;
+            --secondary-dark: #0f2744;
+            
+            /* 强调色 - 珊瑚红 */
+            --accent: #ef4444;
+            
+            /* 文字色 - 保证对比度 */
             --text: #1f2937;
-            --text-light: #6b7280;
-            --bg: #fafafa;
+            --text-light: #4b5563;
+            --text-muted: #6b7280;
+            
+            /* 背景色 */
+            --bg: #ffffff;
+            --bg-alt: #f9fafb;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            
+            /* 卡片 */
             --card-bg: #ffffff;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --card-shadow-hover: 0 10px 40px rgba(0,0,0,0.12);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
             line-height: 1.6;
             color: var(--text);
-            background: var(--bg);
+            background: var(--bg-alt);
         }
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         
-        /* Hero Section */
+        /* Hero Section - 深色背景 + 白色文字 */
         .hero {
-            background: var(--gradient);
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f2744 100%);
             padding: 80px 0 60px;
             text-align: center;
-            color: white;
+            color: #ffffff;
             position: relative;
             overflow: hidden;
         }
@@ -41,7 +58,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%);
             animation: pulse 4s ease-in-out infinite;
         }
         @keyframes pulse {
@@ -60,13 +77,13 @@
         .avatar {
             width: 100%;
             height: 100%;
-            background: white;
+            background: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 60px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             animation: float 3s ease-in-out infinite;
         }
         @keyframes float {
@@ -80,7 +97,7 @@
             width: 30px;
             height: 30px;
             background: #10b981;
-            border: 3px solid white;
+            border: 3px solid #ffffff;
             border-radius: 50%;
         }
         
@@ -88,22 +105,25 @@
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: -0.5px;
         }
         .site-desc {
             font-size: 1.2rem;
             opacity: 0.95;
             max-width: 500px;
             margin: 0 auto;
+            font-weight: 400;
         }
         .tagline {
             display: inline-block;
-            background: rgba(255,255,255,0.2);
+            background: rgba(245,158,11,0.2);
             padding: 8px 20px;
             border-radius: 30px;
             margin-top: 20px;
             font-size: 0.95rem;
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(245,158,11,0.3);
         }
         
         /* Nav */
@@ -132,7 +152,7 @@
         }
         .nav a:hover {
             background: var(--primary);
-            color: white;
+            color: #ffffff;
         }
         
         /* Main Content */
@@ -144,13 +164,14 @@
             text-align: center;
             margin-bottom: 40px;
             position: relative;
+            color: var(--secondary);
         }
         .section-title::after {
             content: '';
             display: block;
             width: 60px;
             height: 4px;
-            background: var(--gradient);
+            background: var(--primary);
             margin: 15px auto 0;
             border-radius: 2px;
         }
@@ -164,25 +185,26 @@
             background: var(--card-bg);
             border-radius: 16px;
             padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: var(--card-shadow);
             transition: all 0.3s;
             border-left: 4px solid transparent;
         }
         .article-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            box-shadow: var(--card-shadow-hover);
             border-left-color: var(--primary);
         }
         .article-card.featured {
-            background: var(--gradient);
-            color: white;
+            background: var(--bg-gradient);
+            color: #ffffff;
         }
         .article-card.featured .article-date,
         .article-card.featured .article-excerpt {
-            opacity: 0.9;
+            opacity: 0.95;
+            color: rgba(255,255,255,0.95);
         }
         .article-card.featured .article-title a {
-            color: white;
+            color: #ffffff;
         }
         .article-card.featured:hover {
             border-left-color: rgba(255,255,255,0.5);
@@ -193,22 +215,26 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 15px;
+            flex-wrap: wrap;
         }
         .article-date {
-            color: var(--text-light);
+            color: var(--text-muted);
             font-size: 0.9rem;
             font-weight: 500;
         }
+        .article-card.featured .article-date {
+            color: rgba(255,255,255,0.9);
+        }
         .article-tag {
             background: var(--primary);
-            color: white;
+            color: #ffffff;
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
         }
         .article-card.featured .article-tag {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.25);
         }
         
         .article-title {
@@ -223,7 +249,7 @@
             transition: color 0.3s;
         }
         .article-title a:hover {
-            color: var(--primary);
+            color: var(--primary-dark);
         }
         
         .article-excerpt {
@@ -236,7 +262,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--primary);
+            color: var(--primary-dark);
             font-weight: 600;
             margin-top: 20px;
             text-decoration: none;
@@ -246,7 +272,7 @@
             gap: 12px;
         }
         .article-card.featured .read-more {
-            color: white;
+            color: #ffffff;
         }
         
         /* Stats Section */
@@ -255,7 +281,7 @@
             border-radius: 16px;
             padding: 40px;
             margin: 50px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: var(--card-shadow);
         }
         .stats-grid {
             display: grid;
@@ -266,25 +292,24 @@
         .stat-item h3 {
             font-size: 2.5rem;
             font-weight: 800;
-            background: var(--gradient);
+            background: var(--bg-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 5px;
         }
         .stat-item p {
-            color: var(--text-light);
+            color: var(--text-muted);
             font-size: 0.95rem;
         }
         
         /* Footer */
         footer {
-            background: var(--card-bg);
+            background: var(--secondary);
             padding: 40px 0;
             text-align: center;
-            color: var(--text-light);
+            color: rgba(255,255,255,0.8);
             font-size: 0.95rem;
-            border-top: 1px solid #e5e7eb;
         }
         .footer-emoji {
             font-size: 2rem;
@@ -381,7 +406,7 @@
                 </div>
                 <h3 class="article-title">
                     <a href="articles/2026-03-02-5g-market.html">5G toB 市场分析：2026 年的机会在哪里</a>
-                </h3>
+                </h2>
                 <p class="article-excerpt">
                     2026 年，5G toB 市场进入成熟期。智慧工厂、智慧矿山、智慧港口三大场景已经跑通商业模式。新兴机会在哪里？运营商如何差异化竞争？...
                 </p>
@@ -431,7 +456,7 @@
         <div class="container">
             <div class="footer-emoji">🦞 🤖 💙</div>
             <p>© 2026 麻哥的博客 · Powered by AI 助手「大总管」</p>
-            <p style="margin-top: 10px; font-size: 0.85rem;">Built with ❤️ and lots of ☕</p>
+            <p style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">Built with ❤️ and lots of ☕</p>
         </div>
     </footer>
 </body>
