@@ -1,0 +1,89 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cartoonBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#bae6fd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7dd3fc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="200" cy="200" r="180" fill="url(#cartoonBlue)"/>
+  
+  <!-- Character -->
+  <g transform="translate(200, 210)">
+    <!-- Body -->
+    <ellipse cx="0" cy="80" rx="70" ry="75" fill="#fcd34d" stroke="#1f2937" stroke-width="3"/>
+    
+    <!-- Head -->
+    <circle cx="0" cy="-20" r="65" fill="#fcd34d" stroke="#1f2937" stroke-width="3"/>
+    
+    <!-- Hair -->
+    <path d="M-60 -30 Q-65 -55 -45 -65 Q-20 -70 0 -65 Q20 -70 45 -65 Q65 -55 60 -30 Q55 -45 40 -50 Q0 -55 -40 -50 Q-55 -45 -60 -30" fill="#1f2937"/>
+    
+    <!-- Big Eyes (Cartoon style) -->
+    <ellipse cx="-25" cy="-15" rx="18" ry="22" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+    <ellipse cx="25" cy="-15" rx="18" ry="22" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+    <circle cx="-22" cy="-18" r="12" fill="#1f2937"/>
+    <circle cx="28" cy="-18" r="12" fill="#1f2937"/>
+    <circle cx="-18" cy="-22" r="6" fill="#ffffff"/>
+    <circle cx="32" cy="-22" r="6" fill="#ffffff"/>
+    
+    <!-- Glasses (Cartoon) -->
+    <g stroke="#1f2937" stroke-width="3" fill="none">
+      <circle cx="-25" cy="-15" r="20"/>
+      <circle cx="25" cy="-15" r="20"/>
+      <line x1="-5" y1="-15" x2="5" y2="-15"/>
+    </g>
+    
+    <!-- Blush -->
+    <ellipse cx="-40" cy="5" rx="15" ry="10" fill="#fca5a5" opacity="0.6"/>
+    <ellipse cx="40" cy="5" rx="15" ry="10" fill="#fca5a5" opacity="0.6"/>
+    
+    <!-- Big Smile -->
+    <path d="M-20 25 Q0 40 20 25" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round"/>
+    
+    <!-- Hands -->
+    <circle cx="-55" cy="75" r="22" fill="#fcd34d" stroke="#1f2937" stroke-width="2"/>
+    <circle cx="55" cy="75" r="22" fill="#fcd34d" stroke="#1f2937" stroke-width="2"/>
+  </g>
+  
+  <!-- Big Lobster Hat -->
+  <g transform="translate(200, 125)">
+    <!-- Hat Base -->
+    <ellipse cx="0" cy="40" rx="75" ry="18" fill="#f59e0b" stroke="#1f2937" stroke-width="3"/>
+    
+    <!-- Lobster Body -->
+    <ellipse cx="0" cy="0" rx="65" ry="45" fill="#f59e0b" stroke="#1f2937" stroke-width="3"/>
+    
+    <!-- Segments -->
+    <ellipse cx="-32" cy="8" rx="25" ry="32" fill="#fbbf24" stroke="#1f2937" stroke-width="2"/>
+    <ellipse cx="32" cy="8" rx="25" ry="32" fill="#fbbf24" stroke="#1f2937" stroke-width="2"/>
+    
+    <!-- Big Cartoon Eyes -->
+    <circle cx="-22" cy="-22" r="14" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+    <circle cx="22" cy="-22" r="14" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+    <circle cx="-18" cy="-25" r="8" fill="#1f2937"/>
+    <circle cx="26" cy="-25" r="8" fill="#1f2937"/>
+    <circle cx="-15" cy="-28" r="4" fill="#ffffff"/>
+    <circle cx="29" cy="-28" r="4" fill="#ffffff"/>
+    
+    <!-- Antenna -->
+    <path d="M-22 -35 Q-30 -60 -25 -75" stroke="#f59e0b" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M22 -35 Q30 -60 25 -75" stroke="#f59e0b" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <circle cx="-25" cy="-75" r="9" fill="#f59e0b" stroke="#1f2937" stroke-width="2"/>
+    <circle cx="25" cy="-75" r="9" fill="#f59e0b" stroke="#1f2937" stroke-width="2"/>
+    
+    <!-- Big Claws -->
+    <ellipse cx="-85" cy="25" rx="35" ry="48" fill="#ef4444" stroke="#1f2937" stroke-width="3"/>
+    <ellipse cx="85" cy="25" rx="35" ry="48" fill="#ef4444" stroke="#1f2937" stroke-width="3"/>
+    
+    <!-- Tail -->
+    <path d="M0 45 Q-20 70 -30 85 Q0 75 0 95 Q0 75 30 85 Q20 70 0 45" fill="#ef4444" stroke="#1f2937" stroke-width="2"/>
+  </g>
+  
+  <!-- Ring -->
+  <circle cx="200" cy="200" r="180" fill="none" stroke="#1e40af" stroke-width="8"/>
+  
+  <!-- Text -->
+  <text x="200" y="375" font-family="Arial" font-size="28" font-weight="bold" fill="#1e40af" text-anchor="middle">🦞 麻哥</text>
+</svg>

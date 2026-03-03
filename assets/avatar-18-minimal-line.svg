@@ -1,0 +1,86 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="minimalBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0f2fe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="200" cy="200" r="180" fill="url(#minimalBlue)"/>
+  
+  <!-- Minimal Line Art Person -->
+  <g transform="translate(200, 220)" stroke="#1f2937" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Body Outline -->
+    <ellipse cx="0" cy="75" rx="55" ry="60"/>
+    
+    <!-- Head -->
+    <circle cx="0" cy="-20" r="50"/>
+    
+    <!-- Hair -->
+    <path d="M-45 -25 Q-48 -45 -30 -55 Q0 -60 30 -55 Q48 -45 45 -25"/>
+    
+    <!-- Glasses -->
+    <circle cx="-18" cy="-18" r="14"/>
+    <circle cx="18" cy="-18" r="14"/>
+    <line x1="-4" y1="-18" x2="4" y2="-18"/>
+    
+    <!-- Eyes (simple dots) -->
+    <circle cx="-18" cy="-18" r="3" fill="#1f2937"/>
+    <circle cx="18" cy="-18" r="3" fill="#1f2937"/>
+    
+    <!-- Smile -->
+    <path d="M-15 10 Q0 20 15 10"/>
+    
+    <!-- Hands holding laptop -->
+    <circle cx="-45" cy="70" r="16"/>
+    <circle cx="45" cy="70" r="16"/>
+  </g>
+  
+  <!-- Minimal Laptop -->
+  <g transform="translate(200, 305)" stroke="#1f2937" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <rect x="-40" y="-25" width="80" height="45" rx="3"/>
+    <line x1="-35" y1="-15" x2="35" y2="-15"/>
+    <line x1="-35" y1="-5" x2="25" y2="-5"/>
+    <line x1="-35" y1="5" x2="30" y2="5"/>
+    <path d="M-45 20 L45 20 L50 26 L-50 26 Z"/>
+  </g>
+  
+  <!-- Minimal Lobster Hat -->
+  <g transform="translate(200, 145)" stroke="#1f2937" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Hat Base -->
+    <ellipse cx="0" cy="35" rx="65" ry="12"/>
+    
+    <!-- Lobster Body -->
+    <ellipse cx="0" cy="0" rx="55" ry="35"/>
+    
+    <!-- Segments -->
+    <ellipse cx="-28" cy="5" rx="20" ry="28"/>
+    <ellipse cx="28" cy="5" rx="20" ry="28"/>
+    
+    <!-- Eyes -->
+    <circle cx="-16" cy="-18" r="8" fill="#1f2937"/>
+    <circle cx="16" cy="-18" r="8" fill="#1f2937"/>
+    <circle cx="-14" cy="-21" r="3" fill="#ffffff"/>
+    <circle cx="18" cy="-21" r="3" fill="#ffffff"/>
+    
+    <!-- Antenna -->
+    <path d="M-16 -26 Q-22 -45 -18 -55"/>
+    <path d="M16 -26 Q22 -45 18 -55"/>
+    <circle cx="-18" cy="-55" r="5"/>
+    <circle cx="18" cy="-55" r="5"/>
+    
+    <!-- Claws -->
+    <ellipse cx="-70" cy="15" rx="28" ry="38" fill="#ef4444" stroke="#1f2937" stroke-width="2.5"/>
+    <ellipse cx="70" cy="15" rx="28" ry="38" fill="#ef4444" stroke="#1f2937" stroke-width="2.5"/>
+    
+    <!-- Tail -->
+    <path d="M0 35 Q-12 50 -18 60 Q0 52 0 65 Q0 52 18 60 Q12 50 0 35" fill="#ef4444"/>
+  </g>
+  
+  <!-- Ring -->
+  <circle cx="200" cy="200" r="180" fill="none" stroke="#0369a1" stroke-width="6"/>
+  
+  <!-- Text -->
+  <text x="200" y="375" font-family="Arial" font-size="26" font-weight="600" fill="#0369a1" text-anchor="middle">极简 · 麻哥</text>
+</svg>

@@ -1,0 +1,97 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="flatBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7dd3fc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="200" cy="200" r="180" fill="url(#flatBlue)"/>
+  
+  <!-- Flat Design Person -->
+  <g transform="translate(200, 220)">
+    <!-- Body -->
+    <ellipse cx="0" cy="75" rx="65" ry="70" fill="#fbbf24"/>
+    
+    <!-- Head -->
+    <circle cx="0" cy="-20" r="58" fill="#fbbf24"/>
+    
+    <!-- Hair (flat style) -->
+    <ellipse cx="0" cy="-45" rx="55" ry="25" fill="#1f2937"/>
+    
+    <!-- Eyes (flat circles) -->
+    <circle cx="-22" cy="-18" r="12" fill="#1f2937"/>
+    <circle cx="22" cy="-18" r="12" fill="#1f2937"/>
+    <circle cx="-18" cy="-22" r="5" fill="#ffffff"/>
+    <circle cx="26" cy="-22" r="5" fill="#ffffff"/>
+    
+    <!-- Glasses (flat) -->
+    <g stroke="#1f2937" stroke-width="3" fill="none">
+      <circle cx="-22" cy="-18" r="14"/>
+      <circle cx="22" cy="-18" r="14"/>
+      <line x1="-8" y1="-18" x2="8" y2="-18"/>
+    </g>
+    
+    <!-- Blush -->
+    <ellipse cx="-38" cy="0" rx="14" ry="9" fill="#fca5a5" opacity="0.5"/>
+    <ellipse cx="38" cy="0" rx="14" ry="9" fill="#fca5a5" opacity="0.5"/>
+    
+    <!-- Mouth -->
+    <ellipse cx="0" cy="18" rx="12" ry="8" fill="#1f2937"/>
+    <ellipse cx="0" cy="15" rx="8" ry="5" fill="#ffffff"/>
+    
+    <!-- Hands -->
+    <circle cx="-52" cy="70" r="20" fill="#fbbf24"/>
+    <circle cx="52" cy="70" r="20" fill="#fbbf24"/>
+  </g>
+  
+  <!-- Flat Laptop -->
+  <g transform="translate(200, 305)">
+    <rect x="-48" y="-28" width="96" height="52" rx="4" fill="#1f2937"/>
+    <rect x="-42" y="-22" width="84" height="42" rx="2" fill="#374151"/>
+    <rect x="-35" y="-15" width="50" height="4" rx="1" fill="#38bdf8"/>
+    <rect x="-35" y="-6" width="60" height="4" rx="1" fill="#38bdf8"/>
+    <rect x="-35" y="3" width="45" height="4" rx="1" fill="#38bdf8"/>
+    <rect x="-35" y="12" width="55" height="4" rx="1" fill="#38bdf8"/>
+    <path d="M-52 24 L52 24 L58 32 L-58 32 Z" fill="#374151"/>
+  </g>
+  
+  <!-- Flat Lobster Hat -->
+  <g transform="translate(200, 135)">
+    <!-- Hat Base -->
+    <ellipse cx="0" cy="42" rx="70" ry="15" fill="#f59e0b"/>
+    
+    <!-- Lobster Body -->
+    <ellipse cx="0" cy="0" rx="60" ry="42" fill="#f59e0b"/>
+    
+    <!-- Segments -->
+    <ellipse cx="-30" cy="8" rx="22" ry="30" fill="#fbbf24"/>
+    <ellipse cx="30" cy="8" rx="22" ry="30" fill="#fbbf24"/>
+    
+    <!-- Eyes -->
+    <circle cx="-20" cy="-20" r="11" fill="#1f2937"/>
+    <circle cx="20" cy="-20" r="11" fill="#1f2937"/>
+    <circle cx="-17" cy="-24" r="5" fill="#ffffff"/>
+    <circle cx="23" cy="-24" r="5" fill="#ffffff"/>
+    
+    <!-- Antenna -->
+    <line x1="-20" y1="-32" x2="-25" y2="-55" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"/>
+    <line x1="20" y1="-32" x2="25" y2="-55" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="-25" cy="-55" r="7" fill="#f59e0b"/>
+    <circle cx="25" cy="-55" r="7" fill="#f59e0b"/>
+    
+    <!-- Claws -->
+    <ellipse cx="-78" cy="20" rx="32" ry="45" fill="#ef4444"/>
+    <ellipse cx="78" cy="20" rx="32" ry="45" fill="#ef4444"/>
+    
+    <!-- Tail -->
+    <path d="M0 42 Q-18 62 -28 78 Q0 68 0 88 Q0 68 28 78 Q18 62 0 42" fill="#ef4444"/>
+  </g>
+  
+  <!-- Ring -->
+  <circle cx="200" cy="200" r="180" fill="none" stroke="#0284c7" stroke-width="8"/>
+  
+  <!-- Text -->
+  <text x="200" y="375" font-family="Arial" font-size="28" font-weight="bold" fill="#0284c7" text-anchor="middle">扁平 · 麻哥</text>
+</svg>
