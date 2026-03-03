@@ -1,0 +1,53 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="softShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle - Pure White -->
+  <circle cx="200" cy="200" r="180" fill="#ffffff"/>
+  
+  <!-- Person (Shy/Humble) -->
+  <g transform="translate(200, 210)">
+    <!-- Body -->
+    <ellipse cx="0" cy="60" rx="65" ry="70" fill="#f3f4f6"/>
+    
+    <!-- Head -->
+    <circle cx="0" cy="-20" r="55" fill="#fde68a"/>
+    
+    <!-- Hair (Simple, slightly messy - shy vibe) -->
+    <path d="M-50 -30 Q-55 -50 -40 -60 Q-20 -65 0 -60 Q20 -65 40 -60 Q55 -50 50 -30 Q45 -40 30 -45 Q10 -50 0 -45 Q-10 -50 -30 -45 Q-45 -40 -50 -30" fill="#1f2937"/>
+    
+    <!-- Eyes (Looking down - shy expression) -->
+    <path d="M-22 -5 Q-15 -2 -8 -5" stroke="#1f2937" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M22 -5 Q15 -2 8 -5" stroke="#1f2937" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    
+    <!-- Blush (Shy) -->
+    <ellipse cx="-35" cy="5" rx="12" ry="8" fill="#fca5a5" opacity="0.6"/>
+    <ellipse cx="35" cy="5" rx="12" ry="8" fill="#fca5a5" opacity="0.6"/>
+    
+    <!-- Small Smile (Gentle) -->
+    <path d="M-15 15 Q0 22 15 15" stroke="#1f2937" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    
+    <!-- Hands (Holding something, humble posture) -->
+    <ellipse cx="-50" cy="50" rx="20" ry="25" fill="#fde68a"/>
+    <ellipse cx="50" cy="50" rx="20" ry="25" fill="#fde68a"/>
+  </g>
+  
+  <!-- Lobster Elements (Subtle, not dominant) -->
+  <g transform="translate(200, 210)">
+    <!-- Small Lobster on shoulder -->
+    <ellipse cx="75" cy="-30" rx="25" ry="18" fill="#f59e0b" opacity="0.9"/>
+    <circle cx="85" cy="-35" r="6" fill="#1f2937"/>
+    <circle cx="87" cy="-37" r="2" fill="#ffffff"/>
+    <path d="M70 -25 Q60 -20 55 -15" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M80 -25 Q90 -20 95 -15" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Orange Ring -->
+  <circle cx="200" cy="200" r="180" fill="none" stroke="#f59e0b" stroke-width="6"/>
+  
+  <!-- Text -->
+  <text x="200" y="365" font-family="Arial" font-size="24" font-weight="600" fill="#f59e0b" text-anchor="middle">麻哥</text>
+</svg>

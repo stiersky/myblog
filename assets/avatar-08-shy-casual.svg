@@ -1,0 +1,62 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="softShadow2">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle - Pure White -->
+  <circle cx="200" cy="200" r="180" fill="#ffffff"/>
+  
+  <!-- Person (Casual, Shy) -->
+  <g transform="translate(200, 200)">
+    <!-- Body (Hoodie - casual) -->
+    <path d="M-60 -20 Q-70 30 -65 80 Q-60 100 -50 110 L50 110 Q60 100 65 80 Q70 30 60 -20 Q50 -40 0 -40 Q-50 -40 -60 -20" fill="#e5e7eb"/>
+    
+    <!-- Hoodie Hood -->
+    <path d="M-55 -45 Q-65 -60 -50 -75 Q-30 -85 0 -80 Q30 -85 50 -75 Q65 -60 55 -45 Q50 -55 30 -60 Q0 -65 -30 -60 Q-50 -55 -55 -45" fill="#d1d5db"/>
+    
+    <!-- Head -->
+    <circle cx="0" cy="-35" r="50" fill="#fde68a"/>
+    
+    <!-- Hair (Short, casual) -->
+    <path d="M-45 -45 Q-50 -65 -35 -75 Q-15 -80 0 -75 Q15 -80 35 -75 Q50 -65 45 -45 Q40 -55 25 -60 Q0 -65 -25 -60 Q-40 -55 -45 -45" fill="#1f2937"/>
+    
+    <!-- Eyes (Soft, looking slightly down) -->
+    <ellipse cx="-18" cy="-30" rx="8" ry="10" fill="#1f2937"/>
+    <ellipse cx="18" cy="-30" rx="8" ry="10" fill="#1f2937"/>
+    <circle cx="-16" cy="-33" r="3" fill="#ffffff"/>
+    <circle cx="20" cy="-33" r="3" fill="#ffffff"/>
+    
+    <!-- Eyebrows (Relaxed) -->
+    <path d="M-25 -42 Q-18 -40 -12 -42" stroke="#1f2937" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M25 -42 Q18 -40 12 -42" stroke="#1f2937" stroke-width="2" fill="none" stroke-linecap="round"/>
+    
+    <!-- Blush (Subtle) -->
+    <ellipse cx="-28" cy="-20" rx="10" ry="6" fill="#fca5a5" opacity="0.5"/>
+    <ellipse cx="28" cy="-20" rx="10" ry="6" fill="#fca5a5" opacity="0.5"/>
+    
+    <!-- Mouth (Small, gentle smile) -->
+    <path d="M-12 -10 Q0 -5 12 -10" stroke="#1f2937" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Lobster (Small, friendly companion) -->
+  <g transform="translate(200, 200)">
+    <!-- Lobster held in hands -->
+    <ellipse cx="0" cy="90" rx="40" ry="30" fill="#f59e0b"/>
+    <ellipse cx="-20" cy="85" rx="15" ry="20" fill="#fbbf24"/>
+    <ellipse cx="20" cy="85" rx="15" ry="20" fill="#fbbf24"/>
+    <circle cx="-12" cy="75" r="5" fill="#1f2937"/>
+    <circle cx="12" cy="75" r="5" fill="#1f2937"/>
+    <circle cx="-10" cy="77" r="2" fill="#ffffff"/>
+    <circle cx="14" cy="77" r="2" fill="#ffffff"/>
+    <path d="M-35 90 Q-45 85 -50 80" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M35 90 Q45 85 50 80" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Orange Ring -->
+  <circle cx="200" cy="200" r="180" fill="none" stroke="#f59e0b" stroke-width="6"/>
+  
+  <!-- Text -->
+  <text x="200" y="365" font-family="Arial" font-size="24" font-weight="600" fill="#f59e0b" text-anchor="middle">麻哥</text>
+</svg>
