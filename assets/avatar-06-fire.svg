@@ -1,0 +1,57 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fireGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ef4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
+    </linearGradient>
+    <filter id="fireGlow">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="180" fill="url(#fireGrad)"/>
+  
+  <!-- Flame Pattern -->
+  <g fill="rgba(255,255,255,0.1)" filter="url(#fireGlow)">
+    <path d="M50 300 Q70 250 60 200 Q80 230 70 280 Q90 250 80 200 Q100 240 90 300 Z"/>
+    <path d="M350 300 Q330 250 340 200 Q320 230 330 280 Q310 250 320 200 Q300 240 310 300 Z"/>
+    <path d="M150 320 Q170 270 160 220 Q180 250 170 300 Q190 270 180 220 Q200 260 190 320 Z"/>
+    <path d="M250 320 Q270 270 260 220 Q280 250 270 300 Q290 270 280 220 Q300 260 290 320 Z"/>
+  </g>
+  
+  <!-- Robot Head -->
+  <g transform="translate(200, 190)">
+    <rect x="-65" y="-55" width="130" height="110" rx="15" fill="#1f2937"/>
+    
+    <!-- Fiery Eyes -->
+    <circle cx="-28" cy="-15" r="18" fill="#000000"/>
+    <circle cx="28" cy="-15" r="18" fill="#000000"/>
+    <circle cx="-25" cy="-15" r="10" fill="#fbbf24" filter="url(#fireGlow)"/>
+    <circle cx="28" cy="-15" r="10" fill="#fbbf24" filter="url(#fireGlow)"/>
+    
+    <!-- Flame Antenna -->
+    <path d="M0 -55 Q-10 -75 0 -95 Q10 -75 0 -55" fill="#fbbf24" filter="url(#fireGlow)"/>
+  </g>
+  
+  <!-- Lobster Body -->
+  <g transform="translate(200, 280)">
+    <ellipse cx="0" cy="0" rx="75" ry="45" fill="#ef4444"/>
+    <ellipse cx="-30" cy="5" rx="30" ry="35" fill="#f97316"/>
+    <ellipse cx="30" cy="5" rx="30" ry="35" fill="#f97316"/>
+  </g>
+  
+  <!-- Lobster Claws -->
+  <g transform="translate(200, 270)">
+    <ellipse cx="-90" cy="0" rx="35" ry="45" fill="#ef4444" filter="url(#fireGlow)"/>
+    <ellipse cx="90" cy="0" rx="35" ry="45" fill="#ef4444" filter="url(#fireGlow)"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="365" font-family="Arial" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle" filter="url(#fireGlow)">🔥 麻哥</text>
+</svg>

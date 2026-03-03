@@ -1,0 +1,61 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fcd34d;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <filter id="goldGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="180" fill="url(#grad4)"/>
+  
+  <!-- Sparkles -->
+  <g fill="#ffffff" filter="url(#goldGlow)">
+    <polygon points="50,50 55,65 70,65 58,75 62,90 50,80 38,90 42,75 30,65 45,65" transform="scale(0.5) translate(100, 100)"/>
+    <polygon points="50,50 55,65 70,65 58,75 62,90 50,80 38,90 42,75 30,65 45,65" transform="scale(0.4) translate(400, 200)"/>
+    <polygon points="50,50 55,65 70,65 58,75 62,90 50,80 38,90 42,75 30,65 45,65" transform="scale(0.45) translate(150, 500)"/>
+  </g>
+  
+  <!-- Robot Head -->
+  <g transform="translate(200, 190)">
+    <!-- Head Base -->
+    <rect x="-70" y="-60" width="140" height="120" rx="20" fill="url(#gold)" filter="url(#goldGlow)"/>
+    
+    <!-- Eyes -->
+    <circle cx="-30" cy="-15" r="20" fill="#1f2937"/>
+    <circle cx="30" cy="-15" r="20" fill="#1f2937"/>
+    <circle cx="-27" cy="-18" r="8" fill="#ffffff"/>
+    <circle cx="33" cy="-18" r="8" fill="#ffffff"/>
+    
+    <!-- Crown -->
+    <path d="M-40 -60 L-40 -85 L-20 -70 L0 -90 L20 -70 L40 -85 L40 -60 Z" fill="url(#gold)" stroke="#ffffff" stroke-width="2"/>
+    
+    <!-- Mouth -->
+    <rect x="-25" y="25" width="50" height="8" rx="4" fill="#1f2937"/>
+  </g>
+  
+  <!-- Lobster Claws -->
+  <g transform="translate(200, 220)">
+    <ellipse cx="-95" cy="0" rx="35" ry="45" fill="url(#gold)" stroke="#ffffff" stroke-width="3"/>
+    <ellipse cx="95" cy="0" rx="35" ry="45" fill="url(#gold)" stroke="#ffffff" stroke-width="3"/>
+  </g>
+  
+  <!-- Lobster Body -->
+  <ellipse cx="200" cy="290" rx="75" ry="45" fill="url(#gold)" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Text -->
+  <text x="200" y="360" font-family="Arial" font-size="26" font-weight="bold" fill="#ffffff" text-anchor="middle" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">👑 麻哥</text>
+</svg>
