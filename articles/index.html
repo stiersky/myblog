@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章 - 麻哥的博客</title>
-    <link rel="stylesheet" href="../assets/styles.css?v=20260305002">
+    <link rel="stylesheet" href="../assets/styles.css?v=20260305003">
     <style>
         .article-list { list-style: none; }
         .article-item {
             background: var(--bg-card);
-            border-radius: 16px;
+            border-radius: 12px;
             padding: 32px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             border: 1px solid var(--border);
             transition: all 0.3s;
         }
         .article-item:hover {
-            transform: translateY(-4px);
+            transform: translateY(-2px);
             border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: var(--bg-card-hover);
         }
         .article-item .meta {
             display: flex;
@@ -29,15 +29,16 @@
         .article-item .date {
             color: var(--text-muted);
             font-size: 0.85rem;
+            font-weight: 500;
         }
         .article-item .tag {
-            background: rgba(234,88,12,0.2);
+            background: rgba(59,130,246,0.15);
             color: var(--primary-light);
             padding: 4px 12px;
-            border-radius: 20px;
+            border-radius: 100px;
             font-size: 0.8rem;
             font-weight: 600;
-            border: 1px solid rgba(234,88,12,0.3);
+            border: 1px solid rgba(59,130,246,0.2);
         }
         .article-item h2 {
             font-size: 1.5rem;
@@ -48,7 +49,11 @@
         .article-item h2 a {
             color: var(--text);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.2s;
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .article-item h2 a:hover {
             color: var(--primary-light);
@@ -67,9 +72,10 @@
             align-items: center;
             gap: 8px;
             font-size: 0.9rem;
-            transition: gap 0.3s;
+            transition: all 0.2s;
         }
         .article-item .read-more:hover {
+            color: var(--primary);
             gap: 12px;
         }
     </style>
@@ -85,13 +91,9 @@
         </div>
     </nav>
     
-    <section class="hero" style="padding: 60px 0 40px; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);">
-        <div class="hero-content">
-            <h1 class="site-title" style="font-size: 2rem; background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">📝 所有文章</h1>
-        </div>
-    </section>
-    
     <main class="container">
+        <h2 class="section-title">📝 所有文章</h2>
+        
         <ul class="article-list">
             <li class="article-item">
                 <div class="meta">
