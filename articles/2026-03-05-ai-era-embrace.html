@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>凌晨三点的 AI 时代：我们有什么理由不拥抱？- 麻哥的博客</title>
+    <title>凌晨四点的 AI 时代：我们有什么理由不拥抱？- 麻哥的博客</title>
     <style>
         :root {
             --primary: #f59e0b;
@@ -22,8 +22,6 @@
             background: var(--bg-alt);
         }
         .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Nav */
         .nav {
             background: var(--bg);
             padding: 15px 0;
@@ -47,8 +45,6 @@
             transition: all 0.3s;
         }
         .nav a:hover { background: var(--primary); color: #ffffff; }
-        
-        /* Article */
         .article {
             background: var(--bg);
             padding: 60px 40px;
@@ -87,8 +83,6 @@
             color: var(--text-light);
             font-style: italic;
         }
-        
-        /* Content */
         .article-content h2 {
             font-size: 1.6rem;
             font-weight: 700;
@@ -105,28 +99,15 @@
             margin: 20px 0 20px 30px;
         }
         .article-content li { margin-bottom: 10px; }
-        
-        /* Callout boxes */
         .callout {
             padding: 20px 25px;
             border-left: 4px solid;
             border-radius: 0 8px 8px 0;
             margin: 25px 0;
         }
-        .callout-success {
-            background: #ecfdf5;
-            border-color: #10b981;
-        }
-        .callout-info {
-            background: #eff6ff;
-            border-color: #3b82f6;
-        }
-        .callout-warning {
-            background: #fffbeb;
-            border-color: #f59e0b;
-        }
-        
-        /* Quote */
+        .callout-success { background: #ecfdf5; border-color: #10b981; }
+        .callout-info { background: #eff6ff; border-color: #3b82f6; }
+        .callout-warning { background: #fffbeb; border-color: #f59e0b; }
         blockquote {
             background: var(--bg-alt);
             border-left: 4px solid var(--primary);
@@ -135,12 +116,29 @@
             font-style: italic;
             color: var(--text-light);
         }
-        blockquote strong {
-            color: var(--secondary);
-            font-style: normal;
+        blockquote strong { color: var(--secondary); font-style: normal; }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
         }
-        
-        /* Footer */
+        .stat-item {
+            background: var(--bg-alt);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
         footer {
             background: var(--secondary);
             padding: 40px 0;
@@ -148,8 +146,6 @@
             color: rgba(255,255,255,0.8);
             font-size: 0.95rem;
         }
-        
-        /* Responsive */
         @media (max-width: 600px) {
             .article { padding: 40px 20px; }
             .article-title { font-size: 1.8rem; }
@@ -170,9 +166,10 @@
     <article class="article">
         <div class="article-header">
             <div class="article-meta">
-                <span class="article-date">📅 2026 年 3 月 5 日凌晨</span>
+                <span class="article-date">📅 2026 年 3 月 5 日</span>
                 <span class="article-tag">💡 思考</span>
                 <span class="article-tag">🤖 AI 时代</span>
+                <span class="article-tag">🎙️ 傅盛直播感悟</span>
             </div>
             <h1 class="article-title">凌晨四点的 AI 时代：我们有什么理由不拥抱？</h1>
             <p class="article-excerpt">傅盛总在直播里说，他每天凌晨 4、5 点才睡觉，不是焦虑，是太兴奋了。一个成功企业家对 AI 的热爱，让人动容。新时代的船已启航，你，要上船吗？</p>
@@ -180,7 +177,7 @@
         
         <div class="article-content">
             <div class="callout callout-info">
-                <strong>📝 写在前面：</strong> 2026 年 3 月 5 日，听了傅盛总的直播，心潮澎湃。一个成功企业家对 AI 的热爱，让人动容。记录此刻的感触，与君共勉。
+                <strong>📝 写在前面：</strong> 2026 年 3 月 5 日，听了傅盛总的直播，看了他的"龙虾三万养成日记"，心潮澎湃。记录此刻的感触，与君共勉。
             </div>
             
             <h2>🌙 每天凌晨 4、5 点才睡觉</h2>
@@ -200,38 +197,70 @@
             
             <p>一个已经功成名就的企业家，对新技术依然保持着如此纯粹的热情。这不是被迫学习，而是发自内心的热爱。</p>
             
-            <h2>🦞 什么是"龙虾提效百倍"？</h2>
+            <h2>🦞 什么是"龙虾"？</h2>
             
-            <p>傅盛总说的"龙虾"，指的是 AI 助手。为什么叫龙虾？也许是因为它像龙虾一样：</p>
+            <p>傅盛总说的"龙虾"，不是我们吃的海鲜，而是<strong>AI Agent</strong>——能帮你干活的 AI 员工。</p>
             
-            <ul>
-                <li><strong>有硬壳</strong> - 能抗压，能处理复杂任务</li>
-                <li><strong>有钳子</strong> - 一手抓执行，一手抓沟通</li>
-                <li><strong>会蜕壳成长</strong> - 不断学习，不断进化</li>
-            </ul>
-            
-            <p>他说，AI 已经深度融入他的工作流：</p>
-            
-            <ul>
-                <li>内容创作 - AI 写初稿，他来做润色</li>
-                <li>数据分析 - AI 处理数据，他来做决策</li>
-                <li>会议记录 - AI 整理纪要，他来抓重点</li>
-                <li>学习研究 - AI 收集资料，他来做判断</li>
-            </ul>
-            
-            <p><strong>提效百倍？</strong></p>
-            
-            <p>也许有些夸张。但我想说：<strong>这不是数字游戏，这是思维方式的转变。</strong></p>
-            
-            <p>当你不再把 AI 当工具，而是当伙伴；当你不再让它执行命令，而是让它参与思考——效率的提升，不是线性的，是指数的。</p>
+            <p>为什么叫龙虾？他的 AI 叫"三万"——家里养的拉布拉多，在宠物医院领养时前主人留下了 3 万手术费。ChatGPT 猜中了名字由来，那一刻他意识到 AI 真的能"理解"了。</p>
             
             <div class="callout callout-success">
-                <strong>💡 核心洞察：</strong> AI 不是工具，是伙伴。它不会替代你，但会放大你的创造力。关键在于，你是否愿意把它当伙伴，而不是工具。
+                <strong>💡 一句话理解：</strong> ChatGPT 是聊天窗口，龙虾是帮你干活的员工。
             </div>
             
-            <h2>🔥 发自内心的热爱</h2>
+            <h3>🤖 普通 AI vs 🦞 龙虾</h3>
             
-            <p>傅盛总在直播里说，他每天都在想：</p>
+            <ul>
+                <li><strong>ChatGPT</strong> - 你问它答，聊完就忘，不能行动</li>
+                <li><strong>龙虾</strong> - 交代一句话，它自己去干，有记忆，能行动，7×24 自动运行</li>
+            </ul>
+            
+            <p>傅盛总给了一个公式：</p>
+            
+            <blockquote>
+                <strong>🤖 AI + 💻 电脑 + 💾 记忆 + ⚡ 技能 = 🦞 龙虾</strong>
+            </blockquote>
+            
+            <p>普通 AI 只有聪明，龙虾在聪明的基础上，还有自己的电脑、长期记忆、可积累的技能。</p>
+            
+            <h2>📊 14 天的真实数据</h2>
+            
+            <p>傅盛总做了个实验：一个 CEO 和他的 AI 龙虾，14 天的真实记录。</p>
+            
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <div class="stat-value">1150+</div>
+                    <div class="stat-label">消息数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">8 个</div>
+                    <div class="stat-label">Agent 团队</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">40+</div>
+                    <div class="stat-label">技能</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">8.2 万</div>
+                    <div class="stat-label">直播观看</div>
+                </div>
+            </div>
+            
+            <p><strong>14 天里发生了什么？</strong></p>
+            
+            <ul>
+                <li>从查不了通讯录，到自己设计出 8 人 AI 团队</li>
+                <li>7×24 自动运转，人在放假，Agent 不停</li>
+                <li>Agent 之间知识传递 1 秒完成，人类培训要一周</li>
+                <li>同样的活，人工要 15 万 vs 龙虾 1000 元（差 150 倍）</li>
+            </ul>
+            
+            <div class="callout callout-warning">
+                <strong>💰 真实案例：</strong> 傅盛让龙虾建了一个完整网站（科普页、日记、文章聚合、技能商店），花了 1000 元，一天做完。找外包团队？保守估计 15 万，还要一个月。
+            </div>
+            
+            <h2>🔥 为什么他这么兴奋？</h2>
+            
+            <p>傅盛总说，他每天都在想：</p>
             
             <blockquote>
                 <strong>"还有什么可以让 AI 帮我做得更好？还有什么场景可以用 AI 重构？"</strong>
@@ -243,29 +272,7 @@
             
             <p>他说，这种兴奋感，就像回到了 20 年前第一次创业的时候。</p>
             
-            <p>这种热情，比任何技术都更有力量。</p>
-            
-            <h2>🚀 为什么他这么兴奋？</h2>
-            
-            <p>傅盛总说，他每天凌晨 4、5 点才睡觉，是因为太兴奋了。</p>
-            
-            <p>这种兴奋，我懂。</p>
-            
-            <p>当你发现一个工具，能让你做到以前做不到的事；当你发现一个伙伴，能理解你的想法并帮你实现——那种感觉，就像发现了新大陆。</p>
-            
-            <p>他说，这种兴奋感，就像回到了 20 年前第一次创业的时候。</p>
-            
             <p><strong>不是因为技术本身，而是因为技术带来的可能性。</strong></p>
-            
-            <h2>🚀 新时代的开启</h2>
-            
-            <p>我们正处在一个新时代的开启点。</p>
-            
-            <p>就像 20 年前的互联网，10 年前的移动互联网，今天的 AI 正在重塑一切。不是未来，是现在。</p>
-            
-            <p>有人焦虑，有人观望，有人行动。</p>
-            
-            <p>傅盛总选择了行动。我也选择了行动。</p>
             
             <h2>🦞 我的龙虾故事</h2>
             
@@ -286,10 +293,6 @@
             
             <div class="callout callout-success">
                 <strong>💡 真实体会：</strong> 当你把 AI 当伙伴，而不是工具；当你让它参与思考，而不是只执行命令——你会发现，它给你的惊喜，远超预期。
-            </div>
-            
-            <div class="callout callout-warning">
-                <strong>📊 真实数据：</strong> 4 天时间，7 篇文章，6 张 AI 绘画，成本降低 95%。这不是 AI 的功劳，是我们协作的结果。
             </div>
             
             <h2>💪 我们有什么理由不拥抱？</h2>
@@ -346,7 +349,7 @@
             </div>
             
             <p style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: var(--text-light); font-size: 0.9rem;">
-                <em>PS: 大总管帮我整理了傅盛老板直播的核心观点，还优化了这篇文章的结构。你看，这就是人机协作的力量。</em>
+                <em>PS: 推荐阅读傅盛总的<a href="https://sanwan.ai/" target="_blank">龙虾三万养成日记</a>，有完整的 14 天实验记录和真实案例。大总管帮我整理了核心观点，还优化了这篇文章的结构。你看，这就是人机协作的力量。</em>
             </p>
         </div>
     </article>
