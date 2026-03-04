@@ -1,0 +1,59 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Orange Gradient -->
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shadow -->
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="180" fill="#fef3c7"/>
+  
+  <!-- Lobster Body -->
+  <g transform="translate(200, 200)">
+    <!-- Main Body -->
+    <ellipse cx="0" cy="0" rx="70" ry="50" fill="url(#orangeGrad)" filter="url(#shadow)"/>
+    
+    <!-- Body Segments -->
+    <ellipse cx="-35" cy="10" rx="25" ry="35" fill="#fcd34d"/>
+    <ellipse cx="35" cy="10" rx="25" ry="35" fill="#fcd34d"/>
+    
+    <!-- Eyes on Stalks -->
+    <line x1="-20" y1="-30" x2="-25" y2="-55" stroke="#f59e0b" stroke-width="6" stroke-linecap="round"/>
+    <line x1="20" y1="-30" x2="25" y2="-55" stroke="#f59e0b" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="-25" cy="-60" r="12" fill="#1f2937"/>
+    <circle cx="25" cy="-60" r="12" fill="#1f2937"/>
+    <circle cx="-22" cy="-63" r="5" fill="#ffffff"/>
+    <circle cx="28" cy="-63" r="5" fill="#ffffff"/>
+    
+    <!-- Antenna -->
+    <path d="M-15 -45 Q-25 -70 -20 -85" stroke="#f59e0b" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M15 -45 Q25 -70 20 -85" stroke="#f59e0b" stroke-width="4" fill="none" stroke-linecap="round"/>
+    
+    <!-- Big Claws -->
+    <ellipse cx="-90" cy="10" rx="30" ry="40" fill="#f59e0b" stroke="#fcd34d" stroke-width="3" filter="url(#shadow)"/>
+    <ellipse cx="90" cy="10" rx="30" ry="40" fill="#f59e0b" stroke="#fcd34d" stroke-width="3" filter="url(#shadow)"/>
+    
+    <!-- Claw Details -->
+    <path d="M-75 -15 L-65 -5 M-75 -5 L-65 5 M-75 5 L-65 15" stroke="#fcd34d" stroke-width="3" stroke-linecap="round"/>
+    <path d="M75 -15 L65 -5 M75 -5 L65 5 M75 5 L65 15" stroke="#fcd34d" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Small Legs -->
+    <path d="M-50 40 Q-70 50 -80 45" stroke="#f59e0b" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M-30 45 Q-50 55 -60 50" stroke="#f59e0b" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M50 40 Q70 50 80 45" stroke="#f59e0b" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M30 45 Q50 55 60 50" stroke="#f59e0b" stroke-width="4" fill="none" stroke-linecap="round"/>
+    
+    <!-- Tail Fan -->
+    <path d="M0 50 L-30 80 L0 70 L30 80 Z" fill="#f59e0b"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="360" font-family="Arial" font-size="28" font-weight="bold" fill="#1f2937" text-anchor="middle">🦞 麻哥</text>
+</svg>

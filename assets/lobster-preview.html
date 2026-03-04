@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🦞 麻哥龙虾头像选择</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: rgba(255,255,255,0.9);
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    
+    .card.selected {
+      ring: 4px solid #10b981;
+      box-shadow: 0 0 0 4px #10b981, 0 20px 60px rgba(0,0,0,0.3);
+    }
+    
+    .card svg {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+    }
+    
+    .card h3 {
+      color: #1f2937;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    
+    .card p {
+      color: #6b7280;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    
+    .badge-new {
+      background: #10b981;
+      color: white;
+    }
+    
+    .actions {
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background: white;
+      color: #667eea;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .selection-info {
+      text-align: center;
+      color: white;
+      margin-top: 20px;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    .old-avatars {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 2px solid rgba(255,255,255,0.3);
+    }
+    
+    .old-avatars h2 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🦞 麻哥龙虾头像</h1>
+    <p class="subtitle">点击选择你最喜欢的风格</p>
+    
+    <div class="grid">
+      <!-- 简约风 -->
+      <div class="card" onclick="selectCard(this, 'avatar-23-lobster-minimal.svg', '简约风')">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="180" fill="#fef3c7"/>
+          <ellipse cx="200" cy="200" rx="70" ry="50" fill="#f59e0b"/>
+          <ellipse cx="165" cy="210" rx="25" ry="35" fill="#fcd34d"/>
+          <ellipse cx="235" cy="210" rx="25" ry="35" fill="#fcd34d"/>
+          <line x1="180" y1="170" x2="175" y2="145" stroke="#f59e0b" stroke-width="6" stroke-linecap="round"/>
+          <line x1="220" y1="170" x2="225" y2="145" stroke="#f59e0b" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="175" cy="140" r="12" fill="#1f2937"/>
+          <circle cx="225" cy="140" r="12" fill="#1f2937"/>
+          <circle cx="178" cy="137" r="5" fill="#ffffff"/>
+          <circle cx="228" cy="137" r="5" fill="#ffffff"/>
+          <ellipse cx="110" cy="210" rx="30" ry="40" fill="#f59e0b" stroke="#fcd34d" stroke-width="3"/>
+          <ellipse cx="290" cy="210" rx="30" ry="40" fill="#f59e0b" stroke="#fcd34d" stroke-width="3"/>
+          <text x="200" y="360" font-family="Arial" font-size="28" font-weight="bold" fill="#1f2937" text-anchor="middle">🦞 麻哥</text>
+        </svg>
+        <h3>简约风</h3>
+        <p>干净清爽，经典橙黄色<br>适合日常使用</p>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      
+      <!-- 可爱风 -->
+      <div class="card" onclick="selectCard(this, 'avatar-24-lobster-cute.svg', '可爱风')">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="180" fill="#fef2f2"/>
+          <ellipse cx="200" cy="210" rx="65" ry="55" fill="#f87171"/>
+          <ellipse cx="175" cy="195" rx="18" ry="22" fill="#1f2937"/>
+          <ellipse cx="225" cy="195" rx="18" ry="22" fill="#1f2937"/>
+          <circle cx="182" cy="188" r="8" fill="#ffffff"/>
+          <circle cx="232" cy="188" r="8" fill="#ffffff"/>
+          <ellipse cx="115" cy="215" rx="28" ry="32" fill="#f87171" stroke="#fca5a5" stroke-width="3"/>
+          <ellipse cx="285" cy="215" rx="28" ry="32" fill="#f87171" stroke="#fca5a5" stroke-width="3"/>
+          <path d="M185 235 Q200 250 215 235" stroke="#1f2937" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <text x="200" y="360" font-family="Arial" font-size="28" font-weight="bold" fill="#1f2937" text-anchor="middle">🦞 麻哥</text>
+        </svg>
+        <h3>可爱风</h3>
+        <p>粉色系大眼睛，腮红<br>亲和力满分</p>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      
+      <!-- 商务风 -->
+      <div class="card" onclick="selectCard(this, 'avatar-25-lobster-business.svg', '商务风')">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="180" fill="#eff6ff"/>
+          <ellipse cx="200" cy="200" rx="65" ry="48" fill="#3b82f6"/>
+          <ellipse cx="168" cy="208" rx="22" ry="32" fill="#93c5fd"/>
+          <ellipse cx="232" cy="208" rx="22" ry="32" fill="#93c5fd"/>
+          <circle cx="178" cy="145" r="10" fill="#1e3a5f"/>
+          <circle cx="222" cy="145" r="10" fill="#1e3a5f"/>
+          <circle cx="175" cy="142" r="4" fill="#ffffff"/>
+          <circle cx="225" cy="142" r="4" fill="#ffffff"/>
+          <circle cx="178" cy="145" r="14" fill="none" stroke="#1e3a5f" stroke-width="2"/>
+          <circle cx="222" cy="145" r="14" fill="none" stroke="#1e3a5f" stroke-width="2"/>
+          <ellipse cx="120" cy="210" rx="28" ry="35" fill="#3b82f6" stroke="#60a5fa" stroke-width="3"/>
+          <ellipse cx="280" cy="210" rx="28" ry="35" fill="#3b82f6" stroke="#60a5fa" stroke-width="3"/>
+          <path d="M200 248 L192 258 L200 285 L208 258 Z" fill="#1e3a5f"/>
+          <text x="200" y="360" font-family="Arial" font-size="28" font-weight="bold" fill="#1e3a5f" text-anchor="middle">🦞 麻哥</text>
+        </svg>
+        <h3>商务风</h3>
+        <p>蓝色系 + 眼镜 + 领带<br>专业形象首选</p>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      
+      <!-- 派对风 -->
+      <div class="card" onclick="selectCard(this, 'avatar-26-lobster-party.svg', '派对风')">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="180" fill="#fdf4ff"/>
+          <ellipse cx="200" cy="200" rx="68" ry="52" fill="#f472b6"/>
+          <ellipse cx="166" cy="210" rx="24" ry="34" fill="#c4b5fd"/>
+          <ellipse cx="234" cy="210" rx="24" ry="34" fill="#f9a8d4"/>
+          <circle cx="175" cy="140" r="11" fill="#1f2937"/>
+          <circle cx="225" cy="140" r="11" fill="#1f2937"/>
+          <circle cx="179" cy="136" r="5" fill="#ffffff"/>
+          <circle cx="229" cy="136" r="5" fill="#ffffff"/>
+          <path d="M170 155 L200 105 L230 155 Z" fill="#f472b6" stroke="#ffffff" stroke-width="2"/>
+          <ellipse cx="112" cy="215" rx="30" ry="38" fill="#f472b6" stroke="#f9a8d4" stroke-width="3"/>
+          <ellipse cx="288" cy="215" rx="30" ry="38" fill="#fb923c" stroke="#fdba74" stroke-width="3"/>
+          <path d="M180 235 Q200 260 220 235" stroke="#1f2937" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <text x="200" y="360" font-family="Arial" font-size="28" font-weight="bold" fill="#1f2937" text-anchor="middle">🦞 麻哥</text>
+        </svg>
+        <h3>派对风</h3>
+        <p>多彩渐变 + 派对帽<br>活力四射</p>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      
+      <!-- 禅意风 -->
+      <div class="card" onclick="selectCard(this, 'avatar-27-lobster-zen.svg', '禅意风')">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="180" fill="#ecfdf5"/>
+          <circle cx="200" cy="200" r="150" fill="none" stroke="#34d399" stroke-width="2" opacity="0.2"/>
+          <ellipse cx="200" cy="210" rx="60" ry="45" fill="#10b981"/>
+          <ellipse cx="170" cy="212" rx="20" ry="28" fill="#6ee7b7"/>
+          <ellipse cx="230" cy="212" rx="20" ry="28" fill="#6ee7b7"/>
+          <line x1="175" y1="190" x2="190" y2="190" stroke="#065f46" stroke-width="3" stroke-linecap="round"/>
+          <line x1="225" y1="190" x2="210" y2="190" stroke="#065f46" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="130" cy="220" rx="25" ry="30" fill="#10b981" stroke="#34d399" stroke-width="2"/>
+          <ellipse cx="270" cy="220" rx="25" ry="30" fill="#10b981" stroke="#34d399" stroke-width="2"/>
+          <path d="M188 228 Q200 235 212 228" stroke="#065f46" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <text x="200" y="360" font-family="Arial" font-size="28" font-weight="bold" fill="#065f46" text-anchor="middle">🦞 麻哥</text>
+        </svg>
+        <h3>禅意风</h3>
+        <p>绿色系冥想 pose<br>佛系淡定</p>
+        <span class="badge badge-new">NEW</span>
+      </div>
+    </div>
+    
+    <div class="selection-info" id="selectionInfo">
+      点击上方卡片预览效果
+    </div>
+    
+    <div class="actions">
+      <button class="btn btn-primary" onclick="confirmSelection()">确认选择</button>
+    </div>
+    
+    <!-- 旧头像参考 -->
+    <div class="old-avatars">
+      <h2>📚 之前的龙虾头像（带底座）</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="avatar-01-lobster-robot.svg" alt="机器人龙虾" style="width:200px;height:200px;"/>
+          <h3>机器人龙虾</h3>
+          <p>科技风</p>
+        </div>
+        <div class="card">
+          <img src="avatar-10-king-lobster.svg" alt="国王龙虾" style="width:200px;height:200px;"/>
+          <h3>国王龙虾</h3>
+          <p>皇冠 + 笔记本电脑</p>
+        </div>
+        <div class="card">
+          <img src="avatar-16-lobster-hat-blue.svg" alt="帽子龙虾" style="width:200px;height:200px;"/>
+          <h3>帽子龙虾</h3>
+          <p>蓝色帽子</p>
+        </div>
+        <div class="card">
+          <img src="avatar-22-lobster-hat-final.svg" alt="帽子龙虾最终版" style="width:200px;height:200px;"/>
+          <h3>帽子龙虾最终版</h3>
+          <p>经典款</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    let selectedFile = null;
+    let selectedName = null;
+    
+    function selectCard(card, file, name) {
+      // 移除其他卡片的选中状态
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+      
+      // 添加当前卡片的选中状态
+      card.classList.add('selected');
+      
+      selectedFile = file;
+      selectedName = name;
+      
+      // 更新提示信息
+      document.getElementById('selectionInfo').innerHTML = `
+        ✅ 已选择：<strong>${name}</strong> (${file})<br>
+        点击"确认选择"完成选择
+      `;
+    }
+    
+    function confirmSelection() {
+      if (selectedFile) {
+        alert(`🎉 已选择：${selectedName}\n\n文件：${selectedFile}\n\n接下来可以将其设置为头像使用！`);
+      } else {
+        alert('请先点击选择一个龙虾头像哦~ 🦞');
+      }
+    }
+  </script>
+</body>
+</html>

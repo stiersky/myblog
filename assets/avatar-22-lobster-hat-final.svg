@@ -42,8 +42,8 @@
     <ellipse cx="-32" cy="5" rx="11" ry="7" fill="#fca5a5" opacity="0.5"/>
     <ellipse cx="32" cy="5" rx="11" ry="7" fill="#fca5a5" opacity="0.5"/>
     
-    <!-- Mouth (Small smile) -->
-    <path d="M-10 20 Q0 25 10 20" stroke="#1f2937" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- Mouth (Small smile) - REMOVED -->
+    <!-- <path d="M-10 20 Q0 25 10 20" stroke="#1f2937" stroke-width="2.5" fill="none" stroke-linecap="round"/> -->
     
     <!-- Hands Holding Laptop -->
     <ellipse cx="-48" cy="65" rx="20" ry="25" fill="#fef3c7"/>
@@ -64,7 +64,7 @@
   </g>
   
   <!-- Lobster Hat/Costume on Head - HIGHER + LONGER ANTENNA -->
-  <g transform="translate(200, 115)">
+  <g transform="translate(200, 113)">
     <!-- Hat Base (sits on head) - positioned higher -->
     <ellipse cx="0" cy="50" rx="65" ry="18" fill="#f59e0b"/>
     

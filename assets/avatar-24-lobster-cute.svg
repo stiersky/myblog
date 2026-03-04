@@ -1,0 +1,70 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Cute Pink-Orange Gradient -->
+    <linearGradient id="cuteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fca5a5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f87171;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shadow -->
+    <filter id="cuteShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="180" fill="#fef2f2"/>
+  
+  <!-- Decorative Bubbles -->
+  <circle cx="80" cy="100" r="15" fill="#fca5a5" opacity="0.4"/>
+  <circle cx="320" cy="120" r="10" fill="#fca5a5" opacity="0.4"/>
+  <circle cx="60" cy="280" r="8" fill="#fca5a5" opacity="0.3"/>
+  <circle cx="340" cy="260" r="12" fill="#fca5a5" opacity="0.3"/>
+  
+  <!-- Cute Lobster -->
+  <g transform="translate(200, 200)">
+    <!-- Chubby Body -->
+    <ellipse cx="0" cy="10" rx="65" ry="55" fill="url(#cuteGrad)" filter="url(#cuteShadow)"/>
+    
+    <!-- Cute Blush -->
+    <ellipse cx="-45" cy="20" rx="12" ry="8" fill="#fca5a5" opacity="0.6"/>
+    <ellipse cx="45" cy="20" rx="12" ry="8" fill="#fca5a5" opacity="0.6"/>
+    
+    <!-- Big Sparkly Eyes -->
+    <ellipse cx="-25" cy="-5" rx="18" ry="22" fill="#1f2937"/>
+    <ellipse cx="25" cy="-5" rx="18" ry="22" fill="#1f2937"/>
+    <circle cx="-18" cy="-12" r="8" fill="#ffffff"/>
+    <circle cx="32" cy="-12" r="8" fill="#ffffff"/>
+    <circle cx="-22" cy="-8" r="4" fill="#ffffff" opacity="0.6"/>
+    <circle cx="28" cy="-8" r="4" fill="#ffffff" opacity="0.6"/>
+    
+    <!-- Cute Antenna with Hearts -->
+    <path d="M-15 -35 Q-20 -55 -10 -65" stroke="#f87171" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M15 -35 Q20 -55 10 -65" stroke="#f87171" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M-10 -65 L-10 -72 L-15 -78 L-5 -78 L-10 -72" fill="#f87171"/>
+    <path d="M10 -65 L10 -72 L15 -78 L5 -78 L10 -72" fill="#f87171"/>
+    
+    <!-- Cute Round Claws -->
+    <ellipse cx="-85" cy="15" rx="28" ry="32" fill="#f87171" stroke="#fca5a5" stroke-width="3" filter="url(#cuteShadow)"/>
+    <ellipse cx="85" cy="15" rx="28" ry="32" fill="#f87171" stroke="#fca5a5" stroke-width="3" filter="url(#cuteShadow)"/>
+    
+    <!-- Claw Pads -->
+    <ellipse cx="-85" cy="20" rx="15" ry="18" fill="#fca5a5"/>
+    <ellipse cx="85" cy="20" rx="15" ry="18" fill="#fca5a5"/>
+    
+    <!-- Cute Smile -->
+    <path d="M-15 35 Q0 50 15 35" stroke="#1f2937" stroke-width="4" fill="none" stroke-linecap="round"/>
+    
+    <!-- Tiny Legs -->
+    <path d="M-40 55 Q-55 65 -65 60" stroke="#f87171" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M-20 60 Q-35 70 -45 65" stroke="#f87171" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M40 55 Q55 65 65 60" stroke="#f87171" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M20 60 Q35 70 45 65" stroke="#f87171" stroke-width="4" fill="none" stroke-linecap="round"/>
+    
+    <!-- Cute Tail -->
+    <path d="M0 60 L-25 85 L0 75 L25 85 Z" fill="#f87171" stroke="#fca5a5" stroke-width="2"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="360" font-family="Arial" font-size="28" font-weight="bold" fill="#1f2937" text-anchor="middle">🦞 麻哥</text>
+</svg>

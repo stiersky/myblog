@@ -1,0 +1,68 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Zen Gradient -->
+    <linearGradient id="zenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Soft Shadow -->
+    <filter id="zenShadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="180" fill="#ecfdf5"/>
+  
+  <!-- Meditation Circles -->
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#34d399" stroke-width="2" opacity="0.2"/>
+  <circle cx="200" cy="200" r="120" fill="none" stroke="#34d399" stroke-width="2" opacity="0.15"/>
+  <circle cx="200" cy="200" r="90" fill="none" stroke="#34d399" stroke-width="2" opacity="0.1"/>
+  
+  <!-- Zen Lobster -->
+  <g transform="translate(200, 200)">
+    <!-- Body in Lotus Position -->
+    <ellipse cx="0" cy="10" rx="60" ry="45" fill="url(#zenGrad)" filter="url(#zenShadow)"/>
+    
+    <!-- Body Segments -->
+    <ellipse cx="-30" cy="12" rx="20" ry="28" fill="#6ee7b7"/>
+    <ellipse cx="30" cy="12" rx="20" ry="28" fill="#6ee7b7"/>
+    
+    <!-- Calm Closed Eyes -->
+    <line x1="-25" y1="-10" x2="-10" y2="-10" stroke="#065f46" stroke-width="3" stroke-linecap="round"/>
+    <line x1="25" y1="-10" x2="10" y2="-10" stroke="#065f46" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Antenna -->
+    <path d="M-12 -25 Q-15 -40 -12 -50" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M12 -25 Q15 -40 12 -50" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="-12" cy="-50" r="4" fill="#10b981"/>
+    <circle cx="12" cy="-50" r="4" fill="#10b981"/>
+    
+    <!-- Calm Claws (Meditation Pose) -->
+    <ellipse cx="-70" cy="20" rx="25" ry="30" fill="#10b981" stroke="#34d399" stroke-width="2" filter="url(#zenShadow)"/>
+    <ellipse cx="70" cy="20" rx="25" ry="30" fill="#10b981" stroke="#34d399" stroke-width="2" filter="url(#zenShadow)"/>
+    
+    <!-- Claws Together in Prayer -->
+    <path d="M-55 0 L-45 15" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>
+    <path d="M55 0 L45 15" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Serene Smile -->
+    <path d="M-12 28 Q0 35 12 28" stroke="#065f46" stroke-width="3" fill="none" stroke-linecap="round"/>
+    
+    <!-- Zen Legs (Crossed) -->
+    <path d="M-35 50 Q-55 60 -65 55" stroke="#10b981" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M35 50 Q55 60 65 55" stroke="#10b981" stroke-width="4" fill="none" stroke-linecap="round"/>
+    
+    <!-- Tail (Curled) -->
+    <path d="M0 55 L-20 75 L0 68 L20 75 Z" fill="#10b981" stroke="#34d399" stroke-width="2"/>
+    
+    <!-- Lotus Petals Around -->
+    <ellipse cx="0" cy="75" rx="40" ry="15" fill="#34d399" opacity="0.3"/>
+    <ellipse cx="-35" cy="65" rx="15" ry="25" fill="#34d399" opacity="0.2" transform="rotate(-20 -35 65)"/>
+    <ellipse cx="35" cy="65" rx="15" ry="25" fill="#34d399" opacity="0.2" transform="rotate(20 35 65)"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="360" font-family="Arial" font-size="28" font-weight="bold" fill="#065f46" text-anchor="middle">🦞 麻哥</text>
+</svg>

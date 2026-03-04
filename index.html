@@ -82,9 +82,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
+            overflow: hidden;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             animation: float 3s ease-in-out infinite;
+        }
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -331,7 +336,9 @@
     <section class="hero">
         <div class="hero-content">
             <div class="avatar-container">
-                <div class="avatar">🤖</div>
+                <div class="avatar">
+                    <img src="assets/avatar-growth-06-mastery.png" alt="大总管 - 龙虾助手"/>
+                </div>
                 <div class="avatar-badge"></div>
             </div>
             <h1 class="site-title">麻哥的博客</h1>
@@ -359,8 +366,22 @@
             <!-- Featured Article -->
             <article class="article-card featured">
                 <div class="article-meta">
-                    <span class="article-date">📅 2026 年 3 月 3 日</span>
+                    <span class="article-date">📅 2026 年 3 月 4 日</span>
                     <span class="article-tag">🔥 精选</span>
+                </div>
+                <h3 class="article-title">
+                    <a href="articles/2026-03-04-ai-growth-story.html">AI 助手成长故事：从诞生到大总管</a>
+                </h3>
+                <p class="article-excerpt">
+                    6 张 AI 绘画，讲述一个 AI 助手从激活到成长为人类可靠伙伴的温暖故事。从诞生、学习、挫折、突破、协作到成长，每一步都有人类的陪伴...
+                </p>
+                <a href="articles/2026-03-04-ai-growth-story.html" class="read-more">阅读全文 →</a>
+            </article>
+            
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 3 日</span>
+                    <span class="article-tag">🤖 AI 协作</span>
                 </div>
                 <h3 class="article-title">
                     <a href="articles/2026-03-03-ai-collaboration-tips.html">如何高效协作 AI 助手：7 条实战经验</a>
@@ -432,7 +453,7 @@
         <div class="stats">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <h3>5</h3>
+                    <h3>7</h3>
                     <p>📝 已发布文章</p>
                 </div>
                 <div class="stat-item">

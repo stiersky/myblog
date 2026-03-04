@@ -1,0 +1,88 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Party Gradient -->
+    <linearGradient id="partyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f472b6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fb923c;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow -->
+    <filter id="partyGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="180" fill="#fdf4ff"/>
+  
+  <!-- Confetti -->
+  <circle cx="100" cy="80" r="6" fill="#a78bfa"/>
+  <circle cx="280" cy="90" r="5" fill="#f472b6"/>
+  <circle cx="120" cy="300" r="7" fill="#fb923c"/>
+  <circle cx="300" cy="280" r="5" fill="#a78bfa"/>
+  <rect x="60" y="150" width="8" height="8" fill="#f472b6" transform="rotate(15)"/>
+  <rect x="320" y="180" width="8" height="8" fill="#fb923c" transform="rotate(-20)"/>
+  <rect x="180" y="320" width="8" height="8" fill="#a78bfa" transform="rotate(30)"/>
+  
+  <!-- Party Lobster -->
+  <g transform="translate(200, 200)">
+    <!-- Body -->
+    <ellipse cx="0" cy="0" rx="68" ry="52" fill="url(#partyGrad)" filter="url(#partyGlow)"/>
+    
+    <!-- Body Segments -->
+    <ellipse cx="-34" cy="10" rx="24" ry="34" fill="#c4b5fd"/>
+    <ellipse cx="34" cy="10" rx="24" ry="34" fill="#f9a8d4"/>
+    
+    <!-- Excited Eyes -->
+    <line x1="-20" y1="-30" x2="-25" y2="-55" stroke="#f472b6" stroke-width="5" stroke-linecap="round"/>
+    <line x1="20" y1="-30" x2="25" y2="-55" stroke="#f472b6" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="-25" cy="-60" r="11" fill="#1f2937"/>
+    <circle cx="25" cy="-60" r="11" fill="#1f2937"/>
+    <circle cx="-21" cy="-64" r="5" fill="#ffffff"/>
+    <circle cx="29" cy="-64" r="5" fill="#ffffff"/>
+    
+    <!-- Party Hat -->
+    <path d="M-30 -45 L0 -95 L30 -45 Z" fill="#f472b6" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="0" cy="-95" r="8" fill="#fb923c"/>
+    <circle cx="-15" cy="-65" r="4" fill="#fbbf24"/>
+    <circle cx="15" cy="-60" r="4" fill="#a78bfa"/>
+    <circle cx="0" cy="-75" r="5" fill="#34d399"/>
+    
+    <!-- Antenna with Stars -->
+    <path d="M-15 -40 Q-20 -60 -15 -75" stroke="#f472b6" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M15 -40 Q20 -60 15 -75" stroke="#f472b6" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <polygon points="-15,-82 -12,-75 -5,-75 -9,-70 -11,-77 -18,-77" fill="#fbbf24"/>
+    <polygon points="15,-82 18,-75 25,-75 21,-70 19,-77 12,-77" fill="#fbbf24"/>
+    
+    <!-- Party Claws -->
+    <ellipse cx="-88" cy="15" rx="30" ry="38" fill="#f472b6" stroke="#f9a8d4" stroke-width="3" filter="url(#partyGlow)"/>
+    <ellipse cx="88" cy="15" rx="30" ry="38" fill="#fb923c" stroke="#fdba74" stroke-width="3" filter="url(#partyGlow)"/>
+    
+    <!-- Claw Details -->
+    <path d="M-73 -18 L-60 -5 M-73 -3 L-60 10 M-73 12 L-60 25" stroke="#f9a8d4" stroke-width="3" stroke-linecap="round"/>
+    <path d="M73 -18 L60 -5 M73 -3 L60 10 M73 12 L60 25" stroke="#fdba74" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Big Smile -->
+    <path d="M-20 35 Q0 60 20 35" stroke="#1f2937" stroke-width="5" fill="none" stroke-linecap="round"/>
+    
+    <!-- Tongue -->
+    <ellipse cx="0" cy="52" rx="8" ry="10" fill="#f472b6"/>
+    
+    <!-- Party Legs -->
+    <path d="M-48 48 Q-68 60 -80 55" stroke="#f472b6" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M-28 52 Q-48 64 -58 59" stroke="#f472b6" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M48 48 Q68 60 80 55" stroke="#fb923c" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M28 52 Q48 64 58 59" stroke="#fb923c" stroke-width="4" fill="none" stroke-linecap="round"/>
+    
+    <!-- Party Tail -->
+    <path d="M0 52 L-30 82 L0 72 L30 82 Z" fill="#f472b6" stroke="#f9a8d4" stroke-width="2"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="360" font-family="Arial" font-size="28" font-weight="bold" fill="#1f2937" text-anchor="middle">🦞 麻哥</text>
+</svg>

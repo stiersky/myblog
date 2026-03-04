@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Blog Reminder
         run: |
-          echo "📝 老板，该写今天的博客了！"
+          echo "📝 麻哥，该写今天的博客了！"
           echo ""
           echo "今日待办："
           echo "1. 确定今日主题"
