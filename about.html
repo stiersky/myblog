@@ -6,20 +6,18 @@
     <title>关于 - 麻哥的博客</title>
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #ec4899;
-            --accent: #06b6d4;
+            --primary: #f59e0b;
+            --primary-dark: #d97706;
+            --secondary: #1e3a5f;
             --text: #1f2937;
-            --text-light: #6b7280;
+            --text-light: #4b5563;
             --bg: #fafafa;
             --card-bg: #ffffff;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+            line-height: 1.8;
             color: var(--text);
             background: var(--bg);
         }
@@ -76,10 +74,7 @@
             border-radius: 8px;
             transition: all 0.3s;
         }
-        .nav a:hover {
-            background: var(--primary);
-            color: white;
-        }
+        .nav a:hover { background: var(--primary); color: white; }
         
         /* Main */
         main { padding: 50px 0; }
@@ -92,71 +87,57 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             margin-bottom: 50px;
         }
-        
-        /* Profile Row - 麻哥和大总管并排 */
         .profile-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            text-align: center;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
-        @media (max-width: 768px) {
-            .profile-row { grid-template-columns: 1fr; gap: 40px; }
-        }
-        
         .profile-item {
+            text-align: center;
             padding: 20px;
         }
         .profile-item:hover .profile-avatar {
             transform: translateY(-8px);
         }
-        
         .profile-avatar {
             width: 200px;
             height: 200px;
             margin: 0 auto 25px;
-            background: var(--gradient);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
             overflow: hidden;
         }
         .profile-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
         .profile-item h2 {
             font-size: 1.8rem;
             font-weight: 800;
             margin-bottom: 10px;
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary-dark) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
         .tagline {
             color: var(--primary);
             font-weight: 600;
             font-size: 0.95rem;
             margin-bottom: 15px;
         }
-        
         .profile-item p {
             color: var(--text-light);
             line-height: 1.7;
             font-size: 0.95rem;
         }
-        
         .story-link {
             margin-top: 15px;
         }
@@ -165,51 +146,7 @@
             font-weight: 600;
             text-decoration: none;
         }
-        .story-link a:hover {
-            text-decoration: underline;
-        }
-        
-        .profile-avatar {
-            width: 180px;
-            height: 180px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-            animation: float 3s ease-in-out infinite;
-            overflow: hidden;
-        }
-        .profile-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .profile-info h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .profile-info .tagline {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 20px;
-        }
-        .profile-info p {
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
+        .story-link a:hover { text-decoration: underline; }
         
         /* Info Cards */
         .info-grid {
@@ -225,9 +162,7 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: transform 0.3s;
         }
-        .info-card:hover {
-            transform: translateY(-5px);
-        }
+        .info-card:hover { transform: translateY(-5px); }
         .info-card .icon {
             font-size: 2.5rem;
             margin-bottom: 15px;
@@ -269,9 +204,7 @@
             font-weight: 600;
             color: var(--primary);
         }
-        .timeline-item .content {
-            flex: 1;
-        }
+        .timeline-item .content { flex: 1; }
         .timeline-item .content h4 {
             font-size: 1.1rem;
             font-weight: 600;
@@ -315,11 +248,8 @@
     </nav>
     
     <main class="container">
-        <!-- Profile Section - 上下布局 -->
         <div class="profile-wrapper">
-            <!-- 麻哥 + 大总管 并排 -->
             <div class="profile-row">
-                <!-- 麻哥 -->
                 <div class="profile-item">
                     <div class="profile-avatar">
                         <img src="assets/avatar-16-lobster-hat-blue.svg" alt="麻哥 - 戴龙虾帽"/>
@@ -329,7 +259,6 @@
                     <p>通信行业老兵，专注市场分析与 OSS 产品规划。这个博客记录我的思考和 AI 协作实战。</p>
                 </div>
                 
-                <!-- 大总管 -->
                 <div class="profile-item">
                     <div class="profile-avatar">
                         <img src="assets/avatar-growth-06-mastery.png" alt="大总管 - 龙虾助手"/>
@@ -342,7 +271,6 @@
             </div>
         </div>
         
-        <!-- Info Cards -->
         <div class="info-grid">
             <div class="info-card">
                 <div class="icon">📈</div>
@@ -357,32 +285,31 @@
             <div class="info-card">
                 <div class="icon">🤖</div>
                 <h3>AI 协作</h3>
-                <p>人机协作实战经验、效率提升方法、工具使用心得。让 AI 成为你的超能力。</p>
+                <p>人机协作实战、AI 工具使用、效率提升。不是替代，是成就彼此。</p>
             </div>
         </div>
         
-        <!-- Timeline -->
         <div class="timeline">
             <h2>📅 博客里程碑</h2>
             <div class="timeline-item">
-                <div class="date">2026-03-03</div>
+                <div class="date">2026-03-01</div>
                 <div class="content">
-                    <h4>🚀 博客上线</h4>
-                    <p>麻哥的博客正式开张！5 篇文章同时发布，日更计划启动。</p>
+                    <h4>🦞 大总管诞生</h4>
+                    <p>AI 助手「大总管」正式激活，开始协助博客运营</p>
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="date">2026-03-03</div>
+                <div class="date">2026-03-04</div>
                 <div class="content">
-                    <h4>🦞 AI 助手加入</h4>
-                    <p>「大总管」成为博客联合运营官，负责内容建议、技术实现、自动部署。</p>
+                    <h4>🎨 AI 成长故事发布</h4>
+                    <p>6 张 AI 绘画讲述成长故事，龙虾形象正式确立</p>
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="date">Future</div>
+                <div class="date">2026-03-05</div>
                 <div class="content">
-                    <h4>📝 持续更新中</h4>
-                    <p>每天一篇新文章，记录成长、分享洞察、探索 AI 协作的无限可能。</p>
+                    <h4>🚀 博客全新改版</h4>
+                    <p>统一视觉风格，优化阅读体验，开启新篇章</p>
                 </div>
             </div>
         </div>
