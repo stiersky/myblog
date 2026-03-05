@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>关于 - 麻哥的博客</title>
-    <link rel="stylesheet" href="../assets/styles.css?v=20260305003">
+    <link rel="stylesheet" href="../assets/styles.css?v=20260303001">
     <style>
         .profile-grid {
             display: grid;
@@ -13,32 +13,32 @@
             margin-bottom: 60px;
         }
         .profile-card {
-            background: var(--bg-card);
-            border-radius: 12px;
+            background: var(--card-bg);
+            border-radius: 16px;
             padding: 40px 30px;
             text-align: center;
-            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: all 0.3s;
         }
         .profile-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
         }
         .profile-avatar {
             width: 140px;
             height: 140px;
             margin: 0 auto 25px;
-            background: var(--bg-card);
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 0 1px var(--border), 0 0 40px rgba(59,130,246,0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
             overflow: hidden;
             transition: all 0.3s;
         }
         .profile-card:hover .profile-avatar {
-            box-shadow: 0 0 0 1px var(--primary), 0 0 60px rgba(59,130,246,0.3);
+            box-shadow: 0 15px 50px rgba(99,102,241,0.3);
             transform: scale(1.02);
         }
         .profile-avatar img {
@@ -54,13 +54,13 @@
             letter-spacing: -0.01em;
         }
         .profile-card .tagline {
-            color: var(--primary-light);
-            font-weight: 500;
+            color: var(--primary);
+            font-weight: 600;
             margin-bottom: 15px;
             font-size: 0.95rem;
         }
         .profile-card p {
-            color: var(--text-muted);
+            color: var(--text-light);
             line-height: 1.7;
             font-size: 0.95rem;
         }
@@ -71,15 +71,15 @@
             margin-bottom: 60px;
         }
         .info-card {
-            background: var(--bg-card);
-            border-radius: 12px;
+            background: var(--card-bg);
+            border-radius: 16px;
             padding: 32px;
-            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: all 0.3s;
         }
         .info-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
         }
         .info-card .icon {
             font-size: 3rem;
