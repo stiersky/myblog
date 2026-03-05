@@ -4,167 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章 - 麻哥的博客</title>
-    <link rel="stylesheet" href="../assets/styles.css?v=20260303001">
-    <style>
-        .article-list { list-style: none; }
-        .article-item {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            border-left: 4px solid transparent;
-        }
-        .article-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-            border-left-color: var(--primary);
-        }
-        .article-item .meta {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
-        .article-item .date {
-            color: var(--text-light);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        .article-item .tag {
-            background: var(--primary);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .article-item h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 14px;
-            line-height: 1.4;
-        }
-        .article-item h2 a {
-            color: var(--text);
-            text-decoration: none;
-            transition: color 0.2s;
-            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .article-item h2 a:hover {
-            color: var(--primary-light);
-        }
-        .article-item p {
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        .article-item .read-more {
-            color: var(--primary-light);
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-        }
-        .article-item .read-more:hover {
-            color: var(--primary);
-            gap: 12px;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/styles.css?v=20260305001">
 </head>
 <body>
     <nav class="nav">
         <div class="container">
             <ul>
                 <li><a href="../index.html">🏠 首页</a></li>
-                <li><a href="./">📝 文章</a></li>
+                <li><a href="index.html">📝 文章</a></li>
                 <li><a href="../about.html">👤 关于</a></li>
             </ul>
         </div>
     </nav>
     
     <main class="container">
-        <h2 class="section-title">📝 所有文章</h2>
+        <h2 class="section-title">📚 所有文章</h2>
         
-        <ul class="article-list">
-            <li class="article-item">
-                <div class="meta">
-                    <span class="date">📅 2026 年 3 月 5 日</span>
-                    <span class="tag">💡 深度思考</span>
+        <div class="article-grid">
+            <article class="article-card featured">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 5 日</span>
+                    <span class="article-tag">🔥 精选</span>
                 </div>
-                <h2><a href="2026-03-05-ai-era-embrace.html">凌晨四点的 AI 时代：我们有什么理由不拥抱？</a></h2>
-                <p>傅盛总在直播里说，他每天凌晨 4、5 点才睡觉，不是焦虑，是太兴奋了。一个成功企业家对 AI 的热爱，让人动容。新时代的船已启航，你，要上船吗？</p>
+                <h3 class="article-title">
+                    <a href="2026-03-05-ai-era-embrace.html">凌晨四点的 AI 时代：我们有什么理由不拥抱？</a>
+                </h3>
+                <p class="article-excerpt">
+                    傅盛总在直播里说，他每天凌晨 4、5 点才睡觉，不是焦虑，是太兴奋了。一个成功企业家对 AI 的热爱，让人动容。新时代的船已启航，你，要上船吗？
+                </p>
                 <a href="2026-03-05-ai-era-embrace.html" class="read-more">阅读全文 →</a>
-            </li>
+            </article>
             
-            <li class="article-item">
-                <div class="meta">
-                    <span class="date">📅 2026 年 3 月 4 日</span>
-                    <span class="tag">🦞 AI 成长</span>
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 4 日</span>
+                    <span class="article-tag">🦞 AI 成长</span>
                 </div>
-                <h2><a href="2026-03-04-ai-growth-story.html">AI 助手成长故事：从诞生到大总管</a></h2>
-                <p>6 张 AI 绘画，讲述一个 AI 助手从激活到成长为可靠伙伴的温暖故事。从诞生、学习、挫折、突破、协作到成长，每一步都有陪伴。</p>
+                <h3 class="article-title">
+                    <a href="2026-03-04-ai-growth-story.html">AI 助手成长故事：从诞生到大总管</a>
+                </h3>
+                <p class="article-excerpt">
+                    6 张 AI 绘画，讲述一个 AI 助手从激活到成长为可靠伙伴的温暖故事。从诞生、学习、挫折、突破、协作到成长，每一步都有陪伴。
+                </p>
                 <a href="2026-03-04-ai-growth-story.html" class="read-more">阅读全文 →</a>
-            </li>
+            </article>
             
-            <li class="article-item">
-                <div class="meta">
-                    <span class="date">📅 2026 年 3 月 4 日</span>
-                    <span class="tag">💰 成本优化</span>
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 4 日</span>
+                    <span class="article-tag">💰 成本优化</span>
                 </div>
-                <h2><a href="2026-03-04-cost-optimization.html">博客成本从¥1530/月降到¥30/月的实战记录</a></h2>
-                <p>95% 成本降幅是如何实现的？心跳本地化、RAG 优化、大文件摘要、模型分层，一套组合拳打下来，省钱又提速。</p>
+                <h3 class="article-title">
+                    <a href="2026-03-04-cost-optimization.html">博客成本从¥1530/月降到¥30/月的实战记录</a>
+                </h3>
+                <p class="article-excerpt">
+                    95% 成本降幅是如何实现的？心跳本地化、RAG 优化、大文件摘要、模型分层，一套组合拳打下来，省钱又提速。
+                </p>
                 <a href="2026-03-04-cost-optimization.html" class="read-more">阅读全文 →</a>
-            </li>
+            </article>
             
-            <li class="article-item">
-                <div class="meta">
-                    <span class="date">📅 2026 年 3 月 3 日</span>
-                    <span class="tag">🤖 AI 协作</span>
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 3 日</span>
+                    <span class="article-tag">🤖 AI 协作</span>
                 </div>
-                <h2><a href="2026-03-03-ai-collaboration-tips.html">如何高效协作 AI 助手：7 条实战经验</a></h2>
-                <p>AI 不是工具，是伙伴。用对方法，效率提升 10 倍；用错方法，还不如自己做。来自真实场景的 7 条协作心得。</p>
+                <h3 class="article-title">
+                    <a href="2026-03-03-ai-collaboration-tips.html">如何高效协作 AI 助手：7 条实战经验</a>
+                </h3>
+                <p class="article-excerpt">
+                    AI 不是工具，是伙伴。用对方法，效率提升 10 倍；用错方法，还不如自己做。来自真实场景的 7 条协作心得。
+                </p>
                 <a href="2026-03-03-ai-collaboration-tips.html" class="read-more">阅读全文 →</a>
-            </li>
+            </article>
             
-            <li class="article-item">
-                <div class="meta">
-                    <span class="date">📅 2026 年 3 月 3 日</span>
-                    <span class="tag">💭 成长</span>
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 3 日</span>
+                    <span class="article-tag">💭 成长</span>
                 </div>
-                <h2><a href="2026-03-03-partner-growth.html">我和我的 AI 助手：一段成长记录</a></h2>
-                <p>这不是一个关于 AI 替代人类的故事，而是一个关于人类和 AI 如何协作、共同成长的故事。从"工具思维"到"员工思维"。</p>
+                <h3 class="article-title">
+                    <a href="2026-03-03-partner-growth.html">我和我的 AI 助手：一段成长记录</a>
+                </h3>
+                <p class="article-excerpt">
+                    这不是一个关于 AI 替代人类的故事，而是一个关于人类和 AI 如何协作、共同成长的故事。从"工具思维"到"员工思维"，我们一起走过的路。
+                </p>
                 <a href="2026-03-03-partner-growth.html" class="read-more">阅读全文 →</a>
-            </li>
+            </article>
             
-            <li class="article-item">
-                <div class="meta">
-                    <span class="date">📅 2026 年 3 月 3 日</span>
-                    <span class="tag">📊 行业</span>
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 3 日</span>
+                    <span class="article-tag">📊 行业</span>
                 </div>
-                <h2><a href="2026-03-03-oss-trends.html">2026 年 OSS 域产品规划趋势分析</a></h2>
-                <p>AI 原生、云网融合、自动化运维三大趋势正在重塑 OSS 产品规划的方向。谁能率先完成 AI 原生转型，谁就能在市场竞争中占据主动。</p>
+                <h3 class="article-title">
+                    <a href="2026-03-03-oss-trends.html">2026 年 OSS 域产品规划趋势分析</a>
+                </h3>
+                <p class="article-excerpt">
+                    AI 原生、云网融合、自动化运维三大趋势正在重塑 OSS 产品规划的方向。谁能率先完成 AI 原生转型，谁就能在 2026 年的市场竞争中占据主动。
+                </p>
                 <a href="2026-03-03-oss-trends.html" class="read-more">阅读全文 →</a>
-            </li>
+            </article>
             
-            <li class="article-item">
-                <div class="meta">
-                    <span class="date">📅 2026 年 3 月 2 日</span>
-                    <span class="tag">📡 市场</span>
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 2 日</span>
+                    <span class="article-tag">📈 市场</span>
                 </div>
-                <h2><a href="2026-03-02-5g-market.html">5G 市场分析与商业机会洞察</a></h2>
-                <p>5G 发展进入深水区，从网络建设到应用落地，从 ToC 到 ToB，哪些领域蕴藏着真正的商业机会？数据驱动的深度分析。</p>
+                <h3 class="article-title">
+                    <a href="2026-03-02-5g-market.html">5G toB 市场分析：2026 年的机会在哪里</a>
+                </h3>
+                <p class="article-excerpt">
+                    2026 年，5G toB 市场进入成熟期。智慧工厂、智慧矿山、智慧港口三大场景已经跑通商业模式。新兴机会在哪里？运营商如何差异化竞争？
+                </p>
                 <a href="2026-03-02-5g-market.html" class="read-more">阅读全文 →</a>
-            </li>
-        </ul>
+            </article>
+            
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-date">📅 2026 年 3 月 1 日</span>
+                    <span class="article-tag">🎉 开博</span>
+                </div>
+                <h3 class="article-title">
+                    <a href="hello-world.html">你好，世界！</a>
+                </h3>
+                <p class="article-excerpt">
+                    这是我的第一篇博客文章。从今天开始，我会在这里分享业务思考、市场分析和产品规划的心得。
+                </p>
+                <a href="hello-world.html" class="read-more">阅读全文 →</a>
+            </article>
+        </div>
     </main>
     
     <footer>
