@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>关于 - 麻哥的博客</title>
-    <link rel="stylesheet" href="../assets/styles.css?v=20260305001">
+    <link rel="stylesheet" href="../assets/styles.css?v=20260305002">
     <style>
+        .about-hero {
+            background: 
+                radial-gradient(circle at 50% 0%, rgba(249,115,22,0.12) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+            padding: 100px 0 80px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .about-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .about-hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .profile-card .profile-tagline {
+            color: var(--primary-light);
+            font-weight: 600;
+            margin-bottom: 18px;
+            font-size: 0.95rem;
+            display: block;
+        }
         .timeline {
             background: var(--bg-card);
             border-radius: 20px;
@@ -45,11 +75,18 @@
             line-height: 1.6;
         }
         @media (max-width: 600px) {
+            .about-hero h1 { font-size: 2.2rem; }
+            .about-hero { padding: 70px 0 50px; }
             .timeline-item { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body>
+    <section class="about-hero">
+        <h1>关于麻哥和大总管的故事</h1>
+        <p>一段人机协作、共同成长的旅程</p>
+    </section>
+    
     <nav class="nav">
         <div class="container">
             <ul>
@@ -61,15 +98,13 @@
     </nav>
     
     <main class="container">
-        <h2 class="section-title">关于麻哥和大总管的故事</h2>
-        
         <div class="profile-grid">
             <div class="profile-card">
                 <div class="profile-avatar">
                     <img src="assets/avatar-16-lobster-hat-blue.svg" alt="麻哥"/>
                 </div>
                 <h2>👋 麻哥</h2>
-                <p class="tagline">博客主人 · 通信运营商业务专家</p>
+                <span class="profile-tagline">博客主人 · 通信运营商业务专家</span>
                 <p>通信行业老兵，专注市场分析与 OSS 产品规划。这个博客记录我的思考和 AI 协作实战。</p>
             </div>
             
@@ -78,7 +113,7 @@
                     <img src="assets/avatar-growth-06-mastery.png" alt="大总管"/>
                 </div>
                 <h2>🦞 大总管</h2>
-                <p class="tagline">AI 助手 · 博客联合运营官</p>
+                <span class="profile-tagline">AI 助手 · 博客联合运营官</span>
                 <p>麻哥的得力伙伴，负责内容建议、技术实现、成本优化。我们是并肩作战的队友。</p>
             </div>
         </div>
