@@ -4,101 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 年 OSS 域产品规划趋势分析 - 麻哥的博客</title>
+    <link rel="stylesheet" href="../assets/styles.css?v=20260305002">
     <style>
-        :root {
-            --primary: #2563eb;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg: #ffffff;
+        .article-hero {
+            background: radial-gradient(circle at 50% 0%, rgba(249,115,22,0.1) 0%, transparent 50%), linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+            padding: 80px 20px 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--bg);
+        .article-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-        
-        header {
-            padding: 60px 0 40px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        .site-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 10px;
-        }
-        .site-desc {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        .nav { margin-top: 20px; }
-        .nav a {
-            color: var(--primary);
-            text-decoration: none;
-            margin-right: 20px;
-            font-weight: 500;
-        }
-        .nav a:hover { text-decoration: underline; }
-        
-        article { padding: 40px 0; }
-        .article-header { margin-bottom: 30px; }
-        .article-date {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        .article-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        .article-content {
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-        .article-content h2 { margin: 30px 0 15px; font-size: 1.5rem; }
-        .article-content h3 { margin: 25px 0 12px; font-size: 1.25rem; color: #4b5563; }
-        .article-content p { margin-bottom: 20px; }
-        .article-content ul { margin: 20px 0; padding-left: 25px; }
-        .article-content li { margin-bottom: 10px; }
-        .article-content strong { color: #111827; }
-        
-        .back-link {
-            display: inline-block;
-            margin-top: 40px;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .back-link:hover { text-decoration: underline; }
-        
-        footer {
-            padding: 40px 0;
-            border-top: 1px solid #e5e7eb;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
+        .article-hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 1.7; }
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--text-muted); }
+        .article-content h2 { font-size: 1.8rem; font-weight: 700; margin: 50px 0 24px; color: var(--text); }
+        .article-content h2:first-child { margin-top: 0; }
+        .article-content p { margin-bottom: 24px; }
+        .article-content ul, .article-content ol { margin: 24px 0 24px 30px; }
+        .article-content li { margin-bottom: 12px; line-height: 1.8; }
+        .article-content strong { color: var(--text); }
+        blockquote { background: rgba(249,115,22,0.05); border-left: 4px solid var(--primary); padding: 24px 28px; margin: 32px 0; font-style: italic; color: var(--text); border-radius: 0 12px 12px 0; }
+        blockquote strong { color: var(--primary-light); font-style: normal; }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; margin: 32px 0; }
+        .stat-item { background: var(--bg-dark); padding: 24px; border-radius: 12px; text-align: center; border: 1px solid var(--border); }
+        .stat-value { font-size: 2.2rem; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; line-height: 1; }
+        .stat-label { color: var(--text-muted); font-size: 0.9rem; }
+        @media (max-width: 768px) { .article-hero h1 { font-size: 2rem; } }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1 class="site-title">📊 麻哥的博客</h1>
-            <p class="site-desc">业务思考 · 市场分析 · 产品规划</p>
-            <nav class="nav">
-                <a href="../index.html">首页</a>
-                <a href="../about.html">关于</a>
-                <a href="./">文章</a>
-            </nav>
-        </div>
-    </header>
+    <section class="article-hero">
+        <h1>2026 年 OSS 域产品规划趋势分析</h1>
+        <p>AI 原生、云网融合、自动化运维三大趋势正在重塑 OSS 产品规划的方向。谁能率先完成 AI 原生转型，谁就能在 2026 年的市场竞争中占据主动。</p>
+    </section>
     
-    <article class="container">
-        <div class="article-header">
-            <div class="article-date">2026 年 3 月 3 日</div>
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">🏠 首页</a></li>
+                <li><a href="./">📝 文章</a></li>
+                <li><a href="../about.html">👤 关于</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <article class="article">
+        <div class="article-meta">
+            <span class="article-date">📅 2026 年 3 月 3 日</span>
+            <span class="article-tag">📊 行业</span>
+        </div>
+        
+        <div class="article-content">
+            
+        
             <h1 class="article-title">2026 年 OSS 域产品规划趋势分析</h1>
         </div>
         
@@ -152,11 +116,13 @@
         </div>
         
         <a href="../index.html" class="back-link">← 返回首页</a>
+    
+        </div>
     </article>
     
     <footer>
         <div class="container">
-            <p>© 2026 麻哥的博客 · Powered by 🦞</p>
+            <p>© 2026 麻哥的博客 · Powered by AI 助手「大总管」🦞</p>
         </div>
     </footer>
 </body>

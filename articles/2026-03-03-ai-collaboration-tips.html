@@ -4,190 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>如何高效协作 AI 助手：7 条实战经验 - 麻哥的博客</title>
+    <link rel="stylesheet" href="../assets/styles.css?v=20260305002">
     <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #ec4899;
-            --accent: #06b6d4;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg: #fafafa;
-            --card-bg: #ffffff;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--bg);
-        }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Hero */
         .article-hero {
-            background: var(--gradient);
-            padding: 80px 0 60px;
+            background: radial-gradient(circle at 50% 0%, rgba(249,115,22,0.1) 0%, transparent 50%), linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+            padding: 80px 20px 60px;
             text-align: center;
-            color: white;
+            border-bottom: 1px solid var(--border);
         }
         .article-hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            margin-bottom: 15px;
-            line-height: 1.3;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .article-meta {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            font-size: 1rem;
-            opacity: 0.95;
-        }
-        
-        /* Nav */
-        .nav {
-            background: var(--card-bg);
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-        .nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-        .nav a:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        /* Article */
-        article { padding: 50px 0; }
-        .article-content {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 50px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-        .article-content h2 {
-            margin: 35px 0 18px;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-        .article-content h3 {
-            margin: 28px 0 14px;
-            font-size: 1.3rem;
-            color: var(--text-light);
-            font-weight: 600;
-        }
-        .article-content p { margin-bottom: 22px; }
-        .article-content ul { margin: 22px 0; padding-left: 25px; }
-        .article-content li { margin-bottom: 12px; }
-        .article-content strong { color: #111827; font-weight: 600; }
-        .article-content ol { margin: 22px 0; padding-left: 25px; }
-        .article-content ol li { margin-bottom: 12px; }
-        
-        .tip-box {
-            background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
-            border-left: 4px solid var(--primary);
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 0 12px 12px 0;
-        }
-        .tip-box strong {
-            color: var(--primary);
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.05rem;
-        }
-        
-        .quote-box {
-            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-            border-left: 4px solid var(--secondary);
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 0 12px 12px 0;
-            font-style: italic;
-            color: #4b5563;
-            font-size: 1.05rem;
-        }
-        
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--gradient);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 40px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .back-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
-        }
-        
-        footer {
-            background: var(--card-bg);
-            padding: 40px 0;
-            text-align: center;
-            color: var(--text-light);
-            font-size: 0.95rem;
-            border-top: 1px solid #e5e7eb;
-            margin-top: 50px;
-        }
-        
-        @media (max-width: 700px) {
-            .article-hero h1 { font-size: 1.8rem; }
-            .article-content { padding: 30px 20px; }
-            .nav ul { gap: 15px; }
-        }
+        .article-hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 1.7; }
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--text-muted); }
+        .article-content h2 { font-size: 1.8rem; font-weight: 700; margin: 50px 0 24px; color: var(--text); }
+        .article-content h2:first-child { margin-top: 0; }
+        .article-content p { margin-bottom: 24px; }
+        .article-content ul, .article-content ol { margin: 24px 0 24px 30px; }
+        .article-content li { margin-bottom: 12px; line-height: 1.8; }
+        .article-content strong { color: var(--text); }
+        blockquote { background: rgba(249,115,22,0.05); border-left: 4px solid var(--primary); padding: 24px 28px; margin: 32px 0; font-style: italic; color: var(--text); border-radius: 0 12px 12px 0; }
+        blockquote strong { color: var(--primary-light); font-style: normal; }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; margin: 32px 0; }
+        .stat-item { background: var(--bg-dark); padding: 24px; border-radius: 12px; text-align: center; border: 1px solid var(--border); }
+        .stat-value { font-size: 2.2rem; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; line-height: 1; }
+        .stat-label { color: var(--text-muted); font-size: 0.9rem; }
+        @media (max-width: 768px) { .article-hero h1 { font-size: 2rem; } }
     </style>
 </head>
 <body>
-    <div class="article-hero">
-        <div class="container">
-            <h1>如何高效协作 AI 助手：7 条实战经验</h1>
-            <div class="article-meta">
-                <span>📅 2026 年 3 月 3 日</span>
-                <span>🤖 AI 协作</span>
-                <span>⏱️ 5 分钟阅读</span>
-            </div>
-        </div>
-    </div>
+    <section class="article-hero">
+        <h1>如何高效协作 AI 助手：7 条实战经验</h1>
+        <p>AI 不是工具，是伙伴。用对方法，效率提升 10 倍；用错方法，还不如自己做。来自真实场景的 7 条协作心得。</p>
+    </section>
     
     <nav class="nav">
         <div class="container">
             <ul>
                 <li><a href="../index.html">🏠 首页</a></li>
-                <li><a href="../articles/">📝 文章</a></li>
+                <li><a href="./">📝 文章</a></li>
                 <li><a href="../about.html">👤 关于</a></li>
             </ul>
         </div>
     </nav>
     
-    <article class="container">
+    <article class="article">
+        <div class="article-meta">
+            <span class="article-date">📅 2026 年 3 月 3 日</span>
+            <span class="article-tag">🤖 AI 协作</span>
+        </div>
+        
         <div class="article-content">
+            
             <p>经过几周的深度协作，我总结了一些与 AI 助手高效配合的经验。这些心得来自真实场景，希望能帮你少走弯路。</p>
             
             <div class="quote-box">
@@ -276,6 +150,7 @@
         
         <div style="text-align: center;">
             <a href="../index.html" class="back-link">← 返回首页</a>
+        
         </div>
     </article>
     
