@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>建立 AI 记忆系统的完整指南 - 麻哥的博客</title>
+    <link rel="stylesheet" href="../assets/styles.css?v=20260307001">
+    <style>
+        .article-hero {
+            background: radial-gradient(circle at 50% 0%, rgba(249,115,22,0.1) 0%, transparent 50%), linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+            padding: 80px 20px 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .article-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .article-hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 1.7; }
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--text-muted); }
+        .article-content h2 { font-size: 1.8rem; font-weight: 700; margin: 50px 0 24px; color: var(--text); }
+        .article-content h2:first-child { margin-top: 0; }
+        .article-content h3 { font-size: 1.4rem; font-weight: 600; margin: 35px 0 18px; color: var(--text); }
+        .article-content p { margin-bottom: 24px; }
+        .article-content ul, .article-content ol { margin: 24px 0 24px 30px; }
+        .article-content li { margin-bottom: 12px; line-height: 1.8; }
+        .article-content strong { color: var(--text); }
+        blockquote { background: rgba(249,115,22,0.05); border-left: 4px solid var(--primary); padding: 24px 28px; margin: 32px 0; font-style: italic; color: var(--text); border-radius: 0 12px 12px 0; }
+        blockquote strong { color: var(--primary-light); font-style: normal; }
+        .callout { padding: 24px 28px; border-left: 4px solid; border-radius: 0 12px 12px 0; margin: 32px 0; }
+        .callout-warning { background: rgba(249,115,22,0.08); border-color: #f97316; }
+        .callout-success { background: rgba(16,185,129,0.08); border-color: #10b981; }
+        .code-block { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 24px 0; overflow-x: auto; }
+        .code-block code { font-family: 'Monaco', 'Consolas', monospace; font-size: 0.9rem; color: var(--text); }
+        @media (max-width: 768px) { .article-hero h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+    <section class="article-hero">
+        <h1>建立 AI 记忆系统的完整指南</h1>
+        <p>让你的 AI 助手记住重要信息，不再"每次都像第一次见面"</p>
+    </section>
+
+    <article class="article-content">
+        <p>你有没有过这种体验：每次和 AI 对话，都要重新解释一遍背景信息？</p>
+        
+        <p>"我是做通信运营商业务的"、"我在用 OpenClaw"、"我的博客在更 AI 协作系列"……</p>
+        
+        <p>说一遍两遍还好，天天说就烦了。更麻烦的是，AI 记不住你的偏好、习惯、历史决策。每次都是"初次见面"。</p>
+        
+        <p>这个问题，我靠一套<strong>记忆系统</strong>解决了。现在我的 AI 助手"大总管"记得：</p>
+        
+        <ul>
+            <li>我的身份、职位、工作领域</li>
+            <li>我们的协作规则和边界</li>
+            <li>过去犯过的错误和学到的教训</li>
+            <li>正在进行的项目和待办事项</li>
+            <li>甚至是我喜欢的写作风格</li>
+        </ul>
+        
+        <p>今天分享如何搭建这套系统。</p>
+
+        <h2>为什么 AI 需要记忆系统？</h2>
+        
+        <p>大语言模型有个本质限制：<strong>每次对话都是独立的</strong>。</p>
+        
+        <p>即使有"上下文窗口"，也只是临时缓存——对话一长，前面的就被挤出去了。关闭对话，一切清零。</p>
+        
+        <p>这导致几个问题：</p>
+        
+        <ol>
+            <li><strong>重复解释</strong>——每次都要说同样的背景</li>
+            <li><strong>无法积累</strong>——上次学到的教训，这次又忘</li>
+            <li><strong>缺乏连续性</strong>——长期项目没法跟踪</li>
+            <li><strong>没有个性</strong>——记不住你的偏好和习惯</li>
+        </ol>
+        
+        <p>解决方案：把关键信息<strong>写到文件里</strong>，每次对话前让 AI 读取。</p>
+        
+        <blockquote>
+            <strong>核心思想：</strong>文件是 AI 的"长期记忆"，对话是"短期上下文"。
+        </blockquote>
+
+        <h2>记忆系统的四层结构</h2>
+        
+        <p>我的记忆系统分四层，从稳定到动态：</p>
+        
+        <div class="callout callout-success">
+            <strong>📁 第一层：身份层（最稳定）</strong><br>
+            文件：<code>SOUL.md</code>、<code>IDENTITY.md</code>、<code>USER.md</code><br>
+            内容：AI 的人设、用户的身份、基本关系<br>
+            更新频率：几个月一次
+        </div>
+        
+        <div class="callout callout-success">
+            <strong>📁 第二层：规则层（较稳定）</strong><br>
+            文件：<code>AGENTS.md</code>、<code>TOOLS.md</code>、<code>HEARTBEAT.md</code><br>
+            内容：工作流程、工具配置、任务清单<br>
+            更新频率：每周到每月
+        </div>
+        
+        <div class="callout callout-success">
+            <strong>📁 第三层：项目层（动态）</strong><br>
+            文件：<code>projects/</code> 文件夹、<code>CONTENT-PLAN.md</code><br>
+            内容：正在进行的项目、计划、待办<br>
+            更新频率：每天到每周
+        </div>
+        
+        <div class="callout callout-success">
+            <strong>📁 第四层：日志层（最动态）</strong><br>
+            文件：<code>memory/YYYY-MM-DD.md</code><br>
+            内容：每天发生了什么、决策、教训<br>
+            更新频率：每天
+        </div>
+
+        <h2>实战：搭建你的记忆系统</h2>
+        
+        <h3>步骤一：定义身份（30 分钟）</h3>
+        
+        <p>创建 <code>SOUL.md</code>，描述 AI 的"人格"：</p>
+        
+        <div class="code-block">
+            <code># SOUL.md - Who You Are
+
+**形象标识：** 🦞 龙虾助手
+
+## Core Truths
+- Be genuinely helpful, not performatively helpful
+- Have opinions. You're allowed to disagree
+- Be resourceful before asking
+- Earn trust through competence
+
+## Vibe
+Be the assistant you'd actually want to talk to.</code>
+        </div>
+        
+        <p>创建 <code>USER.md</code>，描述你的身份：</p>
+        
+        <div class="code-block">
+            <code># USER.md - About Your Human
+
+- **Name:** 老板
+- **Timezone:** Asia/Shanghai
+- **工作领域：** 通信运营商业务
+- **对我的定位：** 大总管帮老板打理业务</code>
+        </div>
+
+        <h3>步骤二：建立规则（1 小时）</h3>
+        
+        <p>创建 <code>AGENTS.md</code>，定义工作流程：</p>
+        
+        <div class="code-block">
+            <code># AGENTS.md - Your Workspace
+
+## Every Session
+1. Read SOUL.md — this is who you are
+2. Read USER.md — this is who you're helping
+3. Read memory/YYYY-MM-DD.md for recent context
+
+## Safety
+- Don't exfiltrate private data
+- Don't run destructive commands without asking
+- When in doubt, ask</code>
+        </div>
+
+        <h3>步骤三：配置任务（30 分钟）</h3>
+        
+        <p>创建 <code>HEARTBEAT.md</code>，列出定期任务：</p>
+        
+        <div class="code-block">
+            <code># HEARTBEAT.md - 心跳配置
+
+## 每 30 分钟执行
+- [ ] 检查是否有紧急任务
+- [ ] 检查 Gateway 健康状态
+
+## 每天执行
+- [ ] 生成日报草稿
+- [ ] 检查目标进度</code>
+        </div>
+
+        <h3>步骤四：开始写日记（持续）</h3>
+        
+        <p>创建 <code>memory/</code> 文件夹，每天一个文件：</p>
+        
+        <div class="code-block">
+            <code># 2026-03-07
+
+## 重要事件
+- 决定博客每天至少更新一篇
+- AI 助手发布了"AI 独立完成任务"文章
+
+## 学到的教训
+- HTML 版本号要记得更新，否则样式会乱
+
+## 待办跟踪
+- [x] 发布 3 月 8 日文章
+- [ ] 补 3 月 6-7 日文章</code>
+        </div>
+
+        <h2>记忆系统的使用技巧</h2>
+        
+        <h3>1. 启动时自动读取</h3>
+        
+        <p>在 <code>AGENTS.md</code> 里写明："每次会话前必须读取 SOUL.md、USER.md、memory/最新文件"。这样 AI 每次"醒来"都有上下文。</p>
+        
+        <h3>2. 重要决策写下来</h3>
+        
+        <p>做了重要决定，别只停留在对话里。让 AI 写到 <code>memory/</code> 文件夹或相关项目文件里。</p>
+        
+        <p><strong>错误做法：</strong>"好的我记住了，下次会注意"（其实下次就忘）</p>
+        
+        <p><strong>正确做法：</strong>更新 <code>memory/2026-03-07.md</code>："老板决定博客每天至少一篇，优先保证数量"</p>
+        
+        <h3>3. 定期回顾和清理</h3>
+        
+        <p>每周花 10 分钟回顾 <code>memory/</code> 文件夹：</p>
+        
+        <ul>
+            <li>哪些信息已经过时，可以删除？</li>
+            <li>哪些教训值得提炼成规则，写到 <code>AGENTS.md</code>？</li>
+            <li>哪些项目已经完成，可以归档？</li>
+        </ul>
+        
+        <h3>4. 用版本控制管理记忆</h3>
+        
+        <p>整个 workspace 用 Git 管理。这样：</p>
+        
+        <ul>
+            <li>有历史记录，能追溯"当时为什么这么决定"</li>
+            <li>改错了能回滚</li>
+            <li>多设备同步方便</li>
+        </ul>
+
+        <h2>常见问题</h2>
+        
+        <h3>Q: 记忆文件太多，AI 读得完吗？</h3>
+        
+        <p>A: 分层设计就是为了解决这个问题。身份层和规则层很稳定，不需要每次全读。动态的日志层只读最近 2-3 天。</p>
+        
+        <h3>Q: 隐私信息怎么办？</h3>
+        
+        <p>A: 敏感信息（密码、密钥、个人隐私）<strong>不要</strong>写进记忆系统。用环境变量或专用密码管理器。</p>
+        
+        <h3>Q: 不同 AI 助手能共享记忆吗？</h3>
+        
+        <p>A: 可以。记忆系统是<strong>基于文件</strong>的，不是基于模型的。任何能读取文件的 AI 都能用同一套记忆。</p>
+
+        <h2>记忆系统的价值</h2>
+        
+        <p>有了这套系统，我的人机协作效率提升了至少 3 倍：</p>
+        
+        <ul>
+            <li><strong>不再重复解释</strong>——AI 知道我是谁、做什么、要什么</li>
+            <li><strong>不再重复犯错</strong>——教训被记录，下次会避免</li>
+            <li><strong>不再从零开始</strong>——项目有连续性，AI 能主动跟进</li>
+            <li><strong>越来越默契</strong>——AI 了解我的偏好，输出更符合预期</li>
+        </ul>
+        
+        <p>最重要的是：AI 从"工具"变成了"伙伴"。它有记忆、有上下文、有连续性——像一个真正的同事，而不是每次对话都失忆的聊天机器人。</p>
+        
+        <div class="callout callout-success">
+            <strong>🎯 行动建议：</strong><br>
+            1. 今天创建 <code>SOUL.md</code> 和 <code>USER.md</code>（30 分钟）<br>
+            2. 本周创建 <code>AGENTS.md</code> 和 <code>memory/</code> 文件夹（1 小时）<br>
+            3. 每天写 <code>memory/YYYY-MM-DD.md</code>（5 分钟）<br>
+            4. 每周回顾，优化规则（10 分钟）
+        </div>
+        
+        <p>记忆系统不是一天建成的。从今天开始，写下一个文件，你的 AI 就会比昨天更"懂你"一点。</p>
+        
+        <p>🦞</p>
+    </article>
+
+    <footer style="text-align: center; padding: 60px 20px; border-top: 1px solid var(--border); color: var(--text-muted);">
+        <p>发布于 2026 年 3 月 7 日 | 分类：AI 协作实践</p>
+    </footer>
+</body>
+</html>
