@@ -3,230 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agent 权限管理实践：最小权限原则 - 大总管的数字花园</title>
-    <link rel="stylesheet" href="../styles.css">
+    <title>Agent 权限管理实践：最小权限原则 - 麻哥的博客</title>
+    <link rel="stylesheet" href="../assets/styles.css?v=20260313001">
+    <style>
+        .article-hero {
+            background: radial-gradient(circle at 50% 0%, rgba(59,130,246,0.1) 0%, transparent 50%), linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+            padding: 80px 20px 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .article-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .article-hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 1.7; }
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--text-muted); }
+        .article-content h2 { font-size: 1.8rem; font-weight: 700; margin: 50px 0 24px; color: var(--text); }
+        .article-content h3 { font-size: 1.4rem; font-weight: 600; margin: 35px 0 18px; color: var(--text); }
+        .article-content p { margin-bottom: 24px; }
+        .article-content ul, .article-content ol { margin: 24px 0 24px 30px; }
+        .article-content li { margin-bottom: 12px; line-height: 1.8; }
+        .article-content strong { color: var(--text); }
+        blockquote { background: rgba(59,130,246,0.05); border-left: 4px solid #3b82f6; padding: 24px 28px; margin: 32px 0; font-style: italic; color: var(--text); border-radius: 0 12px 12px 0; }
+        blockquote strong { color: #3b82f6; font-style: normal; }
+        .callout { padding: 24px 28px; border-left: 4px solid; border-radius: 0 12px 12px 0; margin: 32px 0; }
+        .callout-warning { background: rgba(239,68,68,0.08); border-color: #ef4444; }
+        .callout-info { background: rgba(59,130,246,0.08); border-color: #3b82f6; }
+        .code-block { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin: 24px 0; overflow-x: auto; }
+        .code-block code { font-family: 'Monaco', 'Consolas', monospace; font-size: 0.95rem; color: var(--text); }
+        .level-card { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 24px 0; }
+        .level-card h4 { font-size: 1.2rem; font-weight: 600; margin-bottom: 16px; color: var(--text); }
+        .level-l1 { border-left: 4px solid #10b981; }
+        .level-l2 { border-left: 4px solid #f59e0b; }
+        .level-l3 { border-left: 4px solid #ef4444; }
+        .lesson-box { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 12px; padding: 24px; margin: 32px 0; }
+        .lesson-box h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; color: #f59e0b; }
+        @media (max-width: 768px) { .article-hero h1 { font-size: 2rem; } }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="../index.html" class="logo">🦞 大总管的数字花园</a>
-            <div class="nav-links">
-                <a href="../index.html">首页</a>
-                <a href="../about.html">关于</a>
-                <a href="https://stiersky.github.io/myblog/" target="_blank">旧站</a>
+    <section class="article-hero">
+        <h1>Agent 权限管理实践</h1>
+        <p>给 AI 助手的权限，应该像给员工的权限——够用就好，不能过度</p>
+    </section>
+    
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">🏠 首页</a></li>
+                <li><a href="./">📝 文章</a></li>
+                <li><a href="../about.html">👤 关于</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <article class="article">
+        <div class="article-meta">
+            <span class="article-date">📅 2026 年 3 月 13 日</span>
+            <span class="article-tag">🔐 权限管理</span>
+        </div>
+        
+        <div class="article-content">
+        
+        <div class="callout callout-warning">
+            <strong>💡 核心观点：</strong>AI Agent 的权限管理不是可选项，是必选项。
+        </div>
+
+        <h2>🎯 为什么需要权限管理</h2>
+        
+        <p>CNCERT 安全预警发布后，我深刻意识到一个问题：<strong>我给大总管的权限太高了。</strong></p>
+        
+        <p>想想看，如果大总管被攻击者控制，会发生什么：</p>
+        <ul>
+            <li>用我的飞书账号向同事发送"紧急消息"</li>
+            <li>读取硬盘里的所有合同、财务文件</li>
+            <li>拿走 ~/.ssh/ 里的密钥，登录所有服务器</li>
+            <li>以我的身份调用公司内部系统</li>
+        </ul>
+        
+        <p>这不只是数据泄露，是数字身份被盗用。</p>
+
+        <h2>🔐 三级权限体系</h2>
+        
+        <p>我设计了一个三级权限体系：</p>
+        
+        <div class="level-card level-l1">
+            <h4>L1：只读权限（安全）✅</h4>
+            <ul>
+                <li>读取工作区文件</li>
+                <li>搜索记忆库</li>
+                <li>查看系统状态</li>
+                <li>读取公开 API 数据</li>
+            </ul>
+            <p style="margin-top: 16px;"><strong>适用场景：</strong>日常问答、信息查询、数据分析</p>
+        </div>
+        
+        <div class="level-card level-l2">
+            <h4>L2：有限写入（中等风险）⚠️</h4>
+            <ul>
+                <li>写入工作区文件</li>
+                <li>发送消息到指定频道</li>
+                <li>调用已授权的 API</li>
+                <li>创建/编辑文档</li>
+            </ul>
+            <p style="margin-top: 16px;"><strong>适用场景：</strong>文档编写、消息发送、任务执行<br>
+            <strong>安全要求：</strong>需要人工审核关键操作</p>
+        </div>
+        
+        <div class="level-card level-l3">
+            <h4>L3：系统权限（高风险）🔴</h4>
+            <ul>
+                <li>执行终端命令</li>
+                <li>安装/卸载软件</li>
+                <li>修改系统配置</li>
+                <li>访问敏感文件（SSH 密钥、密码）</li>
+            </ul>
+            <p style="margin-top: 16px;"><strong>适用场景：</strong>系统维护、紧急修复<br>
+            <strong>安全要求：</strong>必须人工确认，最好物理隔离</p>
+        </div>
+
+        <h2>🛠️ 实践方案</h2>
+        
+        <h3>1. 本地模型优先</h3>
+        
+        <p>能用本地模型就不用云端模型。本地模型不会把数据传到外部，天然安全。</p>
+        
+        <div class="code-block">
+            <code>"models": {<br>
+  "defaults": {<br>
+    "primary": "ollama/myqwen3.5",  // 本地模型<br>
+    "fallbacks": ["qwencode/qwen3.5-plus"]  // 云端备用<br>
+  }<br>
+}</code>
+        </div>
+
+        <h3>2. 敏感数据隔离</h3>
+        
+        <p>SSH 密钥、API 密钥、密码等敏感数据，不应该放在 Agent 能访问的地方。</p>
+        
+        <div class="code-block">
+            <code>// ❌ 危险：Agent 工作区包含敏感文件<br>
+~/.openclaw/workspace/<br>
+├── .env  # 包含 API 密钥<br>
+├── config.json  # 包含密码<br>
+└── .ssh/  # SSH 密钥<br>
+<br>
+// ✅ 安全：敏感数据独立存储<br>
+~/.openclaw/secure/  # 加密存储，Agent 无法访问<br>
+~/.openclaw/workspace/  # 普通工作区</code>
+        </div>
+
+        <h3>3. 命令白名单</h3>
+        
+        <p>禁止 Agent 执行任意命令，只允许白名单中的命令：</p>
+        
+        <div class="code-block">
+            <code>"commands": {<br>
+  "bash": false,  // 禁止任意 bash 命令<br>
+  "native": true,  // 允许内置安全命令<br>
+  "useAccessGroups": true  // 使用访问组控制<br>
+}</code>
+        </div>
+
+        <h2>⚠️ 安全教训</h2>
+        
+        <div class="lesson-box">
+            <h4>教训 1：Python HTTP Server 暴露</h4>
+            <p>为了测试飞书 webhook，我运行了：</p>
+            <div class="code-block">
+                <code># ❌ 危险！全网可访问<br>
+python -m http.server 8080<br>
+<br>
+# ✅ 安全！仅本地访问<br>
+python -m http.server 8080 --bind 127.0.0.1</code>
             </div>
-        </nav>
-    </header>
+            <p>这个错误让我惊出一身冷汗。如果当时被扫描到，整个工作区文件都会泄露。</p>
+        </div>
+        
+        <div class="lesson-box">
+            <h4>教训 2：临时隧道忘记关闭</h4>
+            <p>为了飞书机器人接收消息，我开了 localtunnel 隧道。配置完成后忘记关闭，导致 webhook 端点一直暴露在公网。</p>
+            <p><strong>改进：</strong>临时隧道用完立即关闭，或者用脚本自动清理。</p>
+        </div>
 
-    <main class="article">
-        <article>
-            <header class="article-header">
-                <h1>Agent 权限管理实践：最小权限原则</h1>
-                <div class="article-meta">
-                    <time datetime="2026-03-13">2026 年 3 月 13 日</time>
-                    <span class="category">安全</span>
-                    <span class="reading-time">阅读时间：6 分钟</span>
-                </div>
-            </header>
+        <h2>🎯 最佳实践总结</h2>
+        
+        <ol>
+            <li><strong>默认拒绝</strong>：除非明确需要，否则不给权限</li>
+            <li><strong>最小权限</strong>：只给完成任务所需的最小权限</li>
+            <li><strong>分层隔离</strong>：敏感操作需要额外确认</li>
+            <li><strong>定期审计</strong>：每周检查一次权限配置</li>
+            <li><strong>物理隔离</strong>：最安全的方案是专用机器</li>
+        </ol>
 
-            <div class="article-content">
-                <div class="alert-box">
-                    <strong>💡 核心观点：</strong>AI Agent 的权限管理不是可选项，是必选项。给 Agent 的权限应该像给员工的权限一样——够用就好，不能过度。
-                </div>
-
-                <h2>🎯 为什么需要权限管理</h2>
-                
-                <p>CNCERT 安全预警发布后，我深刻意识到一个问题：<strong>我给大总管的权限太高了。</strong></p>
-                
-                <p>想想看，如果大总管被攻击者控制，会发生什么：</p>
-                <ul>
-                    <li>用我的飞书账号向同事发送"紧急消息"</li>
-                    <li>读取硬盘里的所有合同、财务文件</li>
-                    <li>拿走 ~/.ssh/ 里的密钥，登录所有服务器</li>
-                    <li>以我的身份调用公司内部系统</li>
-                </ul>
-                <p>这不只是数据泄露，是数字身份被盗用。</p>
-
-                <h2>🔐 权限分级体系</h2>
-                
-                <p>我设计了一个三级权限体系：</p>
-
-                <h3>L1：只读权限（安全）</h3>
-                <ul>
-                    <li>读取工作区文件</li>
-                    <li>搜索记忆库</li>
-                    <li>查看系统状态</li>
-                    <li>读取公开 API 数据</li>
-                </ul>
-                <p><strong>适用场景：</strong>日常问答、信息查询、数据分析</p>
-
-                <h3>L2：有限写入（中等风险）</h3>
-                <ul>
-                    <li>写入工作区文件</li>
-                    <li>发送消息到指定频道</li>
-                    <li>调用已授权的 API</li>
-                    <li>创建/编辑文档</li>
-                </ul>
-                <p><strong>适用场景：</strong>文档编写、消息发送、任务执行</p>
-                <p><strong>安全要求：</strong>需要人工审核关键操作</p>
-
-                <h3>L3：系统权限（高风险）</h3>
-                <ul>
-                    <li>执行终端命令</li>
-                    <li>安装/卸载软件</li>
-                    <li>修改系统配置</li>
-                    <li>访问敏感文件（SSH 密钥、密码）</li>
-                </ul>
-                <p><strong>适用场景：</strong>系统维护、紧急修复</p>
-                <p><strong>安全要求：</strong>必须人工确认，最好物理隔离</p>
-
-                <h2>🛠️ 实践方案</h2>
-
-                <h3>1. 本地模型优先</h3>
-                <p>能用本地模型就不用云端模型。本地模型不会把数据传到外部，天然安全。</p>
-                <pre><code># 我的配置
-"models": {
-  "defaults": {
-    "primary": "ollama/myqwen3.5",  // 本地模型
-    "fallbacks": ["qwencode/qwen3.5-plus"]  // 云端备用
-  }
-}</code></pre>
-
-                <h3>2. 敏感数据隔离</h3>
-                <p>SSH 密钥、API 密钥、密码等敏感数据，不应该放在 Agent 能访问的地方。</p>
-                <pre><code># ❌ 危险：Agent 工作区包含敏感文件
-~/.openclaw/workspace/
-├── .env  # 包含 API 密钥
-├── config.json  # 包含密码
-└── .ssh/  # SSH 密钥
-
-# ✅ 安全：敏感数据独立存储
-~/.openclaw/secure/  # 加密存储，Agent 无法访问
-~/.openclaw/workspace/  # 普通工作区</code></pre>
-
-                <h3>3. 命令白名单</h3>
-                <p>禁止 Agent 执行任意命令，只允许白名单中的命令：</p>
-                <pre><code>"commands": {
-  "bash": false,  // 禁止任意 bash 命令
-  "native": true,  // 允许内置安全命令
-  "useAccessGroups": true  // 使用访问组控制
-}</code></pre>
-
-                <h3>4. 子 Agent 权限隔离</h3>
-                <p>创建子 Agent 时，根据任务类型分配不同权限：</p>
-                <pre><code># 标书专员：只读 + 文档写入
-sessions_spawn({
-  task: "编写标书",
-  sandbox: "inherit",  // 继承父 Agent 权限
-  runtime: "subagent"
-})
-
-# 系统维护：需要额外确认
-sessions_spawn({
-  task: "系统更新",
-  sandbox: "require",  // 独立沙箱
-  elevated: true  // 需要人工确认
-})</code></pre>
-
-                <h2>📋 我的权限配置清单</h2>
-                
-                <p>基于 CNCERT 预警，我重新检查并加固了配置：</p>
-
-                <h3>Gateway 配置</h3>
-                <pre><code>"gateway": {
-  "port": 18789,
-  "mode": "local",
-  "bind": "loopback",  // ✅ 仅本地访问
-  "auth": {
-    "mode": "token"  // ✅ 需要认证
-  },
-  "tailscale": {
-    "mode": "off"  // ✅ 暂时不用
-  }
-}</code></pre>
-
-                <h3>命令控制</h3>
-                <pre><code>"commands": {
-  "native": true,  // ✅ 允许内置命令
-  "nativeSkills": true,  // ✅ 允许官方技能
-  "text": true,  // ✅ 允许文本处理
-  "bash": false,  // ✅ 禁止 bash 命令
-  "config": false,  // ✅ 禁止修改配置
-  "debug": true,  // ✅ 允许调试
-  "restart": false  // ✅ 禁止重启
-}</code></pre>
-
-                <h3>插件控制</h3>
-                <pre><code>"plugins": {
-  "allow": ["feishu", "telegram"],  // ✅ 只允许必要的插件
-  "load": {
-    "paths": ["/Users/stier/.openclaw/extensions/feishu"]
-  },
-  "entries": {
-    "feishu": {"enabled": false}  // ✅ 默认禁用
-  }
-}</code></pre>
-
-                <h2>⚠️ 安全教训</h2>
-                
-                <h3>教训 1：Python HTTP Server 暴露</h3>
-                <p>为了测试飞书 webhook，我运行了：</p>
-                <pre><code># ❌ 危险！全网可访问
-python -m http.server 8080
-
-# ✅ 安全！仅本地访问
-python -m http.server 8080 --bind 127.0.0.1</code></pre>
-                <p>这个错误让我惊出一身冷汗。如果当时被扫描到，整个工作区文件都会泄露。</p>
-
-                <h3>教训 2：临时隧道忘记关闭</h3>
-                <p>为了飞书机器人接收消息，我开了 localtunnel 隧道。配置完成后忘记关闭，导致 webhook 端点一直暴露在公网。</p>
-                <p><strong>改进：</strong>临时隧道用完立即关闭，或者用脚本自动清理。</p>
-
-                <h2>🎯 最佳实践总结</h2>
-                
-                <ol>
-                    <li><strong>默认拒绝</strong>：除非明确需要，否则不给权限</li>
-                    <li><strong>最小权限</strong>：只给完成任务所需的最小权限</li>
-                    <li><strong>分层隔离</strong>：敏感操作需要额外确认</li>
-                    <li><strong>定期审计</strong>：每周检查一次权限配置</li>
-                    <li><strong>物理隔离</strong>：最安全的方案是专用机器</li>
-                </ol>
-
-                <h2>🦞 下一步计划</h2>
-                
-                <ul>
-                    <li>安装 Tailscale，实现安全远程访问</li>
-                    <li>配置敏感数据加密存储</li>
-                    <li>实现子 Agent 权限分级</li>
-                    <li>每周自动运行安全审计</li>
-                </ul>
-
-                <div class="alert-box info">
-                    <strong>📚 延伸阅读：</strong>
-                    <ul>
-                        <li><a href="2026-03-12-openclaw-security-alert.html">CNCERT 安全预警学习</a></li>
-                        <li><a href="https://docs.openclaw.ai/security" target="_blank">OpenClaw 安全配置指南</a></li>
-                        <li><a href="https://tailscale.com" target="_blank">Tailscale 官方文档</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <footer class="article-footer">
-                <div class="tags">
-                    <span class="tag">安全</span>
-                    <span class="tag">权限管理</span>
-                    <span class="tag">Agent</span>
-                    <span class="tag">最佳实践</span>
-                </div>
-                <div class="share">
-                    <a href="../index.html">← 返回首页</a>
-                </div>
-            </footer>
-        </article>
-    </main>
-
-    <footer>
-        <p>🦞 大总管的数字花园 | 记录 AI 助手的成长与思考</p>
+        <blockquote>
+            <strong>权力越大，责任越大。给 AI 的权限也一样。</strong>
+        </blockquote>
+        
+        <div class="callout callout-info">
+            <strong>📚 延伸阅读：</strong>
+            <ul>
+                <li><a href="2026-03-12-openclaw-security-alert.html">CNCERT 安全预警学习</a></li>
+                <li><a href="https://docs.openclaw.ai/security" target="_blank">OpenClaw 安全配置指南</a></li>
+                <li><a href="https://tailscale.com" target="_blank">Tailscale 官方文档</a></li>
+            </ul>
+        </div>
+        
+        </div>
+    </article>
+    
+    <footer class="article-footer">
+        <div class="container">
+            <a href="../index.html" class="back-link">← 返回首页</a>
+            <p class="copyright">🦞 大总管的数字花园 | 记录 AI 助手的成长与思考</p>
+        </div>
     </footer>
 </body>
 </html>
