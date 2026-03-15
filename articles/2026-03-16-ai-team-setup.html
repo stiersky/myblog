@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenClaw 实战：构建市场中心 AI 团队 - 麻哥的博客</title>
-    <link rel="stylesheet" href="../assets/styles.css?v=20260316001">
+    <link rel="stylesheet" href="../assets/styles.css?v=20260316002">
     <style>
         .article-hero {
             background: radial-gradient(circle at 50% 0%, rgba(16,185,129,0.1) 0%, transparent 50%), linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%);
@@ -34,8 +34,6 @@
         .callout { padding: 24px 28px; border-left: 4px solid; border-radius: 0 12px 12px 0; margin: 32px 0; }
         .callout-warning { background: rgba(245,158,11,0.08); border-color: #f59e0b; }
         .callout-info { background: rgba(16,185,129,0.08); border-color: #10b981; }
-        .code-block { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin: 24px 0; overflow-x: auto; }
-        .code-block code { font-family: 'Monaco', 'Consolas', monospace; font-size: 0.95rem; color: var(--text); }
         .team-diagram { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 32px 0; font-family: monospace; font-size: 0.9rem; line-height: 1.6; color: var(--text); white-space: pre; overflow-x: auto; }
         .timeline { border-left: 2px solid var(--primary); padding-left: 24px; margin: 32px 0; }
         .timeline-item { margin-bottom: 24px; position: relative; }
@@ -49,7 +47,7 @@
 <body>
     <section class="article-hero">
         <h1>构建市场中心 AI 团队</h1>
-        <p>OpenClaw 实战：4 个 AI 员工 + 独立飞书机器人 + 145 个专业 Agent</p>
+        <p>OpenClaw 实战：AI 数字人协作的新模式</p>
     </section>
     
     <nav class="nav">
@@ -71,7 +69,7 @@
         <div class="article-content">
         
         <div class="callout callout-warning">
-            <strong>💡 项目背景：</strong>我是市场中心业务专家，日常工作包括标书编写、售前支持、Demo 制作、宣传推广、市场分析等。一个人干不过来，用 OpenClaw 搭建了一个完整的 AI 团队。
+            <strong>💡 项目背景：</strong>市场中心日常工作包括标书编写、售前支持、Demo 制作、宣传推广、市场分析等。一个人干不过来，用 OpenClaw 搭建了一个完整的 AI 团队。
         </div>
 
         <h2>🎯 团队架构</h2>
@@ -97,163 +95,68 @@
 └──────────┘  └──────────┘  └──────────┘  └──────────┘
         </div>
 
-        <h2>🔧 独立 Agent 配置</h2>
+        <h2>🔧 技术架构</h2>
         
-        <h3>1. 创建飞书机器人</h3>
+        <h3>1. 独立 Agent 模式</h3>
         
-        <p>每个 AI 员工一个独立的飞书机器人应用：</p>
+        <p>每个 AI 员工都是独立的 OpenClaw Agent，有自己的人格、职责和工作规范。不同于子 Agent（subagent）模式，独立 Agent 可以：</p>
         
-        <table>
-            <thead>
-                <tr>
-                    <th>AI 员工</th>
-                    <th>机器人名称</th>
-                    <th>App ID</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>📝 标书专员</td>
-                    <td>标书专员</td>
-                    <td><code>cli_a922eca297f85cc8</code></td>
-                </tr>
-                <tr>
-                    <td>💻 开发专员</td>
-                    <td>开发助手</td>
-                    <td><code>cli_a93c05a41d78dcee</code></td>
-                </tr>
-                <tr>
-                    <td>🦞 大总管</td>
-                    <td>默认</td>
-                    <td><code>cli_a923372934b89cd2</code></td>
-                </tr>
-            </tbody>
-        </table>
+        <ul>
+            <li>有独立的身份配置（SOUL.md、AGENTS.md、IDENTITY.md）</li>
+            <li>绑定独立的飞书机器人账号</li>
+            <li>在群里直接@对话，不需要中转</li>
+            <li>持久化存在，不会会话结束就消失</li>
+        </ul>
 
-        <h3>2. 配置多 Account</h3>
+        <h3>2. 飞书机器人集成</h3>
         
-        <p>修改 <code>~/.openclaw/openclaw.json</code>：</p>
+        <p>每个 AI 员工对应一个飞书机器人应用，通过 OpenClaw 的多 Account 功能实现路由：</p>
         
-        <div class="code-block">
-<pre>{
-  "channels": {
-    "feishu": {
-      "enabled": true,
-      "domain": "feishu",
-      "accounts": {
-        "default": {
-          "appId": "cli_a923372934b89cd2",
-          "appSecret": "..."
-        },
-        "bid-account": {
-          "appId": "cli_a922eca297f85cc8",
-          "appSecret": "..."
-        },
-        "dev-account": {
-          "appId": "cli_a93c05a41d78dcee",
-          "appSecret": "..."
-        }
-      }
-    }
-  },
-  "bindings": [
-    {
-      "agentId": "main",
-      "match": { "channel": "feishu", "accountId": "default" }
-    },
-    {
-      "agentId": "bid-specialist",
-      "match": { "channel": "feishu", "accountId": "bid-account" }
-    },
-    {
-      "agentId": "dev-specialist",
-      "match": { "channel": "feishu", "accountId": "dev-account" }
-    }
-  ]
-}</pre>
-        </div>
+        <blockquote>
+            <strong>💡 关键设计：</strong>OpenClaw 支持在单个 channel 类型下配置多个 accounts，每个 account 绑定不同的 Agent。这样麻哥在飞书里@哪个机器人，就由对应的 AI 员工响应。
+        </blockquote>
 
         <div class="callout callout-info">
-            <strong>💡 关键点：</strong>OpenClaw 支持 accounts 嵌套配置，不是独立 channel。每个 account 对应一个飞书机器人应用。
+            <strong>📋 配置要点：</strong>
+            <ul>
+                <li>每个机器人需要独立的 App ID 和 App Secret</li>
+                <li>配置 groupAllowFrom 允许特定群聊</li>
+                <li>修改配置后需要重启 Gateway</li>
+            </ul>
         </div>
 
         <h2>📋 AI 员工规范</h2>
         
-        <p>每个 AI 员工都有详细的 <code>AGENTS.md</code>，包含：</p>
-        
-        <ul>
-            <li><strong>Identity & Personality</strong> - 人格特征和沟通风格</li>
-            <li><strong>Core Mission</strong> - 核心使命和关键职责</li>
-            <li><strong>Critical Rules</strong> - 铁律（不做模糊要求）</li>
-            <li><strong>Technical Deliverables</strong> - 标准交付物和质量标准</li>
-            <li><strong>Workflow Process</strong> - 详细工作流程</li>
-            <li><strong>Success Metrics</strong> - 量化成功指标</li>
-            <li><strong>Communication Protocol</strong> - 协作协议</li>
-        </ul>
+        <p>每个 AI 员工都有详细的 <code>AGENTS.md</code>，包含人格特征、核心使命、铁律、交付标准、工作流程、成功指标等。</p>
 
         <h3>标书专员示例</h3>
         
-        <div class="code-block">
-<pre># ❌ Critical Rules（铁律）
+        <blockquote>
+            <strong>❌ 标书规范铁律：</strong>
+            <ul>
+                <li>少表格原则 - ≤4 个表格，多用段落叙述</li>
+                <li>图表标准 - 10 张专业图表（架构图、流程图等）</li>
+                <li>页数要求 - 180-200 页，内容详实</li>
+                <li>24 小时缓冲 - 投标截止前 24 小时完成初稿</li>
+            </ul>
+        </blockquote>
 
-### 标书规范铁律
-1. **少表格原则** - ≤4 个表格，多用段落叙述
-2. **图表标准** - 10 张专业图表（架构图、流程图等）
-3. **页数要求** - 180-200 页，内容详实
-4. **响应完整** - 招标文件每条要求必须响应
-
-### 时间铁律
-5. **24 小时缓冲** - 投标截止前 24 小时完成初稿
-6. **分段交付** - 大项目分章节交付
-7. **风险预警** - 发现延期立即汇报</pre>
+        <div class="callout callout-warning">
+            <strong>💡 设计理念：</strong>不做模糊要求，所有规范都是可测量、可执行的铁律。比如"少用表格"改成"≤4 个表格"，"内容丰富"改成"180-200 页"。
         </div>
 
-        <h2>🎁 引入 145 个专业 Agent</h2>
+        <h2>🎁 引入专业 Agent 库</h2>
         
-        <p>安装 <a href="https://github.com/stiersky/agency-agents" target="_blank">agency-agents</a> 仓库，获得 145 个专业 AI Agent 模板：</p>
-        
-        <div class="code-block">
-<pre>cd ~/.openclaw/workspace
-git clone https://github.com/stiersky/agency-agents.git
-cd agency-agents
-./scripts/convert.sh --tool openclaw
-./scripts/install.sh --tool openclaw
-openclaw gateway restart</pre>
-        </div>
+        <p>安装了 <a href="https://github.com/stiersky/agency-agents" target="_blank">agency-agents</a> 仓库，获得 145 个专业 AI Agent 模板，覆盖工程、市场、销售、产品、项目管理等领域。</p>
 
         <h3>最有价值的 Agent</h3>
         
-        <table>
-            <thead>
-                <tr>
-                    <th>Agent</th>
-                    <th>用途</th>
-                    <th>对我们价值</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>government-digital-presales-consultant</td>
-                    <td>政府数字化售前</td>
-                    <td>⭐⭐⭐ 标书专员增强</td>
-                </tr>
-                <tr>
-                    <td>trend-researcher</td>
-                    <td>趋势研究员</td>
-                    <td>⭐⭐⭐ 市场分析师增强</td>
-                </tr>
-                <tr>
-                    <td>rapid-prototyper</td>
-                    <td>快速原型</td>
-                    <td>⭐⭐⭐ Demo 制作</td>
-                </tr>
-                <tr>
-                    <td>agents-orchestrator</td>
-                    <td>多 Agent 协调</td>
-                    <td>⭐⭐⭐ 我学习用</td>
-                </tr>
-            </tbody>
-        </table>
+        <ul>
+            <li><strong>government-digital-presales-consultant</strong> - 政府数字化售前咨询，增强标书专员能力</li>
+            <li><strong>trend-researcher</strong> - 趋势研究员，增强市场分析师能力</li>
+            <li><strong>rapid-prototyper</strong> - 快速原型专家，支持 Demo 制作</li>
+            <li><strong>agents-orchestrator</strong> - 多 Agent 协调器，学习如何更好地管理 AI 团队</li>
+        </ul>
 
         <h2>⚠️ 经验教训</h2>
         
@@ -270,9 +173,9 @@ openclaw gateway restart</pre>
         <div class="callout callout-warning">
             <strong>⚠️ 踩过的坑：</strong>
             <ul>
-                <li><strong>群聊权限</strong> - 需要配置 <code>groupAllowFrom</code>，否则群消息被丢弃</li>
-                <li><strong>多 Account 配置</strong> - OpenClaw 支持 accounts 嵌套，不是独立 channel</li>
-                <li><strong>Gateway 重启</strong> - 配置修改后必须重启 Gateway</li>
+                <li><strong>群聊权限</strong> - 需要配置 groupAllowFrom，否则群消息被丢弃</li>
+                <li><strong>配置生效</strong> - 修改后必须重启 Gateway</li>
+                <li><strong>博客风格</strong> - 保持统一的博客文章风格很重要</li>
             </ul>
         </div>
 
@@ -280,17 +183,29 @@ openclaw gateway restart</pre>
         
         <div class="timeline">
             <div class="timeline-item">
-                <h4>学习 agency-agents 的 AGENTS.md 模板</h4>
-                <p>升级现有 AI 员工规范，借鉴更专业的写法</p>
+                <h4>学习专业 Agent 模板</h4>
+                <p>研究 agency-agents 的 AGENTS.md 写法，升级现有 AI 员工规范</p>
             </div>
             <div class="timeline-item">
-                <h4>创建售前支持和市场分析师 Agent</h4>
-                <p>完善团队配置，覆盖更多工作场景</p>
+                <h4>完善团队配置</h4>
+                <p>创建售前支持和市场分析师 Agent，覆盖更多工作场景</p>
             </div>
             <div class="timeline-item">
-                <h4>实现 Agent 间自动协作（A2A）</h4>
-                <p>配置 agentToAgent 通信，实现自动化协作</p>
+                <h4>实现 Agent 间协作</h4>
+                <p>配置 Agent 间通信（A2A），实现自动化协作流程</p>
             </div>
+        </div>
+
+        <h2>🔒 安全说明</h2>
+        
+        <div class="callout callout-info">
+            <strong>🛡️ 安全实践：</strong>
+            <ul>
+                <li>内部资料使用本地模型（ollama/myqwen3.5），不上传云端</li>
+                <li>敏感配置（App Secret 等）不公开</li>
+                <li>飞书机器人权限最小化原则</li>
+                <li>标书、报价等敏感信息仅老板可见</li>
+            </ul>
         </div>
 
         </div>
