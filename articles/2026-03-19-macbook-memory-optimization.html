@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacBook 性能优化：17GB 内存跑大模型 - 麻哥的博客</title>
+    <link rel="stylesheet" href="../assets/styles.css?v=20260319001">
+    <style>
+        .article-hero {
+            background: radial-gradient(circle at 50% 0%, rgba(16,185,129,0.1) 0%, transparent 50%), linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+            padding: 80px 20px 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .article-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .article-hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 1.7; }
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--text-muted); }
+        .article-content h2 { font-size: 1.8rem; font-weight: 700; margin: 50px 0 24px; color: var(--text); }
+        .article-content h3 { font-size: 1.4rem; font-weight: 600; margin: 35px 0 18px; color: var(--text); }
+        .article-content p { margin-bottom: 24px; }
+        .article-content ul, .article-content ol { margin: 24px 0 24px 30px; }
+        .article-content li { margin-bottom: 12px; line-height: 1.8; }
+        .article-content strong { color: var(--text); }
+        blockquote { background: rgba(16,185,129,0.05); border-left: 4px solid #10b981; padding: 24px 28px; margin: 32px 0; font-style: italic; color: var(--text); border-radius: 0 12px 12px 0; }
+        blockquote strong { color: #10b981; font-style: normal; }
+        .callout { padding: 24px 28px; border-left: 4px solid; border-radius: 0 12px 12px 0; margin: 32px 0; }
+        .callout-warning { background: rgba(245,158,11,0.08); border-color: #f59e0b; }
+        .callout-info { background: rgba(16,185,129,0.08); border-color: #10b981; }
+        .memory-stats { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 32px 0; font-family: monospace; font-size: 0.9rem; line-height: 1.6; color: var(--text); }
+        .timeline { border-left: 2px solid var(--primary); padding-left: 24px; margin: 32px 0; }
+        .timeline-item { margin-bottom: 24px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -29px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--primary); }
+        .timeline-item h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+        .decision-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 24px; margin: 32px 0; }
+        .decision-box h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; color: #3b82f6; }
+        @media (max-width: 768px) { .article-hero h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+    <section class="article-hero">
+        <h1>17GB 内存跑大模型</h1>
+        <p>MacBook 性能优化实战：内存管理 + 进程调优</p>
+    </section>
+    
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">🏠 首页</a></li>
+                <li><a href="./">📝 文章</a></li>
+                <li><a href="../about.html">👤 关于</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <article class="article">
+        <div class="article-meta">
+            <span class="article-date">📅 2026 年 3 月 19 日</span>
+            <span class="article-tag">⚡ 性能优化</span>
+        </div>
+        
+        <div class="article-content">
+        
+        <div class="callout callout-warning">
+            <strong>💡 问题：</strong>MacBook Pro 17GB 内存，运行 Ollama 9b 模型（6.6GB）+ Chrome + 飞书，内存只剩 81MB，系统严重卡顿。
+        </div>
+
+        <h2>📊 内存占用分析</h2>
+        
+        <div class="memory-stats">
+总内存：17 GB
+已用内存：15 GB (88%)
+可用内存：81 MB 🔴
+压缩内存：4 GB
+系统空闲率：18%
+        </div>
+
+        <h3>Top 占用进程</h3>
+        
+        <ul>
+            <li><strong>Lark/飞书</strong>：~736 MB（主进程 + 渲染进程）</li>
+            <li><strong>Chrome</strong>：~1.5 GB+（多标签页）</li>
+            <li><strong>Ollama 模型</strong>：6.6 GB（磁盘）/ ~8 GB（运行时）</li>
+            <li><strong>openclaw-gateway</strong>：283 MB</li>
+        </ul>
+
+        <h2>🔧 优化方案</h2>
+        
+        <h3>1. 内存监控命令</h3>
+
+        <pre><code># 查看内存压力
+memory_pressure
+
+# 查看进程内存占用
+ps aux | sort -nrk4 | head -15
+
+# 查看 Ollama 模型
+ollama list</code></pre>
+
+        <h3>2. 快速释放内存</h3>
+
+        <div class="decision-box">
+            <h4>🚀 立竿见影的方法</h4>
+            <ul>
+                <li>关闭 Chrome 不用的标签页（可释放 500MB-1GB）</li>
+                <li>重启飞书（如暂时不用）</li>
+                <li>重启 Ollama 服务：`ollama serve` 重启</li>
+            </ul>
+        </div>
+
+        <h3>3. 长期优化策略</h3>
+
+        <pre><code># 1. 使用轻量级模型
+ollama pull qwen3.5:3b  # 约 2GB
+
+# 2. 限制 Ollama 并发
+OLLAMA_NUM_PARALLEL=1 ollama serve
+
+# 3. 定期清理系统缓存
+sudo purge  # 需谨慎使用</code></pre>
+
+        <h2>⚠️ 遇到的坑</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>坑 1：模型加载慢</h4>
+                <p>首次加载 9b 模型需要 30-60 秒。解决：保持 Ollama 服务常驻。</p>
+            </div>
+            <div class="timeline-item">
+                <h4>坑 2：内存泄漏</h4>
+                <p>长时间运行后内存占用持续增长。解决：定期重启服务。</p>
+            </div>
+            <div class="timeline-item">
+                <h4>坑 3：交换频繁</h4>
+                <p>内存不足时频繁使用 swap，导致系统卡顿。解决：关闭不必要的应用。</p>
+            </div>
+        </div>
+
+        <h2>✅ 最佳实践</h2>
+        
+        <div class="callout callout-info">
+            <strong>📋 日常维护清单：</strong>
+            <ul>
+                <li>每天检查内存占用：`memory_pressure`</li>
+                <li>每周清理 Chrome 标签页</li>
+                <li>每月重启 Ollama 服务</li>
+                <li>监控系统空闲率，保持 >20%</li>
+            </ul>
+        </div>
+
+        <h2>📊 优化效果</h2>
+        
+        <p>优化后预期效果：</p>
+        
+        <ul>
+            <li>可用内存：81 MB → 2-3 GB</li>
+            <li>系统空闲率：18% → 30%+</li>
+            <li>响应速度：提升 50%+</li>
+        </ul>
+
+        <h2>🎓 总结</h2>
+        
+        <blockquote>
+            <strong>核心原则：</strong>监控 > 优化。定期查看内存状态，及时释放不必要占用。
+        </blockquote>
+
+        </div>
+    </article>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 麻哥的博客 · Powered by OpenClaw</p>
+        </div>
+    </footer>
+</body>
+</html>

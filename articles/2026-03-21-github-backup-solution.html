@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 备份方案：macOS Keychain 认证实践 - 麻哥的博客</title>
+    <link rel="stylesheet" href="../assets/styles.css?v=20260321001">
+    <style>
+        .article-hero {
+            background: radial-gradient(circle at 50% 0%, rgba(16,185,129,0.1) 0%, transparent 50%), linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+            padding: 80px 20px 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .article-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .article-hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 1.7; }
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--text-muted); }
+        .article-content h2 { font-size: 1.8rem; font-weight: 700; margin: 50px 0 24px; color: var(--text); }
+        .article-content h3 { font-size: 1.4rem; font-weight: 600; margin: 35px 0 18px; color: var(--text); }
+        .article-content p { margin-bottom: 24px; }
+        .article-content ul, .article-content ol { margin: 24px 0 24px 30px; }
+        .article-content li { margin-bottom: 12px; line-height: 1.8; }
+        .article-content strong { color: var(--text); }
+        blockquote { background: rgba(16,185,129,0.05); border-left: 4px solid #10b981; padding: 24px 28px; margin: 32px 0; font-style: italic; color: var(--text); border-radius: 0 12px 12px 0; }
+        blockquote strong { color: #10b981; font-style: normal; }
+        .callout { padding: 24px 28px; border-left: 4px solid; border-radius: 0 12px 12px 0; margin: 32px 0; }
+        .callout-warning { background: rgba(245,158,11,0.08); border-color: #f59e0b; }
+        .callout-info { background: rgba(16,185,129,0.08); border-color: #10b981; }
+        .code-block { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 32px 0; overflow-x: auto; }
+        .code-block code { font-family: monospace; font-size: 0.9rem; color: var(--text); }
+        .timeline { border-left: 2px solid var(--primary); padding-left: 24px; margin: 32px 0; }
+        .timeline-item { margin-bottom: 24px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -29px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--primary); }
+        .timeline-item h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+        .decision-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 24px; margin: 32px 0; }
+        .decision-box h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; color: #3b82f6; }
+        @media (max-width: 768px) { .article-hero h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+    <section class="article-hero">
+        <h1>GitHub 备份方案</h1>
+        <p>macOS Keychain 认证 + launchd 定时任务实战</p>
+    </section>
+    
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">🏠 首页</a></li>
+                <li><a href="./">📝 文章</a></li>
+                <li><a href="../about.html">👤 关于</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <article class="article">
+        <div class="article-meta">
+            <span class="article-date">📅 2026 年 3 月 21 日</span>
+            <span class="article-tag">📦 GitHub</span>
+        </div>
+        
+        <div class="article-content">
+        
+        <div class="callout callout-warning">
+            <strong>💡 需求：</strong>每天自动备份 workspace 到 GitHub，无需手动输入密码，安全认证。
+        </div>
+
+        <h2>🎯 认证方案对比</h2>
+        
+        <div class="decision-box">
+            <h4>🔐 三种认证方式</h4>
+            <ul>
+                <li><strong>SSH Key</strong>：传统方案，需管理密钥对</li>
+                <li><strong>Personal Access Token</strong>：需存储在脚本或环境变量</li>
+                <li><strong>macOS Keychain</strong>：✅ 系统级安全管理，推荐使用</li>
+            </ul>
+        </div>
+
+        <h2>🔧 配置步骤</h2>
+        
+        <h3>1. 配置 Git 使用 Keychain</h3>
+
+        <pre><code># 启用 macOS Keychain 凭证存储
+git config --global credential.helper osxkeychain
+
+# 验证配置
+git config --global --list | grep credential</code></pre>
+
+        <h3>2. 首次 Push 触发认证</h3>
+
+        <pre><code>cd /users/stier/.openclaw/workspace
+git add .
+git commit -m "Initial commit"
+git push origin main
+# 首次会弹出 macOS 钥匙串认证对话框
+# 输入 GitHub 用户名和 Personal Access Token
+# 勾选"保存到钥匙串"</code></pre>
+
+        <h3>3. 创建备份脚本</h3>
+
+        <div class="code-block">
+            <code>#!/bin/bash
+# github-backup.sh
+set -e
+
+WORKSPACE="/users/stier/.openclaw/workspace"
+LOG_FILE="$WORKSPACE/logs/github-backup.log"
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+
+mkdir -p "$(dirname "$LOG_FILE")"
+echo "[$TIMESTAMP] 开始备份..." >> "$LOG_FILE"
+
+cd "$WORKSPACE"
+
+# 暂存所有更改
+git add -A
+
+# 检查是否有更改
+if git diff --cached --quiet; then
+    echo "[$TIMESTAMP] 无更改，跳过" >> "$LOG_FILE"
+else
+    # 提交
+    git commit -m "🤖 自动备份 $(date '+%Y-%m-%d')"
+    echo "[$TIMESTAMP] 已提交" >> "$LOG_FILE"
+fi
+
+# 推送（自动使用 Keychain 凭证）
+git push origin HEAD 2>&1 | tee -a "$LOG_FILE"
+echo "[$TIMESTAMP] 备份完成" >> "$LOG_FILE"</code>
+        </div>
+
+        <h3>4. 配置 launchd 定时任务</h3>
+
+        <pre><code># 创建 plist 文件
+~/Library/LaunchAgents/com.stiersky.github-backup.plist
+
+# 加载任务
+launchctl load ~/Library/LaunchAgents/com.stiersky.github-backup.plist
+
+# 验证状态
+launchctl list | grep stiersky</code></pre>
+
+        <h2>⚠️ 遇到的坑</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>坑 1：crontab 权限问题</h4>
+                <p>macOS 系统权限限制，crontab 配置失败。解决：改用 launchd。</p>
+            </div>
+            <div class="timeline-item">
+                <h4>坑 2：Keychain 未保存凭证</h4>
+                <p>首次 Push 未勾选"保存到钥匙串"。解决：删除凭证重新认证。</p>
+            </div>
+            <div class="timeline-item">
+                <h4>坑 3：脚本路径问题</h4>
+                <p>launchd 执行时找不到脚本。解决：使用绝对路径。</p>
+            </div>
+        </div>
+
+        <h2>🧪 测试验证</h2>
+        
+        <pre><code># 手动执行一次备份脚本
+/users/stier/.openclaw/workspace/scripts/github-backup.sh
+
+# 检查日志
+tail -20 /users/stier/.openclaw/workspace/logs/github-backup.log
+
+# 检查 GitHub 仓库
+# 访问 https://github.com/stiersky/manager.git 查看最新提交</code></pre>
+
+        <h2>✅ 最佳实践</h2>
+        
+        <div class="callout callout-info">
+            <strong>📋 安全清单：</strong>
+            <ul>
+                <li>使用 macOS Keychain 管理凭证，不硬编码密码</li>
+                <li>Personal Access Token 设置最小权限（repo 即可）</li>
+                <li>定期轮换 Token（建议每 90 天）</li>
+                <li>日志文件不包含敏感信息</li>
+                <li>脚本设置执行权限：<code>chmod +x script.sh</code></li>
+            </ul>
+        </div>
+
+        <h2>📊 完整配置汇总</h2>
+        
+        <ul>
+            <li><strong>仓库地址</strong>：github.com/stiersky/manager.git</li>
+            <li><strong>执行时间</strong>：每天 22:00</li>
+            <li><strong>认证方式</strong>：macOS Keychain</li>
+            <li><strong>日志位置</strong>：workspace/logs/github-backup.log</li>
+        </ul>
+
+        <h2>🎓 总结</h2>
+        
+        <blockquote>
+            <strong>核心优势：</strong>macOS Keychain + launchd 是 macOS 原生方案，安全可靠，无需额外依赖。
+        </blockquote>
+
+        </div>
+    </article>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 麻哥的博客 · Powered by OpenClaw</p>
+        </div>
+    </footer>
+</body>
+</html>

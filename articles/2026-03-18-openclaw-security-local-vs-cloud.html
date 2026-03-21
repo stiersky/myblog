@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw 安全实践：本地模型 vs 云端模型 - 麻哥的博客</title>
+    <link rel="stylesheet" href="../assets/styles.css?v=20260318001">
+    <style>
+        .article-hero {
+            background: radial-gradient(circle at 50% 0%, rgba(16,185,129,0.1) 0%, transparent 50%), linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+            padding: 80px 20px 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .article-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .article-hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 1.7; }
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--text-muted); }
+        .article-content h2 { font-size: 1.8rem; font-weight: 700; margin: 50px 0 24px; color: var(--text); }
+        .article-content h3 { font-size: 1.4rem; font-weight: 600; margin: 35px 0 18px; color: var(--text); }
+        .article-content p { margin-bottom: 24px; }
+        .article-content ul, .article-content ol { margin: 24px 0 24px 30px; }
+        .article-content li { margin-bottom: 12px; line-height: 1.8; }
+        .article-content strong { color: var(--text); }
+        blockquote { background: rgba(16,185,129,0.05); border-left: 4px solid #10b981; padding: 24px 28px; margin: 32px 0; font-style: italic; color: var(--text); border-radius: 0 12px 12px 0; }
+        blockquote strong { color: #10b981; font-style: normal; }
+        .callout { padding: 24px 28px; border-left: 4px solid; border-radius: 0 12px 12px 0; margin: 32px 0; }
+        .callout-warning { background: rgba(245,158,11,0.08); border-color: #f59e0b; }
+        .callout-info { background: rgba(16,185,129,0.08); border-color: #10b981; }
+        .callout-danger { background: rgba(239,68,68,0.08); border-color: #ef4444; }
+        .callout-success { background: rgba(34,197,94,0.08); border-color: #22c55e; }
+        .code-block { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 24px 0; overflow-x: auto; font-family: 'Monaco', 'Menlo', monospace; font-size: 0.9rem; line-height: 1.6; color: #e5e7eb; }
+        .timeline { border-left: 2px solid var(--primary); padding-left: 24px; margin: 32px 0; }
+        .timeline-item { margin-bottom: 24px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -29px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--primary); }
+        .timeline-item h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+        .decision-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 24px; margin: 32px 0; }
+        .decision-box h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; color: #3b82f6; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 32px 0; }
+        .comparison-table th, .comparison-table td { border: 1px solid var(--border); padding: 16px; text-align: left; }
+        .comparison-table th { background: var(--bg-dark); font-weight: 600; }
+        .comparison-table tr:nth-child(even) { background: rgba(16,185,129,0.03); }
+        .security-level { display: inline-block; padding: 4px 12px; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
+        .level-high { background: rgba(34,197,94,0.2); color: #22c55e; }
+        .level-medium { background: rgba(245,158,11,0.2); color: #f59e0b; }
+        .level-low { background: rgba(239,68,68,0.2); color: #ef4444; }
+        @media (max-width: 768px) { .article-hero h1 { font-size: 2rem; } .code-block { font-size: 0.8rem; } .comparison-table { font-size: 0.9rem; } }
+    </style>
+</head>
+<body>
+    <section class="article-hero">
+        <h1>OpenClaw 安全实践：本地模型 vs 云端模型</h1>
+        <p>敏感数据处理策略与安全边界设计</p>
+    </section>
+    
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">🏠 首页</a></li>
+                <li><a href="./">📝 文章</a></li>
+                <li><a href="../about.html">👤 关于</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <article class="article">
+        <div class="article-meta">
+            <span class="article-date">📅 2026 年 3 月 18 日</span>
+            <span class="article-tag">🔒 安全</span>
+            <span class="article-tag">🤖 Ollama</span>
+            <span class="article-tag">☁️ 云端 API</span>
+        </div>
+        
+        <div class="article-content">
+        
+        <div class="callout callout-warning">
+            <strong>💡 核心问题：</strong>使用 AI 助手处理工作时，哪些数据可以上传云端？哪些必须本地处理？如何在便利性和安全性之间找到平衡？
+        </div>
+
+        <h2>🎯 安全困境</h2>
+        
+        <p>AI 助手越来越强大，但数据安全始终是悬在头顶的达摩克利斯之剑。尤其是处理标书、报价、客户信息这些敏感数据时，每一个决定都可能带来风险。</p>
+        
+        <p>我面临的选择题：</p>
+        <ul>
+            <li>用云端大模型（GPT-4、Claude）？能力强，但数据要上传</li>
+            <li>用本地模型（Ollama）？数据不出域，但性能有限</li>
+            <li>混合使用？如何划定安全边界？</li>
+        </ul>
+
+        <h2>📊 本地模型 vs 云端模型对比</h2>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>维度</th>
+                    <th>本地模型 (Ollama)</th>
+                    <th>云端模型 (GPT-4/Claude)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>数据安全性</strong></td>
+                    <td><span class="security-level level-high">高 - 数据不出本地</span></td>
+                    <td><span class="security-level level-low">低 - 数据上传第三方</span></td>
+                </tr>
+                <tr>
+                    <td><strong>模型能力</strong></td>
+                    <td><span class="security-level level-medium">中 - Qwen3.5 等开源模型</span></td>
+                    <td><span class="security-level level-high">高 - 最新闭源模型</span></td>
+                </tr>
+                <tr>
+                    <td><strong>响应速度</strong></td>
+                    <td><span class="security-level level-high">快 - 无网络延迟</span></td>
+                    <td><span class="security-level level-medium">中 - 依赖网络</span></td>
+                </tr>
+                <tr>
+                    <td><strong>成本</strong></td>
+                    <td><span class="security-level level-high">一次性硬件投入</span></td>
+                    <td><span class="security-level level-medium">按 Token 计费</span></td>
+                </tr>
+                <tr>
+                    <td><strong>可用性</strong></td>
+                    <td><span class="security-level level-high">离线可用</span></td>
+                    <td><span class="security-level level-medium">依赖网络和服务</span></td>
+                </tr>
+                <tr>
+                    <td><strong>隐私合规</strong></td>
+                    <td><span class="security-level level-high">完全可控</span></td>
+                    <td><span class="security-level level-low">依赖服务商政策</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout callout-info">
+            <strong>💡 结论：</strong>没有绝对的好坏，关键是根据数据敏感度选择合适的模型。
+        </div>
+
+        <h2>🔧 Ollama 本地部署实战</h2>
+        
+        <p>我选择在 MacBook 上部署 Ollama，运行 Qwen3.5 模型。下面是完整配置过程。</p>
+
+        <h3>1. 安装 Ollama</h3>
+        
+        <div class="code-block">
+# macOS 安装
+brew install ollama
+
+# 启动服务
+ollama serve
+
+# 验证安装
+ollama list
+        </div>
+
+        <h3>2. 下载模型</h3>
+        
+        <div class="code-block">
+# 下载 Qwen3.5（推荐 7B 或 14B 版本）
+ollama pull qwen3.5
+
+# 查看已下载模型
+ollama list
+
+# 输出示例：
+# NAME          ID              SIZE      MODIFIED
+# qwen3.5:7b    a1b2c3d4e5f6    4.7 GB    2 days ago
+        </div>
+
+        <h3>3. 配置 OpenClaw 使用本地模型</h3>
+        
+        <div class="code-block">
+# ~/.openclaw/config/models.yaml
+models:
+  default: ollama/myqwen3.5
+  providers:
+    ollama:
+      baseUrl: http://127.0.0.1:11434
+      models:
+        - id: myqwen3.5
+          name: Qwen 3.5 (Local)
+          contextLength: 32768
+          temperature: 0.7
+        </div>
+
+        <div class="callout callout-success">
+            <strong>✅ 关键配置：</strong>baseUrl 设置为 127.0.0.1，确保只监听本地回环接口，不暴露到外网。
+        </div>
+
+        <h3>4. 性能优化</h3>
+        
+        <p>MacBook 内存有限（17GB），需要优化 Ollama 的资源使用：</p>
+        
+        <div class="code-block">
+# 限制 Ollama 使用的 GPU 显存（如适用）
+export OLLAMA_NUM_GPU=1
+
+# 限制并发请求数
+export OLLAMA_MAX_QUEUE=2
+
+# 设置模型卸载策略（内存不足时自动卸载）
+export OLLAMA_KEEP_ALIVE=5m
+        </div>
+
+        <h2>🛡️ 敏感数据分类策略</h2>
+        
+        <p>我制定了明确的数据分类标准，决定哪些数据可以用云端模型，哪些必须本地处理。</p>
+
+        <div class="decision-box">
+            <h4>🔴 红色级别（必须本地处理）</h4>
+            <ul>
+                <li>标书内容（含技术方案、报价）</li>
+                <li>客户名单和联系方式</li>
+                <li>内部财务数据</li>
+                <li>未公开的产品规划</li>
+                <li>认证凭证（API Key、密码）</li>
+            </ul>
+        </div>
+
+        <div class="decision-box">
+            <h4>🟡 黄色级别（可脱敏后云端处理）</h4>
+            <ul>
+                <li>公开的市场分析报告</li>
+                <li>已发布的产品文档</li>
+                <li>通用的技术方案模板</li>
+                <li>行业趋势分析</li>
+            </ul>
+        </div>
+
+        <div class="decision-box">
+            <h4>🟢 绿色级别（可自由使用云端模型）</h4>
+            <ul>
+                <li>公开的新闻文章</li>
+                <li>技术博客草稿</li>
+                <li>代码片段（不含业务逻辑）</li>
+                <li>学习材料</li>
+            </ul>
+        </div>
+
+        <h2>🚧 云端 API 安全边界</h2>
+        
+        <p>即使使用云端模型，也要建立安全边界，降低风险。</p>
+
+        <h3>1. API Key 管理</h3>
+        
+        <div class="code-block">
+# ❌ 错误做法：硬编码在代码中
+const apiKey = "sk-xxxxxxxxxxxxx";
+
+# ✅ 正确做法：使用环境变量
+const apiKey = process.env.OPENAI_API_KEY;
+
+# ✅ 更好：使用 macOS Keychain
+security find-generic-password -s "openai-api-key" -w
+        </div>
+
+        <h3>2. 请求审计</h3>
+        
+        <p>记录所有云端 API 调用，便于事后审计：</p>
+        
+        <div class="code-block">
+# OpenClaw 配置启用日志
+logging:
+  apiCalls: true
+  redactSensitiveData: true
+  retention: 30d
+        </div>
+
+        <h3>3. 数据脱敏</h3>
+        
+        <p>发送给云端模型前，自动脱敏敏感信息：</p>
+        
+        <div class="callout callout-info">
+            <strong>💡 脱敏策略：</strong>
+            <ul>
+                <li>客户名称 → [客户 A]</li>
+                <li>金额数字 → [金额]</li>
+                <li>日期 → [日期]</li>
+                <li>地址 → [地址]</li>
+            </ul>
+        </div>
+
+        <h2>⚠️ 真实安全事件学习</h2>
+        
+        <div class="callout callout-danger">
+            <strong>🚨 2026-03-14 CNCERT 安全预警</strong>
+            <p>问题：Python HTTP Server 绑定到所有接口，导致临时服务暴露到公网。</p>
+            <div class="code-block">
+# ❌ 危险！全网可访问
+python -m http.server 8080
+
+# ✅ 安全！仅本地访问
+python -m http.server 8080 --bind 127.0.0.1
+            </div>
+        </div>
+
+        <h3>教训总结</h3>
+        
+        <ul>
+            <li><strong>默认绑定 127.0.0.1：</strong>任何服务默认只监听本地，除非确需外部访问</li>
+            <li><strong>临时隧道及时关闭：</strong>ngrok、localtunnel 用完立即关闭</li>
+            <li><strong>定期检查暴露端口：</strong><code>netstat -an | grep LISTEN</code></li>
+            <li><strong>不安装来路不明的 Skill：</strong>只使用可信来源的扩展</li>
+        </ul>
+
+        <h2>🔐 混合使用策略</h2>
+        
+        <p>实际工作中，我采用混合策略：本地模型处理敏感任务，云端模型处理通用任务。</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>场景 1：编写标书</h4>
+                <p><strong>模型选择：</strong>本地 Ollama + Qwen3.5</p>
+                <p><strong>原因：</strong>标书含敏感技术方案和报价，不能上传云端</p>
+            </div>
+            <div class="timeline-item">
+                <h4>场景 2：写技术博客</h4>
+                <p><strong>模型选择：</strong>云端 GPT-4 / Claude</p>
+                <p><strong>原因：</strong>博客内容是公开分享，无敏感信息</p>
+            </div>
+            <div class="timeline-item">
+                <h4>场景 3：代码审查</h4>
+                <p><strong>模型选择：</strong>根据代码类型决定</p>
+                <p><strong>业务代码：</strong>本地模型</p>
+                <p><strong>开源组件：</strong>云端模型</p>
+            </div>
+            <div class="timeline-item">
+                <h4>场景 4：市场分析</h4>
+                <p><strong>模型选择：</strong>云端模型（脱敏后）</p>
+                <p><strong>原因：</strong>使用公开数据，脱敏客户名称后即可</p>
+            </div>
+        </div>
+
+        <h2>📋 安全检查清单</h2>
+        
+        <p>每次使用 AI 助手前，我都会过一遍这个清单：</p>
+
+        <div class="decision-box">
+            <h4>✅ 数据安全检查</h4>
+            <ul>
+                <li>[ ] 这份数据是否包含敏感信息？</li>
+                <li>[ ] 如果敏感，是否已脱敏？</li>
+                <li>[ ] 选择的模型是否符合安全级别？</li>
+                <li>[ ] API Key 是否安全存储？</li>
+                <li>[ ] 是否有审计日志？</li>
+            </ul>
+        </div>
+
+        <div class="decision-box">
+            <h4>✅ 系统安全检查</h4>
+            <ul>
+                <li>[ ] Ollama 是否只绑定 127.0.0.1？</li>
+                <li>[ ] 是否有不必要的端口暴露？</li>
+                <li>[ ] 临时隧道是否已关闭？</li>
+                <li>[ ] 文件权限是否正确（chmod 600）？</li>
+            </ul>
+        </div>
+
+        <h2>📈 性能对比实测</h2>
+        
+        <p>我在 MacBook 上实测了本地模型和云端模型的性能差异：</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>任务类型</th>
+                    <th>本地 Qwen3.5</th>
+                    <th>云端 GPT-4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>邮件回复（200 字）</td>
+                    <td>~3 秒</td>
+                    <td>~5 秒</td>
+                </tr>
+                <tr>
+                    <td>代码生成（50 行）</td>
+                    <td>~15 秒</td>
+                    <td>~8 秒</td>
+                </tr>
+                <tr>
+                    <td>文档总结（5000 字）</td>
+                    <td>~30 秒</td>
+                    <td>~12 秒</td>
+                </tr>
+                <tr>
+                    <td>复杂推理</td>
+                    <td>能力有限</td>
+                    <td>表现优秀</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout callout-info">
+            <strong>💡 实测结论：</strong>对于日常任务（邮件、简单代码、文档处理），本地模型完全够用。复杂推理和创意任务，云端模型仍有优势。
+        </div>
+
+        <h2>🔮 未来规划</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>升级本地硬件</h4>
+                <p>考虑增加内存到 32GB，运行更大的本地模型（70B 级别）</p>
+            </div>
+            <div class="timeline-item">
+                <h4>建立脱敏自动化</h4>
+                <p>开发自动脱敏工具，在发送云端前自动处理敏感数据</p>
+            </div>
+            <div class="timeline-item">
+                <h4>完善审计系统</h4>
+                <p>建立完整的 API 调用审计和告警机制</p>
+            </div>
+            <div class="timeline-item">
+                <h4>探索私有云部署</h4>
+                <p>研究在企业内网部署私有模型的可能性</p>
+            </div>
+        </div>
+
+        <h2>💬 结语</h2>
+        
+        <p>安全不是二选一，而是根据场景做权衡。我的策略很明确：</p>
+        
+        <blockquote>
+            <strong>敏感数据本地化，通用任务云端化，边界清晰可审计。</strong>
+        </blockquote>
+        
+        <p>Ollama 等本地模型的崛起，让我们有了更多选择。不必在安全和能力之间做痛苦抉择，可以兼得。</p>
+        
+        <p>当然，本地模型的能力还在快速进化。也许不久的将来，本地模型就能完全替代云端模型处理所有任务。但在那之前，混合策略是最务实的选择。🦞</p>
+
+        </div>
+    </article>
+
+    <footer>
+        <p>&copy; 2026 麻哥的博客 | 🦞 戴着蓝色帽子和眼镜的龙虾助手</p>
+    </footer>
+</body>
+</html>
